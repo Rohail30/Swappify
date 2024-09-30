@@ -1,0 +1,117 @@
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
+const validator = require('validator');
+
+const User = require('../models/UserModel');
+const VerificationToken = require('../models/VerificationTokenModel');
+
+
+// @desc    Register a new user
+// @route   POST /api/auth/register
+// @access  Public
+
+const register = async (req, res) => {
+    const { name, email, password, mobile } = req.body;
+
+    if (!name || !email || !password || !mobile) {
+        return res.status(400).json({ error: true, message: 'Please enter all the required fields' });
+    }
+
+    if (!validator.isEmail(email) || !validator.isMobilePhone(mobile, 'en-PK')) {
+        return res.status(400).json({ error: true, message: 'Please enter a valid email and mobile number' });
+    }
+
+    try {
+        const userExists = await User.findOne({ email });
+
+        if (userExists) {
+            return res.status(400).json({ error: true, message: 'User already exists with this email' });
+        }
+
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(password, salt);
+
+        const user = await User.create({
+            name,
+            email,
+            password: hashedPassword,
+            mobile
+        });
+
+        const verificationToken = await VerificationToken.create({ userId: user._id, token: jwt.sign({ userId: user._id }, process.env.JWT_SECRET) });
+
+        return res.status(200).json({ error: false, message: 'User registered successfully. Please verify your email' });
+    }
+    catch (error) {
+        return res.status(500).json({ error: true, message: error.message });
+    }
+}
+
+
+// @desc    Login a user
+// @route   POST /api/auth/login
+// @access  Public
+
+const login = async (req, res) => {
+    const { email, password } = req.body;
+
+    if (!email || !password) {
+        return res.status(400).json({ error: true, message: 'Please enter all the required fields' });
+    }
+
+    try {
+        const user = await User.findOne({ email });
+
+        if (!user) {
+            return res.status(400).json({ error: true, message: 'Invalid credentials' });
+        }
+
+        const isMatch = await bcrypt.compare(password, user.password);
+
+        if (!isMatch) {
+            return res.status(400).json({ error: true, message: 'Invalid credentials' });
+        }
+
+        if (!user.verified) {
+            return res.status(400).json({ error: true, message: 'Please verify your email' });
+        }
+
+        const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '7d' });
+
+        return res.status(200).json({ error: false, message: 'User logged in successfully', user, token });
+    }
+    catch (error) {
+        return res.status(500).json({ error: true, message: error.message });
+    }
+}
+
+
+// @desc    Verify a user
+// @route   GET /api/auth/verify/:userId/:token
+// @access  Public
+
+const verifyAccount = async (req, res) => {
+    const { userId, token } = req.params;
+
+    try {
+        const verificationToken = await VerificationToken.findOne({ userId, token });
+        const user = await User.findById(userId);
+
+        if (!verificationToken || !user) {
+            return res.status(400).json({ error: true, message: 'Invalid token' });
+        }
+
+        user.verified = true;
+        await user.save();
+
+        await VerificationToken.deleteOne({ userId, token });
+
+        return res.status(200).json({ error: false, message: 'User verified successfully' });
+    }
+    catch (error) {
+        return res.status(500).json({ error: true, message: error.message });
+    }
+}
+
+
+module.exports = { register, login, verifyAccount };
