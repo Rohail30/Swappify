@@ -60,6 +60,10 @@ const register = async (req, res) => {
 const login = async (req, res) => {
     const { email, password } = req.body;
 
+    if (!validator.isEmail(email)) {
+        return res.status(400).json({ error: true, message: 'Please enter a valid email' });
+    }
+
     if (!email || !password) {
         return res.status(400).json({ error: true, message: 'Please enter all the required fields' });
     }
