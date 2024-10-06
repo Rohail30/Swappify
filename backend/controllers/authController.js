@@ -81,9 +81,11 @@ const login = async (req, res) => {
             return res.status(400).json({ error: true, message: 'Please verify your email' });
         }
 
-        const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '7d' });
+        const age = 7 * 24 * 60 * 60 * 1000; // 7 days
 
-        return res.status(200).json({ error: false, message: 'User logged in successfully', user, token });
+        const token = jwt.sign({ userId: user._id, isAdmin: user.isAdmin }, process.env.JWT_SECRET, { expiresIn: age });
+
+        return res.cookie("token", token, { httpOnly: true, maxAge: age }).status(200).json({ error: false, message: 'User logged in successfully', user });
     }
     catch (error) {
         return res.status(500).json({ error: true, message: error.message });
