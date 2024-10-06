@@ -1,9 +1,22 @@
 import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import Navbar from './components/Navbar/Navbar';
+import Login from "./pages/Login/Login";
+import Register from "./pages/Register/Register";
+import UpdateProfile from "./pages/UpdateProfile/UpdateProfile";
 
 function App() {
   return (
     <div className="App">
-      <p>Hello World!</p>
+
+      <Navbar />
+
+      <Routes>
+        <Route exact path="/login" element={<Login />} />
+        <Route exact path="/register" element={<Register />} />
+        <Route exact path="/profile" element={<UpdateProfile />} />
+      </Routes>
+
     </div>
   );
 }

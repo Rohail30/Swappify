@@ -1,0 +1,54 @@
+.profileUpdatePage {
+    height: 100%;
+    display: flex;
+}
+
+.profileUpdatePage .formContainer {
+    flex: 3;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profileUpdatePage .formContainer form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.profileUpdatePage .formContainer form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.profileUpdatePage .formContainer form input {
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+
+.profileUpdatePage .formContainer form button {
+    padding: 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: teal;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.profileUpdatePage .imgContainer {
+    flex: 2;
+    background-color: #ecfffd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profileUpdatePage .imgContainer img {
+    width: 100%;
+}
