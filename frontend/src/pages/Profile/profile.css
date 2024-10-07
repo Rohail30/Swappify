@@ -1,0 +1,54 @@
+.profilePage {
+    display: flex;
+    height: 100%;
+}
+
+@media (max-width: 1024px) {
+    .profilePage {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 1024px) {
+    .profilePage .details {
+        flex: none;
+        height: max-content;
+    }
+}
+
+.profilePage {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.profilePage .title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.profilePage .title h1 {
+    font-weight: 300;
+}
+
+.profilePage .info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.profilePage .info span {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.profilePage .info button {
+    width: 150px;
+    padding: 12px 24px;
+    background-color: #fece51;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}

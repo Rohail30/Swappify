@@ -81,7 +81,7 @@ nav .right .user img {
   }
 }
 
-nav .right .user .profile {
+nav .right .user button {
   padding: 12px 24px;
   background-color: #97d5c8;
   cursor: pointer;
@@ -91,6 +91,7 @@ nav .right .user .profile {
 
 nav .right .register {
   background-color: #97d5c8;
+  border-radius: 5px;
 }
 
 nav .right .menuIcon {

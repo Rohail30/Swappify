@@ -4,6 +4,7 @@ import Navbar from './components/Navbar/Navbar';
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import UpdateProfile from "./pages/UpdateProfile/UpdateProfile";
+import Profile from "./pages/Profile/Profile";
 
 function App() {
   return (
@@ -14,7 +15,8 @@ function App() {
       <Routes>
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/register" element={<Register />} />
-        <Route exact path="/profile" element={<UpdateProfile />} />
+        <Route exact path="/update-profile" element={<UpdateProfile />} />
+        <Route exact path="/profile" element={<Profile />} />
       </Routes>
 
     </div>

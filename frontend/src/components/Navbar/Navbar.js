@@ -5,9 +5,14 @@ import { AuthContext } from "../../context/AuthContext";
 
 const Navbar = () => {
 
-    const { currentUser } = useContext(AuthContext);
+    const { currentUser, updateUser } = useContext(AuthContext);
 
     const [open, setOpen] = useState(false);
+
+    const handleLogout = () => {
+        localStorage.removeItem("user");
+        updateUser(null);
+    };
 
     return (
         <nav>
@@ -22,10 +27,10 @@ const Navbar = () => {
             <div className="right">
                 {currentUser ? (
                     <div className="user">
-                        <span>{currentUser.name}</span>
                         <Link to="/profile" className="profile">
-                            <span>Profile</span>
+                            <button>Profile</button>
                         </Link>
+                        <button onClick={handleLogout}>Logout</button>
                     </div>
                 ) : (
                     <>
