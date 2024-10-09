@@ -12,6 +12,7 @@
 }
 
 .login .formContainer form {
+    width: 60%;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -31,6 +32,10 @@
     color: white;
     font-weight: bold;
     cursor: pointer;
+}
+
+.login .formContainer form button:hover {
+    background-color: #97D5C9;
 }
 
 .login .formContainer form span {
@@ -54,4 +59,15 @@
 
 .login .imgContainer img {
     width: 100%;
+}
+
+@media (max-width: 738px) {
+
+    .login .formContainer form {
+        width: 80%;
+    }
+
+    .login .imgContainer {
+        display: none;
+    }
 }

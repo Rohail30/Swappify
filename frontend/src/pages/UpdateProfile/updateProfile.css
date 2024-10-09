@@ -12,6 +12,7 @@
 }
 
 .profileUpdatePage .formContainer form {
+    width: 60%;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -41,6 +42,10 @@
     cursor: pointer;
 }
 
+.profileUpdatePage .formContainer form button:hover {
+    background-color: #45535f;
+}
+
 .profileUpdatePage .imgContainer {
     flex: 2;
     background-color: #ecfffd;
@@ -51,4 +56,15 @@
 
 .profileUpdatePage .imgContainer img {
     width: 100%;
+}
+
+@media (max-width: 738px) {
+
+    .profileUpdatePage .formContainer form {
+        width: 80%;
+    }
+
+    .profileUpdatePage .imgContainer{
+        display: none;
+    }
 }
