@@ -1,9 +1,11 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useState, useContext } from "react";
 import "./navbar.css";
 import { AuthContext } from "../../context/AuthContext";
 
 const Navbar = () => {
+
+    const navigate = useNavigate();
 
     const { currentUser, updateUser } = useContext(AuthContext);
 
@@ -12,6 +14,7 @@ const Navbar = () => {
     const handleLogout = () => {
         localStorage.removeItem("user");
         updateUser(null);
+        navigate('/');
     };
 
     return (
@@ -22,14 +25,12 @@ const Navbar = () => {
                     <span>SWAPPIFY</span>
                 </a>
                 <a href="/">Home</a>
-                <a href="/">Explore</a>
-                <a href="/">Events</a>
+                <a href="/">Items Listings</a>
             </div>
             <div className="right">
                 <div className='right-menu'>
                     {currentUser ? (
                         <div className="user">
-                            <a href="/register" className="about">About Us</a>
                             <Link to="/profile" className="profile">
                                 <button>Profile</button>
                             </Link>
@@ -37,7 +38,6 @@ const Navbar = () => {
                         </div>
                     ) : (
                         <>
-                            <a href="/register" className="about">About Us</a>
                             <a href="/login">Login</a>
                             <a href="/register" className="register">Register</a>
                         </>
@@ -49,7 +49,7 @@ const Navbar = () => {
 
                 <div className={open ? "menu active" : "menu"}>
                     <a href="/">Home</a>
-                    <a href="/">About</a>
+                    <a href="/">Items Listings</a>
                     {currentUser ? (
                         <>
                             <Link to="/profile" className="profile">
