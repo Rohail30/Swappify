@@ -1,4 +1,4 @@
-const Item = require("../models/Item");
+const Item = require("../models/ItemModel");
 const upload = require("../config/multer");
 
 
@@ -8,14 +8,7 @@ const upload = require("../config/multer");
 
 const addItem = async (req, res) => {
 
-    upload.single("image")(req, res, async (err) => {
-        if (err) {
-            return res.status(400).json({ error: true, message: err.message });
-        }
-
-        if (!req.file) {
-            return res.status(400).json({ error: true, message: "Image is required" });
-        }
+    upload(req, res, async (err) => {
 
         const { name, description, owner, condition, category, location, priceMin, priceMax } = req.body;
 
@@ -25,6 +18,13 @@ const addItem = async (req, res) => {
 
         if (priceMin < 0 || priceMax < 0) {
             return res.status(400).json({ error: true, message: "Price cannot be negative" });
+        }
+        if (err) {
+            return res.status(400).json({ error: true, message: err.message });
+        }
+
+        if (!req.file) {
+            return res.status(400).json({ error: true, message: "Image is required" });
         }
 
         try {
@@ -39,7 +39,7 @@ const addItem = async (req, res) => {
                 price: {
                     min: priceMin,
                     max: priceMax,
-                }
+                },
             });
 
             return res.status(200).json({ error: false, message: "Item added successfully", item: newItem });
@@ -49,5 +49,6 @@ const addItem = async (req, res) => {
         }
     });
 };
+
 
 module.exports = { addItem };
