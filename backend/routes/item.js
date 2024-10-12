@@ -6,26 +6,27 @@ const upload = require('../config/multer');
 
 
 // @desc    Get all items
-router.get('/', getAllItems);
+router.get('/api/items/', getAllItems);
 
 
 // @desc    Add a new item
-router.post('/add', upload, addItem);
+router.post('/api/items/add', upload, addItem);
 
 
 // @desc    Update an item
-router.put('/update/:id', upload, updateItem);
+router.put('/api/items/update/:id', upload, updateItem);
 
 
 // @desc    Delete an item
-router.delete('/delete/:id', deleteItem);
+router.delete('/api/items/delete/:id', deleteItem);
 
 
 // @desc    Get a single item
-router.get('/:id', getItem);
+router.get('/api/items/:id', getItem);
 
 
 // @desc    Get All items by particular user
-router.get('/user/:id', getItemsByUser);
+router.get('/api/items/user/:id', getItemsByUser);
+
 
 module.exports = router;

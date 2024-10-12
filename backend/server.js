@@ -15,9 +15,9 @@ app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
 app.use(express.static(path.join(__dirname, './public')));
 app.use(express.json());
 app.use(cookieParser());
-app.use('/api/auth', authRoutes);
-app.use('/api/users', userRoutes);
-app.use('/api/items', itemRoutes);
+app.use(authRoutes);
+app.use(userRoutes);
+app.use(itemRoutes);
 
 
 app.listen(PORT, () => {

@@ -5,13 +5,13 @@ const { register, login, verifyAccount } = require('../controllers/authControlle
 
 
 // @desc    Register a new user
-router.post('/register', register);
+router.post('/api/auth/register', register);
 
 // @desc    Login a user
-router.post('/login', login);
+router.post('/api/auth/login', login);
 
 // @desc    Verify user account
-router.get('/verify/:userId/:token', verifyAccount);
+router.get('/api/auth/verify/:userId/:token', verifyAccount);
 
 
 module.exports = router;
