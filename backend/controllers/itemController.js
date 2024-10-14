@@ -177,4 +177,45 @@ const getItemsByUser = async (req, res) => {
 }
 
 
-module.exports = { addItem, updateItem, deleteItem, getAllItems, getItem, getItemsByUser };
+// @desc    Search items using query and filters
+// @route   GET /api/items/search
+// @access  Public
+
+const searchItems = async (req, res) => {
+
+    try {
+        const { name, category, location, condition, priceMin, priceMax } = req.query;
+
+        let query = {};
+
+        if (name) {
+            query.name = { $regex: name, $options: "i" };
+        }
+
+        if (category) {
+            query.category = category;
+        }
+
+        if (location) {
+            query.location = location;
+        }
+
+        if (condition) {
+            query.condition = condition;
+        }
+
+        if (priceMin || priceMax) {
+            query["price.min"] = { $gte: priceMin || 0 };
+            query["price.max"] = { $lte: priceMax || Infinity };
+        }
+
+        const items = await Item.find(query);
+
+        return res.status(200).json({ error: false, items });
+    }
+    catch (error) {
+        return res.status(500).json({ error: true, message: error.message });
+    }
+}
+
+module.exports = { addItem, updateItem, deleteItem, getAllItems, getItem, getItemsByUser, searchItems };

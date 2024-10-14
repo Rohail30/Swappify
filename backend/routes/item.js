@@ -1,8 +1,12 @@
 const express = require('express');
 const router = express.Router();
 
-const { addItem, updateItem, deleteItem, getAllItems, getItem, getItemsByUser } = require('../controllers/itemController');
+const { addItem, updateItem, deleteItem, getAllItems, getItem, getItemsByUser, searchItems } = require('../controllers/itemController');
 const upload = require('../config/multer');
+
+
+// @desc    Search items using query and filters
+router.get('/api/items/search', searchItems);
 
 
 // @desc    Get all items
