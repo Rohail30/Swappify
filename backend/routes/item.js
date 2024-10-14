@@ -3,6 +3,7 @@ const router = express.Router();
 
 const { addItem, updateItem, deleteItem, getAllItems, getItem, getItemsByUser, searchItems } = require('../controllers/itemController');
 const upload = require('../config/multer');
+const verifyToken = require('../middleware/verifyToken');
 
 
 // @desc    Search items using query and filters
@@ -14,15 +15,15 @@ router.get('/api/items/', getAllItems);
 
 
 // @desc    Add a new item
-router.post('/api/items/add', upload, addItem);
+router.post('/api/items/add', verifyToken, upload, addItem);
 
 
 // @desc    Update an item
-router.put('/api/items/update/:id', upload, updateItem);
+router.put('/api/items/update/:id', verifyToken, upload, updateItem);
 
 
 // @desc    Delete an item
-router.delete('/api/items/delete/:id', deleteItem);
+router.delete('/api/items/delete/:id', verifyToken, deleteItem);
 
 
 // @desc    Get a single item
