@@ -6,6 +6,7 @@ import Register from "./pages/Register/Register";
 import UpdateProfile from "./pages/UpdateProfile/UpdateProfile";
 import Profile from "./pages/Profile/Profile";
 import AddItem from './pages/AddItem/AddItem';
+import EditItem from './pages/EditItem/EditItem';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route exact path="/update-profile" element={<UpdateProfile />} />
         <Route exact path="/profile" element={<Profile />} />
         <Route exact path="/add-item" element={<AddItem />} />
+        <Route exact path="/edit-item/:id" element={<EditItem />} />
       </Routes>
 
     </div>

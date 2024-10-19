@@ -1,0 +1,92 @@
+.editItemPage {
+    height: 100%;
+    display: flex;
+}
+
+.editItemPage .formContainer {
+    flex: 3;
+    height: 100%;
+    width: 60vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.editItemPage .formContainer form {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.editItemPage .formContainer form input {
+    padding: 15px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+.editItemPage .formContainer form textarea {
+    resize: vertical;
+    width: 100%;
+    height: 100px;
+}
+
+.editItemPage .formContainer form input,
+.editItemPage .formContainer form textarea,
+.editItemPage .formContainer form select {
+    /* padding: 15px; */
+    padding: 5px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    font-size: 16px;
+}
+
+.editItemPage .formContainer form button {
+    padding: 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: #5d7080;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.editItemPage .formContainer form button:hover {
+    background-color: #97D5C9;
+}
+
+.editItemPage .formContainer form span {
+    color: rgba(255, 0, 0, 0.591);
+}
+
+.editItemPage .formContainer form a {
+    font-size: 14px;
+    color: gray;
+    border-bottom: 1px solid gray;
+    width: max-content;
+}
+
+.editItemPage .imgContainer {
+    flex: 2;
+    background-color: #ecfffd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.editItemPage .imgContainer img {
+    width: 100%;
+}
+
+@media (max-width: 738px) {
+
+    .editItemPage .formContainer form {
+        width: 80%;
+    }
+
+    .editItemPage .imgContainer {
+        display: none;
+    }
+}
