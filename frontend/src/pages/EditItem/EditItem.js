@@ -29,8 +29,6 @@ const EditItem = () => {
             try {
                 const res = await apiRequest.get(`/api/items/${id}`);
 
-                console.log(res.data.item)
-
                 setItemData({
                     name: res.data.item.name,
                     description: res.data.item.description,
@@ -83,7 +81,6 @@ const EditItem = () => {
                     "Content-Type": "multipart/form-data",
                 },
             });
-            console.log(res);
         } catch (error) {
             setError(error.response?.data?.message || "An error occurred. Please try again.");
         }
