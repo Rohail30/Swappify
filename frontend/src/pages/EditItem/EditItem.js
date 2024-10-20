@@ -22,6 +22,7 @@ const EditItem = () => {
         owner: currentUser._id,
     });
 
+    const [imagePreview, setImagePreview] = useState(null);
     const { id } = useParams();
 
     useEffect(() => {
@@ -32,7 +33,7 @@ const EditItem = () => {
                 setItemData({
                     name: res.data.item.name,
                     description: res.data.item.description,
-                    // image: res.data.item.image,
+                    image: res.data.item.image,
                     condition: res.data.item.condition,
                     category: res.data.item.category,
                     location: res.data.item.location,
@@ -40,6 +41,7 @@ const EditItem = () => {
                     priceMax: res.data.item.price.max,
                     owner: res.data.item.owner,
                 });
+                setImagePreview(`http://localhost:5000${res.data.item.image}`);
             } catch (error) {
                 console.log(error);
             }
@@ -51,7 +53,9 @@ const EditItem = () => {
 
     const handleChange = (e) => {
         if (e.target.name === "image") {
-            setItemData({ ...itemData, image: e.target.files[0] });
+            const file = e.target.files[0];
+            setItemData({ ...itemData, image: file });
+            setImagePreview(URL.createObjectURL(file));
             setError(null);
         } else {
             setItemData({ ...itemData, [e.target.name]: e.target.value });
@@ -76,7 +80,7 @@ const EditItem = () => {
         formData.append("image", itemData.image);
 
         try {
-            const res = await apiRequest.put(`/api/items/update/${id}`, formData, {
+            await apiRequest.put(`/api/items/update/${id}`, formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 },
@@ -133,6 +137,13 @@ const EditItem = () => {
                     <button type="submit">Edit Item</button>
 
                 </form>
+
+                <div className="imagePreview">
+                    {imagePreview && (
+                        <img src={imagePreview} alt="Item Preview" style={{ width: "300px", height: "auto" }} />
+                    )}
+                </div>
+
             </div>
         </div>
     );

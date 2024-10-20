@@ -9,6 +9,7 @@ const AddItem = () => {
     const { currentUser } = useContext(AuthContext);
 
     const [error, setError] = useState(null);
+    const [imagePreview, setImagePreview] = useState(null)
     const [itemData, setItemData] = useState({
         name: "",
         description: "",
@@ -24,7 +25,9 @@ const AddItem = () => {
 
     const handleChange = (e) => {
         if (e.target.name === "image") {
-            setItemData({ ...itemData, image: e.target.files[0] });
+            const file = e.target.files[0];
+            setItemData({ ...itemData, image: file });
+            setImagePreview(URL.createObjectURL(file));
             setError(null);
         } else {
             setItemData({ ...itemData, [e.target.name]: e.target.value });
@@ -46,6 +49,7 @@ const AddItem = () => {
         formData.append("priceMin", itemData.priceMin);
         formData.append("priceMax", itemData.priceMax);
         formData.append("owner", itemData.owner);
+        formData.append("image", itemData.image);
 
         try {
             const res = await apiRequest.post("/api/items/add", formData, {
@@ -72,7 +76,7 @@ const AddItem = () => {
 
 
                     <select name="condition" onChange={handleChange} required>
-                        <option value="" disabled selected>Condition</option>
+                        <option value="" disabled selected> Condition </option>
                         <option value="new">New</option>
                         <option value="used">Used</option>
                     </select>
@@ -106,6 +110,11 @@ const AddItem = () => {
                     <button type="submit">Add Item</button>
 
                 </form>
+                <div className="imagePreview">
+                    {imagePreview && (
+                        <img src={imagePreview} alt="Selected Preview" />
+                    )}
+                </div>
             </div>
         </div>
     );
