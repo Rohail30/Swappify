@@ -66,11 +66,11 @@ const MyList = () => {
                                 <div className="title"><h1>{item.name}</h1></div>
                                 <div className="status"><h2>{item.status}</h2></div>
                                 <div className="buttons">
-                                    <div className="button1">
-                                        <Link to="/my-list-detail">
+                                    <Link to={`/detail-page/${item._id}`}>
+                                        <div className="button1">
                                             <div className="view">View details</div>
-                                        </Link>
-                                    </div>
+                                        </div>
+                                    </Link>
                                     <div className="button2">
                                         <Link to={`/edit-item/${item._id}`}><div className="edit"><MdEdit /></div></Link>
                                         {/* <div className="delete"><MdDelete /></div> */}
