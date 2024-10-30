@@ -25,7 +25,7 @@ const Navbar = () => {
                     <span>SWAPPIFY</span>
                 </a>
                 <a href="/">Home</a>
-                <a href="/">Items Listings</a>
+                <Link to="/item-listing">Items Listings</Link>
             </div>
             <div className="right">
                 <div className='right-menu'>

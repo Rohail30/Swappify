@@ -7,6 +7,8 @@ import UpdateProfile from "./pages/UpdateProfile/UpdateProfile";
 import Profile from "./pages/Profile/Profile";
 import AddItem from './pages/AddItem/AddItem';
 import EditItem from './pages/EditItem/EditItem';
+import DetailPage from './pages/DetailPage/DetailPage';
+import ItemList from './pages/ItemList/ItemList';
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
         <Route exact path="/profile" element={<Profile />} />
         <Route exact path="/add-item" element={<AddItem />} />
         <Route exact path="/edit-item/:id" element={<EditItem />} />
+        <Route exact path="/detail-page/:id" element={<DetailPage />} />
+        <Route exact path="/item-listing" element={<ItemList />} />
       </Routes>
 
     </div>
