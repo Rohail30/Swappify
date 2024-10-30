@@ -193,7 +193,7 @@ const searchItems = async (req, res) => {
         }
 
         if (category) {
-            query.category = category;
+            query.category = { $in: category.split(",") };
         }
 
         if (location) {
