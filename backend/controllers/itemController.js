@@ -197,12 +197,11 @@ const searchItems = async (req, res) => {
         }
 
         if (location) {
-            query.location = location;
-            // query.location = { $regex: location, $options: "i" };
+            query.location = { $regex: location, $options: "i" };
         }
 
         if (condition) {
-            query.condition = condition;
+            query.condition = { $regex: condition, $options: "i" };
         }
 
         if (priceMin || priceMax) {
