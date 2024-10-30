@@ -4,6 +4,12 @@ import apiRequest from "../../config/apiRequest";
 import { AuthContext } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
+const categories = [
+    'electronics', 'furniture', 'clothing & accessories', 'books & media', 'home & garden', 'sports & outdoors', 'toys & games', 'tools & hardware', 'automotive', 'office supplies', 'collectibles & antiques', 'other'
+];
+
+const locations = [
+    "Karachi", "Lahore", "Islamabad", "Faisalabad", "Rawalpindi", "Multan", "Peshawar", "Quetta", "Gujranwala", "Sialkot", "Hyderabad", "Bahawalpur", "Sargodha", "Mardan", "Swat"];
 
 const AddItem = () => {
 
@@ -84,7 +90,7 @@ const AddItem = () => {
                         <option value="used">Used</option>
                     </select>
 
-                    <select name="category" onChange={handleChange} required>
+                    {/* <select name="category" onChange={handleChange} required>
                         <option value="" disabled selected>Category</option>
                         <option value="electronics">Electronics</option>
                         <option value="furniture">Furniture</option>
@@ -98,9 +104,21 @@ const AddItem = () => {
                         <option value="office supplies">Office Supplies</option>
                         <option value="collectibles & antiques">Collectibles & Antiques</option>
                         <option value="other">Other</option>
+                    </select> */}
+
+                    <select name="category" onChange={handleChange} required>
+                        <option value="" disabled selected>Category</option>
+                        {categories.map((category) => (
+                            <option key={category} value={category}>{category}</option>
+                        ))}
                     </select>
 
-                    <input type="text" name="location" placeholder="Location" onChange={handleChange} required />
+                    <select name="location" onChange={handleChange} required>
+                        <option value="" disabled selected>Location</option>
+                        {locations.map((location) => (
+                            <option key={location} value={location}>{location}</option>
+                        ))}
+                    </select>
 
                     <input type="number" name="priceMin" placeholder="Minimum Price" onChange={handleChange} required />
 
