@@ -198,6 +198,7 @@ const searchItems = async (req, res) => {
 
         if (location) {
             query.location = location;
+            // query.location = { $regex: location, $options: "i" };
         }
 
         if (condition) {

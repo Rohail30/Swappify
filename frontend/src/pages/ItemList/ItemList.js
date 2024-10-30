@@ -12,9 +12,13 @@ const categories = [
     'electronics', 'furniture', 'clothing & accessories', 'books & media', 'home & garden', 'sports & outdoors', 'toys & games', 'tools & hardware', 'automotive', 'office supplies', 'collectibles & antiques', 'other'
 ];
 
-const locations = [
-    'karachi', 'lahore', 'rawalpindi', 'hyderabad', 'faisalabad'
-];
+// const locations = [
+//     'Karachi', 'lahore', 'rawalpindi', 'hyderabad', 'faisalabad'
+// ];
+
+const locations =
+    [
+        "Karachi", "Lahore", "Islamabad", "Faisalabad", "Rawalpindi", "Multan", "Peshawar", "Quetta", "Gujranwala", "Sialkot", "Hyderabad", "Bahawalpur", "Sargodha", "Mardan", "Swat"];
 
 const ItemList = () => {
     const [items, setItems] = useState([]);
