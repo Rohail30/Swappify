@@ -3,11 +3,13 @@ import { useState, useContext, useEffect } from "react";
 import apiRequest from "../../config/apiRequest";
 import { AuthContext } from "../../context/AuthContext";
 import { useParams } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
 
 const EditItem = () => {
 
     const { currentUser } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const [error, setError] = useState(null);
     const [itemData, setItemData] = useState({
@@ -85,6 +87,7 @@ const EditItem = () => {
                     "Content-Type": "multipart/form-data",
                 },
             });
+            navigate("/profile");
         } catch (error) {
             setError(error.response?.data?.message || "An error occurred. Please try again.");
         }

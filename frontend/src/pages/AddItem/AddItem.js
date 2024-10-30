@@ -2,11 +2,13 @@ import "./additem.css";
 import { useState, useContext } from "react";
 import apiRequest from "../../config/apiRequest";
 import { AuthContext } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 
 const AddItem = () => {
 
     const { currentUser } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const [error, setError] = useState(null);
     const [imagePreview, setImagePreview] = useState(null)
@@ -58,6 +60,7 @@ const AddItem = () => {
                 },
             });
             console.log(res);
+            navigate("/profile");
         } catch (error) {
             setError(error.response?.data?.message || "An error occurred. Please try again.");
         }
