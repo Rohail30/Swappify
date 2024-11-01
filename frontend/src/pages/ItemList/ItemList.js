@@ -181,13 +181,18 @@ const ItemList = () => {
                                     </div>
                                 </div>
                                 <div className="buttons">
-                                    <div className="button1">
-                                        <Link to="/detail-page">
+                                    {/* <div className="button1">
+                                        <Link to={`/detail-page/${item._id}`}>
                                             <div className="view">View details</div>
                                         </Link>
-                                    </div>
+                                    </div> */}
+                                    <Link to={`/detail-page/${item._id}`}>
+                                        <div className="button1">
+                                            <div className="view">View details</div>
+                                        </div>
+                                    </Link>
                                     <div className="button2">
-                                        <Link to={`/edit-item/${item._id}`}>
+                                        <Link to="/">
                                             <div className="wishlist"><FaRegHeart /></div>
                                         </Link>
                                     </div>

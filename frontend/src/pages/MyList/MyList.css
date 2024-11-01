@@ -5,7 +5,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    min-height: 100vh;
+    /* min-height: 100vh; */
     background-color: aliceblue;
     padding: 10px;
     border-radius: 10px;
@@ -23,13 +23,18 @@
     text-align: left;
 }
 
-.mylist .cardcard-container {
-    width: 100%;
+.mylist .cards{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mylist .cards .card-container {
+    width: 85%;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
     flex-direction: row;
-    background-color: red;
 }
 
 .mylist h1 {
@@ -40,7 +45,7 @@
 .mylist button {
     padding: 10px 15px;
     font-size: 16px;
-    color: black;
+    color: white;
     background-color: #18A661;
     border: none;
     border-radius: 5px;
@@ -49,7 +54,7 @@
 }
 
 .mylist button:hover {
-    background-color: #c5e9af;
+    background-color: #006A4E;
 }
 
 
@@ -148,22 +153,25 @@
     align-items: center;
     width: 100px;
     height: 40px;
+    color: white;
     border-radius: 20px;
     transition: 0.3s;
     background-color: #18A661;
 }
 
 .mylistcard .button1:hover {
-    background-color: #c5e9af;
+    background-color: #006A4E;
 }
 
 .mylistcard .button2 {
     gap: 10px;
+    color: white;
     display: flex;
     flex-direction: row;
 }
 
 .mylistcard .button2 .edit {
+    color: white;
     cursor: pointer;
     border-radius: 20px;
     display: flex;
@@ -176,7 +184,7 @@
 }
 
 .mylistcard .button2 .edit:hover {
-    background-color: #c5e9af;
+    background-color: #006A4E;
 }
 
 .mylistcard .button2 .delete {
@@ -192,7 +200,7 @@
 }
 
 .mylistcard .button2 .delete:hover {
-    background-color: #F96D00;
+    background-color: #f95f00;
 }
 
 @media (max-width: 738px) {
