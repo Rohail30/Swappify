@@ -9,6 +9,7 @@ const connectDB = require('./config/database');
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
 const itemRoutes = require('./routes/item');
+const wishlistRoutes = require('./routes/wishlist');
 
 
 app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
@@ -18,6 +19,7 @@ app.use(cookieParser());
 app.use(authRoutes);
 app.use(userRoutes);
 app.use(itemRoutes);
+app.use(wishlistRoutes);
 
 
 app.listen(PORT, () => {
