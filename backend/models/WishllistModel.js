@@ -8,9 +8,15 @@ const WishlistSchema = new mongoose.Schema(
             ref: 'User'
         },
         items: [{
-            type: mongoose.Schema.Types.ObjectId,
-            required: true,
-            ref: 'Item'
+            itemId: {
+                type: mongoose.Schema.Types.ObjectId,
+                required: true,
+                ref: 'Item'
+            },
+            dateAdded: {
+                type: Date,
+                default: Date.now
+            }
         }]
     }, { timestamps: true });
 
