@@ -125,4 +125,42 @@ const verifyAccount = async (req, res) => {
 }
 
 
-module.exports = { register, login, verifyAccount };
+//@desc     Forgot Password
+//@route    POST /api/auth/forgotpassword
+//@access   Public
+
+const forgotPassword = async (req, res) => {
+    const { email, mobile } = req.body;
+
+    if (!validator.isEmail(email) || !validator.isMobilePhone(mobile, 'en-PK')) {
+        return res.status(400).json({ error: true, message: 'Please enter a valid email and mobile number' });
+    }
+
+    try {
+        const user = await User.findOne({ email, mobile });
+
+        if (!user) {
+            return res.status(400).json({ error: true, message: 'User not found with this email and mobile' });
+        }
+
+        const randomPassword = Math.random().toString(36).slice(-8);
+        console.log(randomPassword);
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(randomPassword, salt);
+
+        user.password = hashedPassword;
+        await user.save();
+
+        const emailText = `Your new password is ${randomPassword} Please change it after login`;
+
+        sendMail(email, 'New Password', emailText);
+
+        return res.status(200).json({ error: false, message: 'New password sent to your email' });
+    }
+    catch (error) {
+        return res.status(500).json({ error: true, message: error.message });
+    }
+}
+
+
+module.exports = { register, login, verifyAccount, forgotPassword };
