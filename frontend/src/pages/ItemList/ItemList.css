@@ -19,7 +19,7 @@
     border-radius: 10px;
     gap: 20px;
     overflow: hidden;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     background-color: #FCFCFC;
 }
 
@@ -90,7 +90,7 @@
 
 .itemlist .search .box {
     cursor: pointer;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     width: 40px;
     border-radius: 5px;
     display: flex;
@@ -100,7 +100,7 @@
 
 .itemlist .search .box2 {
     cursor: pointer;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     width: 70px;
     border-radius: 5px;
     display: flex;
@@ -110,7 +110,7 @@
 
 .itemlist .search-container {
     border-radius: 5px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     position: relative;
     width: 370px;
 }
@@ -192,7 +192,7 @@
     height: 450px;
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     background-color: #ffffff;
 }
 
@@ -274,12 +274,12 @@
     font-size: 15px;
 }
 
-.itemlistcard .buttons {
+.itemlist .itemlistcard .buttons {
     gap: 20px;
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
-    flex-direction: row;
     font-size: small;
     font-weight: bold;
 }
@@ -301,14 +301,16 @@
     background-color: #006A4E;
 }
 
-.itemlistcard .button2 {
+.itemlist .itemlistcard .button2 {
     color: white;
     gap: 10px;
     display: flex;
-    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
 }
 
-.itemlistcard .button2 .wishlist {
+.itemlistcard .button2 .wish-list{
     cursor: pointer;
     border-radius: 20px;
     display: flex;
@@ -320,7 +322,7 @@
     background-color: #18A661;
 }
 
-.itemlistcard .button2 .wishlist:hover {
+.itemlistcard .button2 .wish-list:hover {
     background-color: palevioletred;
 }
 

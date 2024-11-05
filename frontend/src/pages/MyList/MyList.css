@@ -23,7 +23,13 @@
     text-align: left;
 }
 
+.mylist .container .buttons{
+    display: flex;
+    gap: 10px;
+}
+
 .mylist .cards{
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -31,6 +37,7 @@
 
 .mylist .cards .card-container {
     width: 85%;
+    gap: 20px;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
@@ -69,14 +76,14 @@
     }
 }
 
-.card-container {
+/* .card-container {
     width: 100%;
     gap: 40px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-start;
-}
+} */
 
 .mylistcard {
     margin-top: 40px;

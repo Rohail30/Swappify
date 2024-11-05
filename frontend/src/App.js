@@ -9,6 +9,8 @@ import AddItem from './pages/AddItem/AddItem';
 import EditItem from './pages/EditItem/EditItem';
 import DetailPage from './pages/DetailPage/DetailPage';
 import ItemList from './pages/ItemList/ItemList';
+import WishList from './pages/Wishlist/Wishlist';
+import ForgetPassword from './pages/ForgetPassword/ForgetPass';
 
 function App() {
   return (
@@ -18,6 +20,7 @@ function App() {
 
       <Routes>
         <Route exact path="/login" element={<Login />} />
+        <Route exact path="/forget-password" element={<ForgetPassword />} />
         <Route exact path="/register" element={<Register />} />
         <Route exact path="/update-profile" element={<UpdateProfile />} />
         <Route exact path="/profile" element={<Profile />} />
@@ -25,6 +28,7 @@ function App() {
         <Route exact path="/edit-item/:id" element={<EditItem />} />
         <Route exact path="/detail-page/:id" element={<DetailPage />} />
         <Route exact path="/item-listing" element={<ItemList />} />
+        <Route exact path="/wishlist" element={<WishList />} />
       </Routes>
 
     </div>

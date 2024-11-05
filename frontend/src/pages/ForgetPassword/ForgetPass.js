@@ -1,10 +1,10 @@
-import "./login.css";
+import "./ForgetPassword.css";
 import { useState, useContext } from "react";
 import apiRequest from "../../config/apiRequest";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 
-const Login = () => {
+const ForgetPassword = () => {
 
     const { updateUser } = useContext(AuthContext);
 
@@ -12,13 +12,13 @@ const Login = () => {
 
     const [error, setError] = useState(null);
     const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const [mobile, setMobile] = useState("");
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
-            const body = { email, password };
+            const body = { email, mobile };
             const res = await apiRequest.post("/api/auth/login", body);
 
             setError(null);
@@ -33,18 +33,16 @@ const Login = () => {
     };
 
     return (
-        <div className="login">
+        <div className="forgetPassword">
             <div className="formContainer">
                 <form onSubmit={handleSubmit}>
-                    <h1>Welcome Back</h1>
+                    <h1>Reset Password</h1>
 
                     <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
-                    <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
+                    <input type="text" placeholder="Mobile Number" onChange={(e) => setMobile(e.target.value)} />
 
-                    <button type="submit">Login</button>
+                    <button type="submit">Reset Password</button>
                     {error && <span>{error}</span>}
-                    <Link to="/register">Don't have an account? Register</Link>
-                    <Link to="/forget-password">Forgot Password? Reset Here</Link>
                 </form>
             </div>
             <div className="imgContainer">
@@ -54,4 +52,4 @@ const Login = () => {
     );
 }
 
-export default Login;
+export default ForgetPassword;

@@ -1,0 +1,90 @@
+Old table design
+
+
+// import "./Wishlist.css";
+// import { MdDelete } from "react-icons/md";
+// import { IoOpen } from "react-icons/io5";
+// import { Link } from "react-router-dom";
+// import apiRequest from "../../config/apiRequest";
+// import { useEffect, useState, useContext } from 'react';
+// import { AuthContext } from "../../context/AuthContext";
+
+// const Wishlist = () => {
+
+//     const { currentUser } = useContext(AuthContext);
+//     const [items, setItems] = useState([]);
+
+//     useEffect(() => {
+
+//         const fetchItems = async () => {
+//             try {
+//                 const res = await apiRequest.get(`api/items/user/${currentUser._id}`)
+//                 setItems(res.data.items);
+//             }
+//             catch (error) {
+//                 console.log(error);
+//             }
+//         }
+//         fetchItems();
+
+//     }, [currentUser._id]);
+
+//     const handleDelete = async (id) => {
+//         const confirmDelete = window.confirm("Do you really want to delete this item?");
+
+//         if (confirmDelete) {
+//             try {
+//                 await apiRequest.delete(`api/items/delete/${id}`);
+//                 setItems(items.filter((item) => item._id !== id));
+//             }
+//             catch (error) {
+//                 console.log(error);
+//             }
+//         }
+//     }
+
+//     return (
+//         <div className="wishlist">
+//             <div className="heading">
+//             <h1>Wishlist</h1>
+//             </div>
+
+//             <div className="headings">
+//                 <div className="top">
+//                     <div className="head"><h2>Image</h2></div>
+//                     <div className="head"><h2>Title</h2></div>
+//                     <div className="head"><h2>Status</h2></div>
+//                     <div className="head"><h2>Condition</h2></div>
+//                     <div className="head"><h2>Category</h2></div>
+//                     <div className="head"><h2>Action</h2></div>
+//                 </div>
+//                 <div className="cards">
+//                 {items.length === 0 ? (
+//                         <p className="empty-text">No items yet! Add one now.</p>
+//                     ) : (
+//                         items.map((item) => (
+//                     <div className="card-container">
+//                         <div className="image"><h2><img src={`http://localhost:5000${item.image}`} alt="Item" /> </h2></div>
+//                         <div className="box"><h2>{item.name}</h2></div>
+//                         <div className="box"><h2>{item.status}</h2></div>
+//                         <div className="box"><h2>{item.condition}</h2></div>
+//                         <div className="box"><h2>{item.category}</h2></div>
+//                         <div className="box">
+//                             <div className="buttons">
+//                             <div className="delete" onClick={() => handleDelete(item._id)}><MdDelete  className="custom-icon"/></div>
+//                                 <Link to="/">
+//                                     <IoOpen  className="custom-icon" />
+//                                 </Link>   
+//                             </div>
+//                         </div>
+//                     </div>
+//                     ))
+//                 )
+//                 }
+//                 </div>
+//             </div>
+//         </div>
+//     );
+// }
+
+// export default Wishlist;

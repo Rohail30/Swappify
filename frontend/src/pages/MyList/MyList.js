@@ -29,7 +29,7 @@ const MyList = () => {
 
     const handleDelete = async (id) => {
         const confirmDelete = window.confirm("Do you really want to delete this item?");
-        
+
         if (confirmDelete) {
             try {
                 await apiRequest.delete(`api/items/delete/${id}`);
@@ -47,9 +47,14 @@ const MyList = () => {
                 <div className="info">
                     <h1>My List</h1>
                 </div>
-                <Link to="/add-item">
-                    <button>Create New Post</button>
-                </Link>
+                <div className="buttons">
+                    <Link to="/wishlist">
+                        <button>Wishlist</button>
+                    </Link>
+                    <Link to="/add-item">
+                        <button>Create New Post</button>
+                    </Link>
+                </div>
             </div>
 
             <div className="cards">

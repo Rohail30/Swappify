@@ -62,6 +62,16 @@ const ItemList = () => {
             return { ...prevFilters, [name]: value };
         });
     };
+    
+    const addToWishlist = async (itemId) => {
+        try {
+            await apiRequest.post('/api/wishlist', { itemId });
+            alert("Item added to wishlist!");
+        } catch (error) {
+            console.error("Failed to add to wishlist:", error);
+            alert("Failed to add item to wishlist.");
+        }
+    };
 
     return (
         <div className="itemlist">
@@ -181,19 +191,19 @@ const ItemList = () => {
                                     </div>
                                 </div>
                                 <div className="buttons">
-                                    {/* <div className="button1">
+                                    <div className="button1">
                                         <Link to={`/detail-page/${item._id}`}>
                                             <div className="view">View details</div>
                                         </Link>
-                                    </div> */}
-                                    <Link to={`/detail-page/${item._id}`}>
+                                    </div>
+                                    {/* <Link to={`/detail-page/${item._id}`}>
                                         <div className="button1">
                                             <div className="view">View details</div>
                                         </div>
-                                    </Link>
+                                    </Link> */}
                                     <div className="button2">
-                                        <Link to="/">
-                                            <div className="wishlist"><FaRegHeart /></div>
+                                        <Link to="#">
+                                            <div className="wish-list" onClick={() => addToWishlist(item._id)}><FaRegHeart /></div>
                                         </Link>
                                     </div>
                                 </div>
