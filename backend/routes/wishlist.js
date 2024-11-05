@@ -9,7 +9,7 @@ const verifyToken = require('../middleware/verifyToken');
 router.post('/api/wishlist', verifyToken, addItemToWishlist);
 
 // @desc    Remove item from wishlist
-router.delete('/api/wishlist', verifyToken, removeItemFromWishlist);
+router.delete('/api/wishlist/:itemId', verifyToken, removeItemFromWishlist);
 
 // @desc    Get wishlist
 router.get('/api/wishlist', verifyToken, getWishlist);

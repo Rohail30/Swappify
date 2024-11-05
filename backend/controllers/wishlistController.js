@@ -57,7 +57,7 @@ const addItemToWishlist = async (req, res) => {
 
 const removeItemFromWishlist = async (req, res) => {
     const userId = req.userId;
-    const { itemId } = req.body;
+    const itemId = req.params.itemId;
 
     if (!userId || !itemId) {
         return res.status(400).json({ error: true, message: 'User ID and Item ID are required' });
@@ -109,7 +109,7 @@ const getWishlist = async (req, res) => {
         const wishlist = await Wishlist.findOne({ userId });
 
         if (!wishlist) {
-            return res.status(404).json({ error: true, message: 'Wishlist not found' });
+            wishlist = new Wishlist({ userId, items: [] });
         }
 
         return res.status(200).json({ error: false, wishlist });
