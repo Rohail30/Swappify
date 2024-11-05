@@ -63,7 +63,7 @@ const MyList = () => {
                         <p className="empty-text">No items yet! Add one now.</p>
                     ) : (
                         items.map((item) => (
-                            <div className="mylistcard">
+                            <div className="mylistcard" key={item._id}>
                                 <div className="image-container">
                                     <div className="image">
                                         <img src={`http://localhost:5000${item.image}`} alt="Item" />
