@@ -66,7 +66,7 @@ const DetailPage = () => {
                 </div>
                 <div className="buttons">
                     <div className="offer">Offer a Trade</div>
-                    <div className="wishlist"><FaRegHeart />
+                    <div className="det-wishlist"><FaRegHeart />
                     </div>
                 </div>
             </div>

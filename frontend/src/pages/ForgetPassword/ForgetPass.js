@@ -19,13 +19,13 @@ const ForgetPassword = () => {
 
         try {
             const body = { email, mobile };
-            const res = await apiRequest.post("/api/auth/login", body);
+            const res = await apiRequest.post("/api/auth/forgotpassword", body);
 
             setError(null);
 
             updateUser(res.data.user);
 
-            navigate("/");
+            navigate("/login");
 
         } catch (error) {
             setError(error.response?.data?.message || "An error occurred. Please try again.");

@@ -97,10 +97,6 @@
     padding: 0;
   }
 
-  /* .Navbar .left .logo {
-    font-size: 20px;
-  } */
-
   .Navbar img {
     width: 40px;
     height: 40px;
@@ -180,15 +176,3 @@
   }
 
 }
-
-/* 
-nav .right .menuIcon {
-  display: none;
-  z-index: 999;
-}
-
-nav .right .menuIcon img {
-  width: 36px;
-  height: 36px;
-  cursor: pointer;
-} */

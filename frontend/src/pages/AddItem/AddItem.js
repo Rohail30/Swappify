@@ -90,22 +90,6 @@ const AddItem = () => {
                         <option value="used">Used</option>
                     </select>
 
-                    {/* <select name="category" onChange={handleChange} required>
-                        <option value="" disabled selected>Category</option>
-                        <option value="electronics">Electronics</option>
-                        <option value="furniture">Furniture</option>
-                        <option value="clothing & accessories">Clothing & Accessories</option>
-                        <option value="books & media">Books & Media</option>
-                        <option value="home & garden">Home & Garden</option>
-                        <option value="sports & outdoors">Sports & Outdoors</option>
-                        <option value="toys & games">Toys & Games</option>
-                        <option value="tools & hardware">Tools & Hardware</option>
-                        <option value="automotive">Automotive</option>
-                        <option value="office supplies">Office Supplies</option>
-                        <option value="collectibles & antiques">Collectibles & Antiques</option>
-                        <option value="other">Other</option>
-                    </select> */}
-
                     <select name="category" onChange={handleChange} required>
                         <option value="" disabled selected>Category</option>
                         {categories.map((category) => (

@@ -30,12 +30,16 @@ const Wishlist = () => {
     }, []);
 
     const handleRemoveFromWishlist = async (id) => {
-        try {
-            await apiRequest.delete(`/api/wishlist/${id}`);
-            setItems(items.filter((item) => item._id !== id));
-        }
-        catch (error) {
-            console.log(error);
+        
+        const confirmDelete = window.confirm("Do you really want to delete this item?");
+        if (confirmDelete) {
+            try {
+                await apiRequest.delete(`/api/wishlist/${id}`);
+                setItems(items.filter((item) => item._id !== id));
+            }
+            catch (error) {
+                console.log(error);
+            }
         }
     }
 
