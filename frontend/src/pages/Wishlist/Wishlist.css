@@ -7,7 +7,7 @@
     width: 90%;
 }
 
-.wishlist .heading{
+.wishlist .heading {
     width: 100%;
     min-height: 70px;
     display: flex;
@@ -16,11 +16,11 @@
     border-bottom: 1px solid #CCCCCC;
 }
 
-.wishlist .heading h1{
+.wishlist .heading h1 {
     margin-left: 50px;
 }
 
- .wishlist .card-container {
+.wishlist .card-container {
     width: 100%;
     gap: 20px;
     display: flex;
@@ -30,10 +30,10 @@
 }
 
 
-.wishlist .card-container .wishlistcard{
+.wishlist .card-container .wishlistcard {
     margin-top: 40px;
     width: 270px;
-    height: 390px;
+    height: 410px;
     border-radius: 5px;
     overflow: hidden;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
@@ -69,15 +69,15 @@
     background-color: #CCCCCC;
 }
 
-.wishlist .wishlistcard .details{
-    height: 120px;
+.wishlist .wishlistcard .details {
+    height: 145px;
 }
 
 .wishlist .wishlistcard .title {
     margin-top: 10px;
     margin-left: 20px;
     margin-right: 20px;
-    
+
 }
 
 .wishlist .wishlistcard .title h1 {
@@ -90,7 +90,7 @@
 .wishlist .wishlistcard .status {
     margin-left: 20px;
     margin-right: 20px;
-    
+
 }
 
 .wishlist .wishlistcard .status h2 {
@@ -98,34 +98,34 @@
     margin: 0;
     padding: 0;
     font-size: 15px;
-    
+
 }
 
-.wishlist .wishlistcard .price{
+.wishlist .wishlistcard .price {
     margin-left: 20px;
     margin-right: 20px;
 }
 
-.wishlist .wishlistcard .price h2{
+.wishlist .wishlistcard .price h2 {
     color: black;
     margin-top: 15px;
     padding: 0;
     font-size: 15px;
-    
+
 }
 
-.wishlist .wishlistcard .location{
+.wishlist .wishlistcard .location {
     margin-top: 5px;
     margin-left: 20px;
     margin-right: 20px;
 }
 
-.wishlist .wishlistcard .location h3{
+.wishlist .wishlistcard .location h3 {
     color: #818185;
     margin: 0;
     padding: 0;
     font-size: 12px;
-    
+
 }
 
 .wishlist .wishlistcard .buttons {
@@ -138,7 +138,7 @@
     font-weight: bold;
     margin-left: 20px;
     margin-right: 20px;
-    
+
 }
 
 .wishlist .wishlistcard .button1 {
@@ -198,6 +198,6 @@
     background-color: #f95f00;
 }
 
-.wishlist .wishlistcard .button2 .delete .custom-icon{
+.wishlist .wishlistcard .button2 .delete .custom-icon {
     font-size: 24px;
 }

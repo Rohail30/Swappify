@@ -163,4 +163,19 @@ const forgotPassword = async (req, res) => {
 }
 
 
-module.exports = { register, login, verifyAccount, forgotPassword };
+//@desc     Logout User
+//@route    GET /api/auth/logout
+//@access   Private
+
+const logout = async (req, res) => {
+    try {
+        res.clearCookie('token');
+        return res.status(200).json({ error: false, message: 'User logged out successfully' });
+    }
+    catch (error) {
+        return res.status(500).json({ error: true, message: error.message });
+    }
+}
+
+
+module.exports = { register, login, verifyAccount, forgotPassword, logout };

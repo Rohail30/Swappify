@@ -2,6 +2,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useState, useContext } from "react";
 import "./navbar.css";
 import { AuthContext } from "../../context/AuthContext";
+import apiRequest from "../../config/apiRequest";
 
 const Navbar = () => {
 
@@ -12,6 +13,7 @@ const Navbar = () => {
     const [open, setOpen] = useState(false);
 
     const handleLogout = () => {
+        apiRequest.get('/api/auth/logout');
         localStorage.removeItem("user");
         updateUser(null);
         navigate('/');
