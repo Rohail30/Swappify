@@ -3,6 +3,11 @@ import { IoCarSportSharp } from "react-icons/io5";
 import { MdSportsTennis } from "react-icons/md";
 import { GiPorcelainVase } from "react-icons/gi";
 import { MdChair } from "react-icons/md";
+import { FaFacebookSquare } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
+import { FaGoogle } from "react-icons/fa";
+import { FaTwitter } from "react-icons/fa6";
+import { FaPinterest } from "react-icons/fa6";
 
 
 const Home = () => {
@@ -91,7 +96,18 @@ const Home = () => {
                         </div>
                     </div></div>
             </div>
-            <div className="other"></div>
+            <div className="other">
+                <div className="text">
+                    <h1>Connect with us</h1>
+                </div>
+                <div className="icons">
+                    <FaFacebookSquare className="cust-i" />
+                    <FaInstagram className="cust-i"/>
+                    <FaGoogle className="cust-i"/>
+                    <FaTwitter className="cust-i"/>
+                    <FaPinterest className="cust-i"/>
+                </div>
+            </div>
         </div>
     );
 }

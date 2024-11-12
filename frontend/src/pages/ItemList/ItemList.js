@@ -7,6 +7,8 @@ import { FaLocationDot } from "react-icons/fa6";
 import { IoMdSearch } from "react-icons/io";
 import { RiSortAlphabetAsc } from "react-icons/ri";
 import { RiSortAlphabetDesc } from "react-icons/ri";
+import { FaExternalLinkAlt } from "react-icons/fa";
+
 
 const categories = [
     'electronics', 'furniture', 'clothing & accessories', 'books & media', 'home & garden', 'sports & outdoors', 'toys & games', 'tools & hardware', 'automotive', 'office supplies', 'collectibles & antiques', 'other'
@@ -193,7 +195,11 @@ const ItemList = () => {
                                 <div className="buttons">
                                     <div className="button1">
                                         <Link to={`/detail-page/${item._id}`}>
-                                            <div className="view">View details</div>
+                                            <div className="view">
+                                                View Details
+                                                &nbsp;
+                                                <FaExternalLinkAlt style={{ fontSize: "10px" }} />
+                                            </div>
                                         </Link>
                                     </div>
                                     {/* <Link to={`/detail-page/${item._id}`}>
@@ -203,7 +209,7 @@ const ItemList = () => {
                                     </Link> */}
                                     <div className="button2">
                                         <Link to="#">
-                                            <div className="wish-list" onClick={() => addToWishlist(item._id)}><FaRegHeart /></div>
+                                            <div className="wish-list" onClick={() => addToWishlist(item._id)}><FaRegHeart className="cust-i"/></div>
                                         </Link>
                                     </div>
                                 </div>

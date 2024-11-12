@@ -177,6 +177,10 @@
     flex-direction: row;
 }
 
+.mylistcard .button2 .cust-i{
+    font-size: 18px;
+}
+
 .mylistcard .button2 .edit {
     color: white;
     cursor: pointer;
