@@ -1,0 +1,252 @@
+.home{
+    margin-top: 50px;
+    width: 80%;
+    /* height: 500px; */
+    /* background-color: aqua; */
+    height: 4000px;
+    display: flex;
+    gap: 30px;
+    flex-direction: column;
+    
+}
+
+.home .top-container{
+    background-image: url(texture.webp);
+    width: 100%;
+    height: 500px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+    border-radius: 5px;
+    /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
+}
+
+.home .top-container .text{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    /* background-color: beige; */
+    gap: 10px;
+    width: 30%;
+    height: 60%;
+}
+
+.home .top-container .text h1{
+    font-size: 40px;
+    color: black;
+}
+.home .top-container .text h2{
+    font-size: 45px;
+    color: #18A661;
+}
+
+.home .h-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 180px;
+    height: 50px;
+    margin-top: 20px;
+    border: 1px solid black;
+    color: black;
+    font-size: 25px;
+    font-weight: bold;
+    border-radius: 2px;
+    transition: 0.3s;
+}
+
+.home .h-button:hover{
+    background-color: #18A661;
+}
+
+.home .top-container .image{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+}
+
+.home .top-container .image img{
+    width: 80%;
+    height: 80%;
+}
+
+.home .boxes{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    width: 100%;
+    height: 250px;
+}
+
+.home .boxes .box-left{
+    width: 35%;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2px;
+    /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
+    background-image: url(texture.webp);
+}
+
+.home .boxes .box-left img{
+    width: 50%;
+    /* height: 90%; */
+}
+
+.home .boxes .box-right{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 65%;
+    height: 250px;
+    /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
+    background-image: url(texture.webp);
+}
+
+.home .boxes .box-right .texgt{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.home .category{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    width: 100%;
+    height: 300px;
+}
+
+.home .category .cat-text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 100px;
+    border: 1px solid black;
+}
+
+.home .category .cat-items{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    height: 100%;
+}
+
+.home .category .cat-items .cat{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    height: 100%;
+}
+
+.home .category .cat-items .cat .icon{
+    font-size: 120px;
+}
+
+.home .h-cards{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: 480px;
+}
+
+.home .h-card{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    width: 30%;
+    height: 480px;
+    padding: 30px;
+    gap: 10px;
+    text-align: center;
+    border-radius: 2px;
+    background-image: url(texture.webp);
+}
+
+.home .h-card .img-con{
+    width: 100%;
+    height: 200px;
+}
+
+.home .h-card .img-con img{
+    width: 100%;
+    height: 100%;
+}
+
+
+.home .h-card h3{
+    font-size: 28px;
+}
+
+.home .h-card p{
+    font-size: 17px;
+    color: #222222;
+}
+
+.home .para{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 70px;
+    margin-bottom: 70px;
+}
+
+.home .para .para-text{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    gap: 40px;
+    width: 75%;
+   text-align: center;
+}
+
+.home .para .para-text h1{
+    font-size: 39px;
+}
+
+.home .para .para-text p{
+    font-size: 20px;
+    color: #222222;
+}
+
+.home .para .para-text .columns{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.home .para .para-text .columns .col{
+    width: 40%;
+}
+
+.home .para .para-text .columns .col ul{
+    display: flex;
+    flex-direction: column;
+    font-size: 18px;
+    gap: 20px;
+    text-align: left;
+    color: #222222;
+}
+
+.home .other{
+    width: 100%;
+    height: 150px;
+    background-image: url(texture.webp);
+}

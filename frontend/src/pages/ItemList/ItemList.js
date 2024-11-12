@@ -178,7 +178,8 @@ const ItemList = () => {
                                 <div className="details">
                                     <div className="d1">
                                         <div className="title"><h1>{item.name}</h1></div>
-                                        <div className="description"><p>{item.description}</p></div>
+                                        {/* <div className="description"><p>{item.description}</p></div> */}
+                                        <div className="description"><p>{item.description.slice(0, 40) + "..."}</p></div>
                                     </div>
 
                                     <div className="price">
