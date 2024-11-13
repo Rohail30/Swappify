@@ -179,7 +179,7 @@ const ItemList = () => {
                                 </div>
                                 <div className="details">
                                     <div className="d1">
-                                        <div className="title"><h1>{item.name}</h1></div>
+                                        <div className="title"><h1>{item.name.length > 16 ? item.name.slice(0, 16) + "..." : item.name}</h1></div>
                                         <div className="description"><p>{item.description.slice(0, 55) + "..."}</p></div>
                                     </div>
 
@@ -209,7 +209,7 @@ const ItemList = () => {
                                     </Link> */}
                                     <div className="button2">
                                         <Link to="#">
-                                            <div className="wish-list" onClick={() => addToWishlist(item._id)}><FaRegHeart className="cust-i"/></div>
+                                            <div className="wish-list" onClick={() => addToWishlist(item._id)}><FaRegHeart className="cust-i" /></div>
                                         </Link>
                                     </div>
                                 </div>
