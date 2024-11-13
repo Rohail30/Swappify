@@ -33,7 +33,7 @@ const ForgetPassword = () => {
                     <h1>Reset Password</h1>
 
                     <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
-                    <input type="text" placeholder="Mobile Number" onChange={(e) => setMobile(e.target.value)} />
+                    <input type="tel" placeholder="Mobile Number" onChange={(e) => setMobile(e.target.value)} />
 
                     <button type="submit">Reset Password</button>
                     {error && <span>{error}</span>}

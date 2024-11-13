@@ -284,6 +284,10 @@
     font-weight: bold;
 }
 
+.itemlist .itemlistcard .buttons .view{
+    font-size: 15px;
+}
+
 .itemlistcard .button1 {
     color: white;
     cursor: pointer;
@@ -308,6 +312,10 @@
     justify-content: center;
     align-items: center;
     height: 40px;
+}
+
+.itemlist .itemlistcard .button2 .cust-i{
+    font-size: 15px;
 }
 
 .itemlistcard .button2 .wish-list{

@@ -11,6 +11,7 @@ import DetailPage from './pages/DetailPage/DetailPage';
 import ItemList from './pages/ItemList/ItemList';
 import WishList from './pages/Wishlist/Wishlist';
 import ForgetPassword from './pages/ForgetPassword/ForgetPass';
+import Home from './pages/Home/Home';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route exact path="/detail-page/:id" element={<DetailPage />} />
         <Route exact path="/item-listing" element={<ItemList />} />
         <Route exact path="/wishlist" element={<WishList />} />
+        <Route exact path="/" element={<Home />} />
       </Routes>
 
     </div>
