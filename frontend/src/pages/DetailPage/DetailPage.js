@@ -10,12 +10,15 @@ const DetailPage = () => {
 
     const { id } = useParams();
     const [item, setItem] = useState(null);
+    const [owner, setOwner] = useState(null);
 
     useEffect(() => {
         const fetchItemDetails = async () => {
             try {
                 const res = await apiRequest.get(`/api/items/${id}`);
                 setItem(res.data.item);
+                const ownerRes = await apiRequest.get(`/api/users/${res.data.item.owner}`);
+                setOwner(ownerRes.data.user.name);
             } catch (error) {
                 console.log("Error fetching item details:", error);
             }
@@ -44,7 +47,7 @@ const DetailPage = () => {
                         <div className="icon"><FaLocationDot size={14} /><h3>{item.location}</h3></div>
                     </div>
                     <div className="right">
-                        <h2>Owner</h2>
+                        <h3>{owner}</h3>
                         <h3>{new Date(item.createdAt).toLocaleDateString()}</h3>
                     </div>
                 </div>
