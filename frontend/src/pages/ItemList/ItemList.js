@@ -94,7 +94,7 @@ const ItemList = () => {
                     <div className="checkbox-group">
                         {locations.map((city) => (
                             <label key={city}>
-                                <input type="checkbox"
+                                <input type="radio"
                                     value={city}
                                     name="location"
                                     onChange={handleFilterChange}
