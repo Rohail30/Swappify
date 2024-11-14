@@ -30,8 +30,8 @@ const Wishlist = () => {
     }, []);
 
     const handleRemoveFromWishlist = async (id) => {
-        
-        const confirmDelete = window.confirm("Do you really want to delete this item?");
+
+        const confirmDelete = window.confirm("Do you really want to delete this item from your wishlist?");
         if (confirmDelete) {
             try {
                 await apiRequest.delete(`/api/wishlist/${id}`);

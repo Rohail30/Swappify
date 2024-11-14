@@ -70,8 +70,7 @@ const ItemList = () => {
             await apiRequest.post('/api/wishlist', { itemId });
             alert("Item added to wishlist!");
         } catch (error) {
-            console.error("Failed to add to wishlist:", error);
-            alert("Failed to add item to wishlist.");
+            alert("Item already in wishlist!");
         }
     };
 
