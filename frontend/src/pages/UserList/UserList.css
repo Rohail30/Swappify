@@ -213,11 +213,21 @@
 }
 
 @media (max-width: 738px) {
-  .userListCard {
-    background-color: #ffffff;
+  .userList {
+    background-color: white;
   }
 
-  .userListCard .info {
+  .userList .container {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .userList .container .buttons {
+    flex-direction: column;
+  }
+
+  .userList .cards .card-container {
     width: 100%;
   }
 }
