@@ -49,7 +49,7 @@ const DetailPage = () => {
             </div>
           </div>
           <div className="right">
-            <h3>{owner}</h3>
+            <h3>{item.owner.name}</h3>
             <h3>{new Date(item.createdAt).toLocaleDateString()}</h3>
           </div>
         </div>

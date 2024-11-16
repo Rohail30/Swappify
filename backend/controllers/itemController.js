@@ -186,22 +186,6 @@ const getAllItems = async (req, res) => {
 // @route   GET /api/items/:id
 // @access  Public
 
-// const getItem = async (req, res) => {
-
-//     try {
-//         const item = await Item.findById(req.params.id)
-
-//         if (!item) {
-//             return res.status(404).json({ error: true, message: "Item not found" })
-//         }
-
-//         return res.status(200).json({ error: false, item });
-
-//     } catch (error) {
-//         return res.status(500).json({ error: true, message: error.message })
-//     }
-// }
-
 const getItem = async (req, res) => {
   try {
     const item = await Item.findById(req.params.id).populate('owner', 'name'); // Populate owner with 'name'
@@ -210,7 +194,7 @@ const getItem = async (req, res) => {
     }
     res.json({ item });
   } catch (error) {
-    res.status(500).json({ message: 'Error fetching item', error });
+    return res.status(500).json({ error: true, message: error.message });
   }
 };
 
