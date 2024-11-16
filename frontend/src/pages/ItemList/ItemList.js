@@ -100,8 +100,7 @@ const ItemList = () => {
       await apiRequest.post('/api/wishlist', { itemId });
       alert('Item added to wishlist!');
     } catch (error) {
-      console.error('Item is already added to wishlist:', error);
-      alert('Item is already added to wishlist.');
+      alert('Item already in wishlist!');
     }
   };
 
@@ -126,7 +125,7 @@ const ItemList = () => {
             {locations.map((city) => (
               <label key={city}>
                 <input
-                  type="checkbox"
+                  type="radio"
                   value={city}
                   name="location"
                   onChange={handleFilterChange}
