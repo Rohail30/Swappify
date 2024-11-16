@@ -1,14 +1,13 @@
-import './profile.css';
+import './PublicProfile.css';
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
-import MyList from '../MyList/MyList';
+import UserList from '../UserList/UserList';
 
-const ProfilePage = () => {
+const PublicProfile = () => {
   const { currentUser } = useContext(AuthContext);
 
   return (
-    <div className="profilePage">
+    <div className="publicProfilePage">
       <div className="container">
         <div className="info-sec">
           <div className="propic">
@@ -27,14 +26,10 @@ const ProfilePage = () => {
             </span>
           </div>
         </div>
-
-        <Link to="/update-profile">
-          <button>Update Profile</button>
-        </Link>
       </div>
-      <MyList />
+      <UserList />
     </div>
   );
 };
 
-export default ProfilePage;
+export default PublicProfile;

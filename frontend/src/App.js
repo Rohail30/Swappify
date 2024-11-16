@@ -1,10 +1,10 @@
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
-import Login from "./pages/Login/Login";
-import Register from "./pages/Register/Register";
-import UpdateProfile from "./pages/UpdateProfile/UpdateProfile";
-import Profile from "./pages/Profile/Profile";
+import Login from './pages/Login/Login';
+import Register from './pages/Register/Register';
+import UpdateProfile from './pages/UpdateProfile/UpdateProfile';
+import Profile from './pages/Profile/Profile';
 import AddItem from './pages/AddItem/AddItem';
 import EditItem from './pages/EditItem/EditItem';
 import DetailPage from './pages/DetailPage/DetailPage';
@@ -12,11 +12,11 @@ import ItemList from './pages/ItemList/ItemList';
 import WishList from './pages/Wishlist/Wishlist';
 import ForgetPassword from './pages/ForgetPassword/ForgetPass';
 import Home from './pages/Home/Home';
+import PublicProfile from './pages/PublicProfile/PublicProfile';
 
 function App() {
   return (
     <div className="App">
-
       <Navbar />
 
       <Routes>
@@ -31,8 +31,8 @@ function App() {
         <Route exact path="/item-listing" element={<ItemList />} />
         <Route exact path="/wishlist" element={<WishList />} />
         <Route exact path="/" element={<Home />} />
+        <Route exact path="/user" element={<PublicProfile />} />
       </Routes>
-
     </div>
   );
 }
