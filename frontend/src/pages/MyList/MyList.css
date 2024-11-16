@@ -1,226 +1,213 @@
 .mylist {
-    margin-top: 20px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    /* min-height: 100vh; */
-    background-color: aliceblue;
-    padding: 10px;
-    border-radius: 10px;
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: aliceblue;
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .mylist .container {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .mylist .info {
-    text-align: left;
+  text-align: left;
 }
 
-.mylist .container .buttons{
-    display: flex;
-    gap: 10px;
+.mylist .container .buttons {
+  display: flex;
+  gap: 10px;
 }
 
-.mylist .cards{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.mylist .cards {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .mylist .cards .card-container {
-    width: 85%;
-    gap: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    flex-direction: row;
+  width: 85%;
+  gap: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  flex-direction: row;
 }
 
 .mylist h1 {
-    font-size: 24px;
-    color: black;
+  font-size: 24px;
+  color: black;
 }
 
 .mylist button {
-    padding: 10px 15px;
-    font-size: 16px;
-    color: white;
-    background-color: #18A661;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  padding: 10px 15px;
+  font-size: 16px;
+  color: white;
+  background-color: #18a661;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .mylist button:hover {
-    background-color: #006A4E;
+  background-color: #006a4e;
 }
-
-
-@media (max-width: 738px) {
-
-    .mylist {
-        background-color: #ffffff;
-    }
-
-    .mylist .info {
-        width: 100%;
-    }
-}
-
-/* .card-container {
-    width: 100%;
-    gap: 40px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-} */
 
 .mylistcard {
-    margin-top: 40px;
-    width: 250px;
-    height: 350px;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-    background-color: #ffffff;
+  margin-top: 40px;
+  width: 250px;
+  height: 350px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  background-color: #ffffff;
 }
 
 .mylistcard .image-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 200px;
 }
 
 .mylistcard .image-container .image {
-    max-width: 200px;
+  max-width: 200px;
 }
 
 .mylistcard .image-container .image img {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .mylistcard .line-container {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .mylistcard .line-container .line {
-    width: 90%;
-    height: 1px;
-    background-color: #CCCCCC;
+  width: 90%;
+  height: 1px;
+  background-color: #cccccc;
 }
 
 .mylistcard .title {
-    margin: 10px 20px;
+  margin: 10px 20px;
 }
 
 .mylistcard .title h1 {
-    padding: 0;
-    font-size: 18px;
+  padding: 0;
+  font-size: 18px;
 }
 
 .mylistcard .status {
-    margin: 10px 20px;
+  margin: 10px 20px;
 }
 
 .mylistcard .status h2 {
-    margin: 0;
-    padding: 0;
-    font-size: 15px;
+  margin: 0;
+  padding: 0;
+  font-size: 15px;
 }
 
 .mylistcard .buttons {
-    gap: 20px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-direction: row;
-    margin: 20px;
-    font-size: small;
-    font-weight: bold;
+  gap: 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  margin: 20px;
+  font-size: small;
+  font-weight: bold;
 }
 
 .mylistcard .button1 {
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100px;
-    height: 40px;
-    color: white;
-    border-radius: 20px;
-    transition: 0.3s;
-    background-color: #18A661;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 40px;
+  color: white;
+  border-radius: 20px;
+  transition: 0.3s;
+  background-color: #18a661;
 }
 
 .mylistcard .button1:hover {
-    background-color: #006A4E;
+  background-color: #006a4e;
 }
 
 .mylistcard .button2 {
-    gap: 10px;
-    color: white;
-    display: flex;
-    flex-direction: row;
+  gap: 10px;
+  color: white;
+  display: flex;
+  flex-direction: row;
 }
 
-.mylistcard .button2 .cust-i{
-    font-size: 18px;
+.mylistcard .button2 .cust-i {
+  font-size: 18px;
 }
 
 .mylistcard .button2 .edit {
-    color: white;
-    cursor: pointer;
-    border-radius: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
-    height: 40px;
-    transition: 0.3s;
-    background-color: #18A661;
+  color: white;
+  cursor: pointer;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  transition: 0.3s;
+  background-color: #18a661;
 }
 
 .mylistcard .button2 .edit:hover {
-    background-color: #006A4E;
+  background-color: #006a4e;
 }
 
 .mylistcard .button2 .delete {
-    cursor: pointer;
-    border-radius: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
-    height: 40px;
-    transition: 0.3s;
-    background-color: #18A661;
+  cursor: pointer;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  transition: 0.3s;
+  background-color: #18a661;
 }
 
 .mylistcard .button2 .delete:hover {
-    background-color: #f95f00;
+  background-color: #f95f00;
 }
 
 @media (max-width: 738px) {
+  .mylist {
+    background-color: white;
+  }
 
-    .mylistcard {
-        background-color: #ffffff;
-    }
+  .mylist .container {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
 
-    .mylistcard .info {
-        width: 100%;
-    }
+  .mylist .container .buttons {
+    flex-direction: column;
+  }
+
+  .mylist .cards .card-container {
+    width: 100%;
+  }
 }
