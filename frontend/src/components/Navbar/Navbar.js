@@ -25,7 +25,7 @@ const Navbar = () => {
           <img src="/logo.png" alt="" />
           <span>SWAPPIFY</span>
         </a>
-        <Link to="/user">Home</Link>
+        <Link to="/">Home</Link>
         <Link to="/item-listing">Items Listings</Link>
       </div>
       <div className="right">

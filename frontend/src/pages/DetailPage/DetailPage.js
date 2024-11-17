@@ -4,6 +4,7 @@ import { FaRegHeart } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import apiRequest from '../../config/apiRequest';
+import { Link } from 'react-router-dom';
 
 const DetailPage = () => {
   const { id } = useParams();
@@ -44,7 +45,9 @@ const DetailPage = () => {
             </div>
           </div>
           <div className="right">
-            <h2>{item.owner.name}</h2>
+            <Link to="/user">
+              <h2>{item.owner.name}</h2>
+            </Link>
             <h3>{new Date(item.createdAt).toLocaleDateString()}</h3>
           </div>
         </div>
