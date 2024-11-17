@@ -26,7 +26,7 @@ const Navbar = () => {
           <span>SWAPPIFY</span>
         </a>
         <Link to="/">Home</Link>
-        <Link to="/item-listing">Items Listings</Link>
+        <Link to="/item-listing">Swap!</Link>
       </div>
       <div className="right">
         <div className="right-menu">
@@ -57,7 +57,7 @@ const Navbar = () => {
 
         <div className={open ? 'menu active' : 'menu'}>
           <a href="/">Home</a>
-          <a href="/">Items Listings</a>
+          <a href="/">Swap!</a>
           {currentUser ? (
             <>
               <Link to="/profile" className="profile">
