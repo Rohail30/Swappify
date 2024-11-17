@@ -1,4 +1,5 @@
 const Item = require('../models/ItemModel');
+const Wishlist = require('../models/WishllistModel');
 const fs = require('fs');
 const path = require('path');
 
@@ -104,14 +105,21 @@ const updateItem = async (req, res) => {
 // @access  Private
 
 const deleteItem = async (req, res) => {
+
+  const id = req.params.id;
+
   try {
-    const item = await Item.findById(req.params.id);
+    const item = await Item.findById(id);
 
     if (!item) {
       return res.status(404).json({ error: true, message: 'Item not found' });
     }
 
-    await Item.findByIdAndDelete(req.params.id);
+    await Item.findByIdAndDelete(id);
+    await Wishlist.updateMany(
+      { 'items.itemId': id },
+      { $pull: { items: { itemId: id } } }
+    );
 
     fs.unlinkSync(path.join(__dirname, `../public${item.image}`));
 
@@ -146,7 +154,6 @@ const getAllItems = async (req, res) => {
 const getItem = async (req, res) => {
   try {
     const item = await Item.findById(req.params.id).populate('owner', 'name');
-    console.log(item);
 
     if (!item) {
       return res.status(404).json({ error: true, message: "Item not found" })
