@@ -45,7 +45,7 @@ const DetailPage = () => {
             </div>
           </div>
           <div className="right">
-            <Link to="/user">
+            <Link to={`/user/${item.owner._id}`}>
               <h2>{item.owner.name}</h2>
             </Link>
             <h3>{new Date(item.createdAt).toLocaleDateString()}</h3>

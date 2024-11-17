@@ -31,7 +31,7 @@ function App() {
         <Route exact path="/item-listing" element={<ItemList />} />
         <Route exact path="/wishlist" element={<WishList />} />
         <Route exact path="/" element={<Home />} />
-        <Route exact path="/user" element={<PublicProfile />} />
+        <Route exact path="/user/:id" element={<PublicProfile />} />
       </Routes>
     </div>
   );
