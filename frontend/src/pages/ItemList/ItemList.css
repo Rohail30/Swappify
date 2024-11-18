@@ -1,346 +1,344 @@
 .itemlist {
-    margin-top: 20px;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: flex-start;
-    min-height: 100vh;
-    padding: 10px;
-    border-radius: 10px;
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .itemlist .filter {
-    width: 25%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    border-radius: 10px;
-    gap: 20px;
-    overflow: hidden;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    background-color: #FCFCFC;
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 10px;
+  gap: 20px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  background-color: #fcfcfc;
 }
 
 .itemlist .filter header {
-    color: white;
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    min-height: 40px;
-    background-color: #18A661;
+  color: white;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 40px;
+  background-color: #18a661;
 }
 
 .itemlist .filter .filter-section {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .itemlist .filter .filter-section h3 {
-    padding-left: 20px;
-    display: flex;
-    align-items: center;
-    width: 100%;
-    height: 40px;
-    background-color: #F2F3F3;
+  padding-left: 20px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  background-color: #f2f3f3;
 }
 
 .itemlist .filter .filter-section .checkbox-group {
-    width: 90%;
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+  width: 90%;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .itemlist .filter .filter-section .checkbox-group select {
-    height: 30px;
+  height: 30px;
 }
 
 .itemlist .filter .filter-section .pricesearch {
-    margin-top: 20px;
-    width: 100%;
-    height: 30px;
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 15px;
-    justify-content: space-evenly;
+  margin-top: 20px;
+  width: 100%;
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 15px;
+  justify-content: space-evenly;
 }
 
 .itemlist .filter .filter-section .pricesearch input {
-    width: 40%;
-    padding-left: 10px;
-    border-radius: 0px;
-    border: 1px solid #ccc;
-    outline: none;
+  width: 40%;
+  padding-left: 10px;
+  border-radius: 0px;
+  border: 1px solid #ccc;
+  outline: none;
 }
 
 .itemlist .search {
-    display: flex;
-    justify-content: flex-start;
-    gap: 20px;
-    width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+  width: 100%;
 }
 
 .itemlist .search .box {
-    cursor: pointer;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    width: 40px;
-    border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  width: 40px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .itemlist .search .box2 {
-    cursor: pointer;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    width: 70px;
-    border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  width: 70px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .itemlist .search-container {
-    border-radius: 5px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    position: relative;
-    width: 370px;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  position: relative;
+  width: 370px;
 }
 
 .itemlist .search-input {
-    width: 100%;
-    padding: 10px 40px 10px 20px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 16px;
-    outline: none;
+  width: 100%;
+  padding: 10px 40px 10px 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  outline: none;
 }
 
 .itemlist .search-btn {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 .itemlist .search-btn i {
-    font-size: 18px;
-    color: #333;
+  font-size: 18px;
+  color: #333;
 }
 
 .itemlist .info {
-    text-align: left;
+  text-align: left;
 }
 
 .itemlist .cards {
-    width: 70%;
+  width: 70%;
 }
 
 .itemlist .card-container {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .itemlist h1 {
-    font-size: 24px;
-    color: black;
+  font-size: 24px;
+  color: black;
 }
 
-
 @media (max-width: 738px) {
+  .itemlist {
+    background-color: #ffffff;
+  }
 
-    .itemlist {
-        background-color: #ffffff;
-    }
-
-    .itemlist.info {
-        width: 100%;
-    }
+  .itemlist.info {
+    width: 100%;
+  }
 }
 
 .itemlist .cards .card-container {
-    width: 100%;
-    gap: 25px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-items: flex-start;
+  width: 100%;
+  gap: 25px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .itemlistcard {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    margin-top: 40px;
-    width: 285px;
-    height: 450px;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-top: 40px;
+  width: 285px;
+  height: 450px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  background-color: #ffffff;
 }
 
 .itemlistcard .image-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 200px;
 }
 
 .itemlistcard .image-container .image {
-    max-width: 220px;
+  max-width: 250px;
+  height: 200px;
 }
 
 .itemlistcard .image-container .image img {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .itemlistcard .line-container {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .itemlistcard .line-container .line {
-    width: 90%;
-    height: 1px;
-    background-color: #CCCCCC;
+  width: 90%;
+  height: 1px;
+  background-color: #cccccc;
 }
 
 .itemlistcard .details {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: flex-start;
-    gap: 5px;
-    padding-left: 30px;
-    padding-right: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  gap: 5px;
+  padding-left: 30px;
+  padding-right: 20px;
 }
 
 .itemlistcard .details .title h1 {
-    padding: 0;
-    font-size: 24px;
-    color: #18A661;
+  padding: 0;
+  font-size: 24px;
+  color: #18a661;
 }
 
 .itemlist .details .description {
-    width: 220px;
-    height: 35px;
-    overflow: hidden;
+  width: 220px;
+  height: 35px;
+  overflow: hidden;
 }
 
 .itemlist .details .description p {
-    font-size: 15px;
-    color: #5e5d5d;
+  font-size: 15px;
+  color: #5e5d5d;
 }
 
 .itemlistcard .details .price {
-    margin-top: 5px;
+  margin-top: 5px;
 }
 
 .itemlistcard .details .price h2 {
-    padding: 0;
-    font-size: 15px;
+  padding: 0;
+  font-size: 15px;
 }
 
 .itemlist .details .location {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    font-size: 12px;
-    color: #5e5d5d;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 12px;
+  color: #5e5d5d;
 }
 
 .itemlistcard .details .status h2 {
-    margin: 0;
-    padding: 0;
-    font-size: 15px;
+  margin: 0;
+  padding: 0;
+  font-size: 15px;
 }
 
 .itemlist .itemlistcard .buttons {
-    gap: 20px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    font-size: small;
-    font-weight: bold;
+  gap: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: small;
+  font-weight: bold;
 }
 
-.itemlist .itemlistcard .buttons .view{
-    font-size: 15px;
+.itemlist .itemlistcard .buttons .view {
+  font-size: 15px;
 }
 
 .itemlistcard .button1 {
-    color: white;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 180px;
-    height: 40px;
-    border-radius: 20px;
-    transition: 0.3s;
-    background-color: #18A661;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 180px;
+  height: 40px;
+  border-radius: 20px;
+  transition: 0.3s;
+  background-color: #18a661;
 }
 
 .itemlistcard .button1:hover {
-    background-color: #006A4E;
+  background-color: #006a4e;
 }
 
 .itemlist .itemlistcard .button2 {
-    color: white;
-    gap: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 40px;
+  color: white;
+  gap: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
 }
 
-.itemlist .itemlistcard .button2 .cust-i{
-    font-size: 15px;
+.itemlist .itemlistcard .button2 .cust-i {
+  font-size: 15px;
 }
 
-.itemlistcard .button2 .wish-list{
-    cursor: pointer;
-    border-radius: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
-    height: 40px;
-    transition: 0.3s;
-    background-color: #18A661;
+.itemlistcard .button2 .wish-list {
+  cursor: pointer;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  transition: 0.3s;
+  background-color: #18a661;
 }
 
 .itemlistcard .button2 .wish-list:hover {
-    background-color: palevioletred;
+  background-color: palevioletred;
 }
 
 @media (max-width: 738px) {
+  .itemlistcard {
+    background-color: #ffffff;
+  }
 
-    .itemlistcard {
-        background-color: #ffffff;
-    }
-
-    .itemlistcard .info {
-        width: 100%;
-    }
+  .itemlistcard .info {
+    width: 100%;
+  }
 }

@@ -66,9 +66,9 @@
 .mylistcard {
   margin-top: 40px;
   width: 250px;
-  height: 350px;
+  height: 320px;
   border-radius: 20px;
-  overflow: hidden;
+  /* overflow: hidden; */
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
   background-color: #ffffff;
 }
@@ -82,7 +82,8 @@
 }
 
 .mylistcard .image-container .image {
-  max-width: 200px;
+  max-width: 220px;
+  height: 180px;
 }
 
 .mylistcard .image-container .image img {
@@ -102,19 +103,23 @@
 }
 
 .mylistcard .title {
-  margin: 10px 20px;
+  margin-left: 20px;
+  margin-top: 10px;
 }
 
 .mylistcard .title h1 {
+  margin: 0;
   padding: 0;
   font-size: 18px;
 }
 
 .mylistcard .status {
-  margin: 10px 20px;
+  margin-left: 20px;
+  margin-bottom: 10px;
 }
 
 .mylistcard .status h2 {
+  color: gray;
   margin: 0;
   padding: 0;
   font-size: 15px;
@@ -123,10 +128,10 @@
 .mylistcard .buttons {
   gap: 20px;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   flex-direction: row;
-  margin: 20px;
+  /* margin: 20px; */
   font-size: small;
   font-weight: bold;
 }
