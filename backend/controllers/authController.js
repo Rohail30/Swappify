@@ -43,7 +43,7 @@ const register = async (req, res) => {
 
         const emailText = `<a href="http://localhost:5000/api/auth/verify/${user._id}/${verificationToken.token}">Click here to verify your account</a>`;
 
-        await sendMail(email, 'Account Verification', emailText);
+        sendMail(email, 'Swappify Account Verification', emailText);
 
         return res.status(200).json({ error: false, message: 'User registered successfully. Please verify your email' });
     }
@@ -60,19 +60,19 @@ const register = async (req, res) => {
 const login = async (req, res) => {
     const { email, password } = req.body;
 
-    if (!validator.isEmail(email)) {
-        return res.status(400).json({ error: true, message: 'Please enter a valid email' });
-    }
-
     if (!email || !password) {
         return res.status(400).json({ error: true, message: 'Please enter all the required fields' });
+    }
+
+    if (!validator.isEmail(email)) {
+        return res.status(400).json({ error: true, message: 'Please enter a valid email' });
     }
 
     try {
         const user = await User.findOne({ email });
 
         if (!user) {
-            return res.status(400).json({ error: true, message: 'Invalid credentials' });
+            return res.status(400).json({ error: true, message: 'User not found with this email' });
         }
 
         const isMatch = await bcrypt.compare(password, user.password);
@@ -144,7 +144,6 @@ const forgotPassword = async (req, res) => {
         }
 
         const randomPassword = Math.random().toString(36).slice(-8);
-        console.log(randomPassword);
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(randomPassword, salt);
 
@@ -153,7 +152,7 @@ const forgotPassword = async (req, res) => {
 
         const emailText = `Your new password is ${randomPassword} Please change it after login`;
 
-        sendMail(email, 'New Password', emailText);
+        sendMail(email, 'Swappify New Password', emailText);
 
         return res.status(200).json({ error: false, message: 'New password sent to your email' });
     }
