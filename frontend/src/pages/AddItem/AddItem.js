@@ -9,7 +9,7 @@ const categories = [
 ];
 
 const locations = [
-    "Karachi", "Lahore", "Islamabad", "Faisalabad", "Rawalpindi", "Multan", "Peshawar", "Quetta", "Gujranwala", "Sialkot", "Hyderabad", "Bahawalpur", "Sargodha", "Mardan", "Swat"];
+    "karachi", "lahore", "islamabad", "faisalabad", "rawalpindi", "multan", "peshawar", "quetta", "gujranwala", "sialkot", "hyderabad", "bahawalpur", "sargodha", "mardan", "swat"];
 
 const AddItem = () => {
 

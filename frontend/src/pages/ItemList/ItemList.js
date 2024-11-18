@@ -10,37 +10,11 @@ import { RiSortAlphabetDesc } from 'react-icons/ri';
 import { FaExternalLinkAlt } from 'react-icons/fa';
 
 const categories = [
-  'electronics',
-  'furniture',
-  'clothing & accessories',
-  'books & media',
-  'home & garden',
-  'sports & outdoors',
-  'toys & games',
-  'tools & hardware',
-  'automotive',
-  'office supplies',
-  'collectibles & antiques',
-  'other',
+  'electronics', 'furniture', 'clothing & accessories', 'books & media', 'home & garden', 'sports & outdoors', 'toys & games', 'tools & hardware', 'automotive', 'office supplies', 'collectibles & antiques', 'other'
 ];
 
 const locations = [
-  'karachi',
-  'lahore',
-  'islamabad',
-  'faisalabad',
-  'rawalpindi',
-  'multan',
-  'peshawar',
-  'quetta',
-  'gujranwala',
-  'sialkot',
-  'hyderabad',
-  'bahawalpur',
-  'sargodha',
-  'mardan',
-  'swat',
-];
+  "karachi", "lahore", "islamabad", "faisalabad", "rawalpindi", "multan", "peshawar", "quetta", "gujranwala", "sialkot", "hyderabad", "bahawalpur", "sargodha", "mardan", "swat"];
 
 const ItemList = () => {
   const [items, setItems] = useState([]);
@@ -122,13 +96,10 @@ const ItemList = () => {
         <div className="filter-section">
           <h3>Filter by City</h3>
           <div className="checkbox-group">
-            <label>
-              <input type="radio" value="" name="location" selected onChange={handleFilterChange} />{' '} All Cities
-            </label>
             {locations.map((city) => (
               <label key={city}>
                 <input
-                  type="radio"
+                  type="checkbox"
                   value={city}
                   name="location"
                   onChange={handleFilterChange}
