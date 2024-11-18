@@ -106,10 +106,11 @@ const getWishlist = async (req, res) => {
     const userId = req.userId;
 
     try {
-        const wishlist = await Wishlist.findOne({ userId });
+        let wishlist = await Wishlist.findOne({ userId });
 
         if (!wishlist) {
             wishlist = new Wishlist({ userId, items: [] });
+            await wishlist.save();
         }
 
         return res.status(200).json({ error: false, wishlist });
@@ -117,7 +118,6 @@ const getWishlist = async (req, res) => {
     catch (error) {
         return res.status(500).json({ error: true, message: error.message });
     }
-
 }
 
 
