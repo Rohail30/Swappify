@@ -65,6 +65,10 @@ const updateItem = async (req, res) => {
     return res.status(400).json({ error: true, message: 'Price cannot be negative' });
   }
 
+  if (priceMin > priceMax) {
+    return res.status(400).json({ error: true, message: 'Minimum price cannot be greater than maximum price' });
+  }
+
   try {
     const item = await Item.findById(req.params.id);
 
