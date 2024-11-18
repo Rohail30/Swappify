@@ -203,7 +203,7 @@ const searchItems = async (req, res) => {
     }
 
     if (location) {
-      query.location = { $regex: location, $options: 'i' };
+      query.location = { $in: location.split(',') };
     }
 
     if (condition) {
