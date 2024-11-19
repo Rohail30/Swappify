@@ -82,7 +82,11 @@ const PublicProfile = () => {
                       <div className="line"></div>
                     </div>
                     <div className="title">
-                      <h1>{item.name}</h1>
+                      <h1>
+                        {item.name.length > 16
+                          ? item.name.slice(0, 16) + '...'
+                          : item.name}
+                      </h1>
                     </div>
                     <div className="status">
                       <h2>{item.status}</h2>
