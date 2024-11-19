@@ -15,11 +15,11 @@ const addItem = async (req, res) => {
     return res.status(400).json({ error: true, message: 'Please enter all the required fields' });
   }
 
-  if (priceMin < 0 || priceMax < 0) {
+  if (Number(priceMin) < 0 || Number(priceMax) < 0) {
     return res.status(400).json({ error: true, message: 'Price cannot be negative' });
   }
 
-  if (priceMin > priceMax) {
+  if (Number(priceMin) > Number(priceMax)) {
     return res.status(400).json({ error: true, message: 'Minimum price cannot be greater than maximum price' });
   }
 
@@ -61,11 +61,11 @@ const updateItem = async (req, res) => {
     return res.status(400).json({ error: true, message: 'Please enter all the required fields' });
   }
 
-  if (priceMin < 0 || priceMax < 0) {
+  if (Number(priceMin) < 0 || Number(priceMax) < 0) {
     return res.status(400).json({ error: true, message: 'Price cannot be negative' });
   }
 
-  if (priceMin > priceMax) {
+  if (Number(priceMin) > Number(priceMax)) {
     return res.status(400).json({ error: true, message: 'Minimum price cannot be greater than maximum price' });
   }
 
