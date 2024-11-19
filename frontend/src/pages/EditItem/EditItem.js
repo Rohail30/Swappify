@@ -5,6 +5,39 @@ import { AuthContext } from '../../context/AuthContext';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
+const categories = [
+  'electronics',
+  'furniture',
+  'clothing & accessories',
+  'books & media',
+  'home & garden',
+  'sports & outdoors',
+  'toys & games',
+  'tools & hardware',
+  'automotive',
+  'office supplies',
+  'collectibles & antiques',
+  'other',
+];
+
+const locations = [
+  'karachi',
+  'lahore',
+  'islamabad',
+  'faisalabad',
+  'rawalpindi',
+  'multan',
+  'peshawar',
+  'quetta',
+  'gujranwala',
+  'sialkot',
+  'hyderabad',
+  'bahawalpur',
+  'sargodha',
+  'mardan',
+  'swat',
+];
+
 const EditItem = () => {
   const { currentUser } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -39,7 +72,7 @@ const EditItem = () => {
           location: res.data.item.location,
           priceMin: res.data.item.price.min,
           priceMax: res.data.item.price.max,
-          owner: res.data.item.owner,
+          owner: res.data.item.owner._id,
         });
         setImagePreview(`http://localhost:5000${res.data.item.image}`);
       } catch (error) {
@@ -135,32 +168,28 @@ const EditItem = () => {
             <option value="" disabled>
               Category
             </option>
-            <option value="electronics">Electronics</option>
-            <option value="furniture">Furniture</option>
-            <option value="clothing & accessories">
-              Clothing & Accessories
-            </option>
-            <option value="books & media">Books & Media</option>
-            <option value="home & garden">Home & Garden</option>
-            <option value="sports & outdoors">Sports & Outdoors</option>
-            <option value="toys & games">Toys & Games</option>
-            <option value="tools & hardware">Tools & Hardware</option>
-            <option value="automotive">Automotive</option>
-            <option value="office supplies">Office Supplies</option>
-            <option value="collectibles & antiques">
-              Collectibles & Antiques
-            </option>
-            <option value="other">Other</option>
+            {categories.map((category) => (
+              <option key={category} value={category}>
+                {category.charAt(0).toUpperCase() + category.slice(1)}
+              </option>
+            ))}
           </select>
 
-          <input
-            type="text"
+          <select
             name="location"
             value={itemData.location}
-            placeholder="Location"
             onChange={handleChange}
             required
-          />
+          >
+            <option value="" disabled>
+              Location
+            </option>
+            {locations.map((location) => (
+              <option key={location} value={location}>
+                {location.charAt(0).toUpperCase() + location.slice(1)}
+              </option>
+            ))}
+          </select>
 
           <input
             type="number"
