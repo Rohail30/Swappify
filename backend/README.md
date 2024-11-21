@@ -17,3 +17,4 @@
 | POST   | /api/wishlist                   | Add item to wishlist  | N/A                | `itemId`                              |
 | DELETE | /api/wishlist                   | Remove item from wishlist| N/A             | `itemId`                              |
 | GET    | /api/wishlist                   | Retrieve wishlist     | N/A                | N/A                                   |
+| POST   | /api/trades                     | Offer a trade         | N/A                | `fromUser`, `toUser`, `ItemOffered`, `ItemWanted` |
