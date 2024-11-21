@@ -10,6 +10,7 @@ const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
 const itemRoutes = require('./routes/item');
 const wishlistRoutes = require('./routes/wishlist');
+const tradeRoutes = require('./routes/trade');
 
 app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
 app.use(express.static(path.join(__dirname, './public')));
@@ -19,6 +20,7 @@ app.use(authRoutes);
 app.use(userRoutes);
 app.use(itemRoutes);
 app.use(wishlistRoutes);
+app.use(tradeRoutes);
 
 app.listen(PORT, () => {
   connectDB();
