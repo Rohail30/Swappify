@@ -13,6 +13,7 @@ import WishList from './pages/Wishlist/Wishlist';
 import ForgetPassword from './pages/ForgetPassword/ForgetPass';
 import Home from './pages/Home/Home';
 import PublicProfile from './pages/PublicProfile/PublicProfile';
+import Offer from './pages/TradeOffer/Offer';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Route exact path="/wishlist" element={<WishList />} />
         <Route exact path="/" element={<Home />} />
         <Route exact path="/user/:id" element={<PublicProfile />} />
+        <Route exact path="/trade-offer" element={<Offer />} />
       </Routes>
     </div>
   );

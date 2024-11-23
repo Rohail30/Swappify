@@ -1,0 +1,330 @@
+.offerpage {
+  margin-top: 20px;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  min-height: 100vh;
+}
+
+.offerpage .offerpage-container {
+  width: 100%;
+  height: 400px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: aliceblue;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.offerpage .offerpage-container .offer-item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  width: 250px;
+  height: 300px;
+  gap: 10px;
+  padding: 20px;
+  border-radius: 2px;
+  background-color: #fff;
+}
+
+.offerpage .offer-item .line-container {
+  display: flex;
+  justify-content: center;
+  background-color: #006a4e;
+  width: 90%;
+}
+
+.offerpage .offer-item .line-container .line {
+  width: 100%;
+  height: 1px;
+  background-color: #cccccc;
+}
+
+.offerpage .offerpage-container .offer-item .image {
+  max-width: 200px;
+  height: 150px;
+  /* background-color: #006a4e; */
+}
+
+.offerpage .offerpage-container .offer-item .image img {
+  width: 100%;
+  height: 100%;
+}
+
+.offerpage .offerpage-container .offer-item .button {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 160px;
+  height: 40px;
+  color: white;
+  border-radius: 20px;
+  transition: 0.3s;
+  background-color: #18a661;
+}
+
+.offerpage .offerpage-container .offer-button {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  border-radius: 30px;
+  width: 150px;
+  height: 50px;
+  transition: 0.3s;
+  background-color: #18a661;
+}
+
+.offerpage .offerpage-container .offer-button:hover {
+  background-color: #006a4e;
+}
+
+.offerpage .offerpage-container .item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  width: 250px;
+  height: 300px;
+  gap: 10px;
+  padding: 20px;
+  border-radius: 2px;
+  background-color: #fff;
+}
+
+.offerpage .item .line-container {
+  display: flex;
+  justify-content: center;
+  background-color: #006a4e;
+  width: 90%;
+}
+
+.offerpage .item .line-container .line {
+  width: 100%;
+  height: 1px;
+  background-color: #cccccc;
+}
+
+.offerpage .offerpage-container .item .image {
+  max-width: 200px;
+  height: 150px;
+  /* background-color: #006a4e; */
+}
+
+.offerpage .offerpage-container .item .image .cust-i {
+  color: #aaa;
+  width: 100%;
+  height: 100%;
+}
+
+.offerpage .offerpage-container .item .dsp-msg h2 {
+  font-size: 20px;
+  color: #aaa;
+  text-align: center;
+}
+
+#user-info-heading {
+  margin-bottom: 30px;
+}
+
+.offerpage h1 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: black;
+}
+
+.offerpage .offerpage-container .button {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 40px;
+  color: white;
+  border-radius: 20px;
+  transition: 0.3s;
+  background-color: #18a661;
+}
+
+.offerpage .offerpage-container .button:hover {
+  background-color: #006a4e;
+}
+
+/* 213213213213 */
+
+.your-list {
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: aliceblue;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.your-list .info {
+  width: 100%;
+  text-align: center;
+}
+
+.your-list .cards {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.your-list .cards .card-container {
+  width: 85%;
+  gap: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: row;
+}
+
+.your-list h1 {
+  font-size: 24px;
+  color: black;
+}
+
+.offerpage .offer-card {
+  margin-top: 40px;
+  width: 250px;
+  height: 340px;
+  border-radius: 20px;
+  /* overflow: hidden; */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  background-color: #ffffff;
+}
+
+.offerpage .offer-card .image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 200px;
+}
+
+.offerpage .offer-card .image-container .image {
+  max-width: 220px;
+  height: 180px;
+}
+
+.offerpage .offer-card .image-container .image img {
+  width: 100%;
+  height: 100%;
+}
+
+.offerpage .offer-card .line-container {
+  display: flex;
+  justify-content: center;
+}
+
+.offerpage .offer-card .line-container .line {
+  width: 90%;
+  height: 1px;
+  background-color: #cccccc;
+}
+
+.offerpage .offer-card .title {
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.offerpage .offer-card .title h1 {
+  margin: 0;
+  padding: 0;
+  font-size: 18px;
+}
+
+.offerpage .offer-card .status {
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+
+.offerpage .offer-card .status h2 {
+  color: gray;
+  margin: 0;
+  padding: 0;
+  font-size: 15px;
+}
+
+.offerpage .offer-card .buttons {
+  gap: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  /* margin: 20px; */
+  font-size: small;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.offerpage .offer-card .button1 {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 40px;
+  color: white;
+  border-radius: 20px;
+  transition: 0.3s;
+  background-color: #18a661;
+}
+
+.offerpage .offer-card .button1:hover {
+  background-color: #006a4e;
+}
+
+.offerpage .offer-card .button2 {
+  gap: 10px;
+  color: white;
+  display: flex;
+  flex-direction: row;
+}
+
+.offerpage .offer-card .button2 .cust-i {
+  font-size: 18px;
+}
+
+.offerpage .offer-card .button2 .edit {
+  color: white;
+  cursor: pointer;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  transition: 0.3s;
+  background-color: #18a661;
+}
+
+.offerpage .offer-card .button2 .edit:hover {
+  background-color: #006a4e;
+}
+
+@media (max-width: 738px) {
+  .offerpage .offerpage-container {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .offerpage .offerpage-container .info-sec {
+    flex-direction: column;
+  }
+}
