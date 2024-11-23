@@ -27,7 +27,7 @@
   flex-direction: column;
   width: 250px;
   height: 300px;
-  gap: 10px;
+  gap: 18px;
   padding: 20px;
   border-radius: 2px;
   background-color: #fff;
@@ -94,10 +94,21 @@
   flex-direction: column;
   width: 250px;
   height: 300px;
-  gap: 10px;
+  gap: 18px;
   padding: 20px;
   border-radius: 2px;
   background-color: #fff;
+}
+
+.offerpage .offerpage-container .item .image {
+  width: 160px;
+  height: 150px;
+  /* background-color: #006a4e; */
+}
+
+.offerpage .offerpage-container .item .image img {
+  width: 100%;
+  height: 100%;
 }
 
 .offerpage .item .line-container {
@@ -117,6 +128,23 @@
   max-width: 200px;
   height: 150px;
   /* background-color: #006a4e; */
+}
+
+.offerpage .offerpage-container .item .remove-button {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 40px;
+  color: white;
+  border-radius: 20px;
+  transition: 0.3s;
+  background-color: #18a661;
+}
+
+.offerpage .offerpage-container .item .remove-button:hover {
+  background-color: #006a4e;
 }
 
 .offerpage .offerpage-container .item .image .cust-i {
@@ -173,6 +201,7 @@
 }
 
 .your-list .info {
+  margin-top: 40px;
   width: 100%;
   text-align: center;
 }
@@ -195,7 +224,7 @@
 }
 
 .your-list h1 {
-  font-size: 24px;
+  font-size: 34px;
   color: black;
 }
 

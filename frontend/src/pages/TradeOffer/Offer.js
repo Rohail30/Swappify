@@ -10,6 +10,7 @@ import { IoMdAdd } from 'react-icons/io';
 const Offer = () => {
   const { currentUser } = useContext(AuthContext);
   const [items, setItems] = useState([]);
+  const [selectedItem, setSelectedItem] = useState(null);
 
   useEffect(() => {
     const fetchItems = async () => {
@@ -34,7 +35,7 @@ const Offer = () => {
             <div className="line"></div>
           </div>
           <div className="title">
-            <h1>Title</h1>
+            <h4>Title</h4>
           </div>
           <div className="button">
             <div className="view">View Details</div>
@@ -45,7 +46,7 @@ const Offer = () => {
           &nbsp;
           <GiConfirmed />
         </div>
-        <div className="item">
+        {/* <div className="item">
           <div className="image">
             <CiImageOn className="cust-i" />
           </div>
@@ -55,6 +56,46 @@ const Offer = () => {
           <div className="dsp-msg">
             <h2>Add product from your list to make an offer</h2>
           </div>
+        </div> */}
+        <div className="item">
+          {selectedItem ? (
+            <>
+              <div className="image">
+                <img
+                  src={`http://localhost:5000${selectedItem.image}`}
+                  alt={selectedItem.name}
+                />
+              </div>
+              <div className="line-container">
+                <div className="line"></div>
+              </div>
+              <div className="dsp-msg">
+                <h4>
+                  {selectedItem.name.length > 25
+                    ? selectedItem.name.slice(0, 25) + '...'
+                    : selectedItem.name}
+                </h4>
+              </div>
+              <div
+                className="remove-button"
+                onClick={() => setSelectedItem(null)}
+              >
+                Remove Item
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="image">
+                <CiImageOn className="cust-i" />
+              </div>
+              <div className="line-container">
+                <div className="line"></div>
+              </div>
+              <div className="dsp-msg">
+                <h2>Add product from your list to make an offer</h2>
+              </div>
+            </>
+          )}
         </div>
       </div>
       <div className="your-list">
@@ -65,7 +106,7 @@ const Offer = () => {
         <div className="cards">
           <div className="card-container">
             {items.length === 0 ? (
-              <p className="empty-text">No items yet! Add one now.</p>
+              <p className="empty-text">No items yet! Add item first.</p>
             ) : (
               items.map((item) => (
                 <div className="offer-card" key={item._id}>
@@ -97,8 +138,11 @@ const Offer = () => {
                       </div>
                     </Link>
                     <div className="button2">
-                      <Link to={`/edit-item/${item._id}`}>
-                        <div className="edit">
+                      <Link>
+                        <div
+                          className="edit"
+                          onClick={() => setSelectedItem(item)}
+                        >
                           <IoMdAdd className="cust-i" />
                         </div>
                       </Link>

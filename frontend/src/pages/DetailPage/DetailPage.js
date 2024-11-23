@@ -69,7 +69,9 @@ const DetailPage = () => {
         </div>
         <div className="buttons">
           <div className="offer">
-            <Link to="/trade-offer">Offer a Trade</Link>
+            <Link to={{ pathname: '/trade-offer', state: { item } }}>
+              Offer a Trade
+            </Link>
           </div>
           <div className="det-wishlist">
             <FaRegHeart />
