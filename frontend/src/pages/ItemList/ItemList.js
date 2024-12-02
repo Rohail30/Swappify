@@ -1,6 +1,6 @@
 import './ItemList.css';
 import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import apiRequest from '../../config/apiRequest';
 import { FaRegHeart } from 'react-icons/fa';
 import { FaLocationDot } from 'react-icons/fa6';
@@ -8,15 +8,44 @@ import { IoMdSearch } from 'react-icons/io';
 import { RiSortAlphabetAsc } from 'react-icons/ri';
 import { RiSortAlphabetDesc } from 'react-icons/ri';
 import { FaExternalLinkAlt } from 'react-icons/fa';
+import { AuthContext } from '../../context/AuthContext';
 
 const categories = [
-  'electronics', 'furniture', 'clothing & accessories', 'books & media', 'home & garden', 'sports & outdoors', 'toys & games', 'tools & hardware', 'automotive', 'office supplies', 'collectibles & antiques', 'other'
+  'electronics',
+  'furniture',
+  'clothing & accessories',
+  'books & media',
+  'home & garden',
+  'sports & outdoors',
+  'toys & games',
+  'tools & hardware',
+  'automotive',
+  'office supplies',
+  'collectibles & antiques',
+  'other',
 ];
 
 const locations = [
-  "karachi", "lahore", "islamabad", "faisalabad", "rawalpindi", "multan", "peshawar", "quetta", "gujranwala", "sialkot", "hyderabad", "bahawalpur", "sargodha", "mardan", "swat"];
+  'karachi',
+  'lahore',
+  'islamabad',
+  'faisalabad',
+  'rawalpindi',
+  'multan',
+  'peshawar',
+  'quetta',
+  'gujranwala',
+  'sialkot',
+  'hyderabad',
+  'bahawalpur',
+  'sargodha',
+  'mardan',
+  'swat',
+];
 
 const ItemList = () => {
+  const { currentUser } = useContext(AuthContext);
+
   const [items, setItems] = useState([]);
   const [filters, setFilters] = useState({
     name: '',
@@ -43,13 +72,21 @@ const ItemList = () => {
         const res = await apiRequest.get(
           `/api/items/search?${query.toString()}`
         );
-        setItems(res.data.items);
+
+        // setItems(res.data.items);
+        // Assuming you have the current user's ID in a variable `currentUserId`
+        const currentUserId = currentUser._id; // Replace with actual logic to get user ID
+        const filteredItems = res.data.items.filter(
+          (item) => item.owner !== currentUserId
+        );
+
+        setItems(filteredItems);
       } catch (error) {
         console.error(error);
       }
     };
     fetchItems();
-  }, [filters]);
+  }, [currentUser, filters]);
 
   const handleFilterChange = (e) => {
     const { name, value, type, checked } = e.target;

@@ -33,7 +33,7 @@ function App() {
         <Route exact path="/wishlist" element={<WishList />} />
         <Route exact path="/" element={<Home />} />
         <Route exact path="/user/:id" element={<PublicProfile />} />
-        <Route exact path="/trade-offer" element={<Offer />} />
+        <Route exact path="/trade-offer/:id" element={<Offer />} />
       </Routes>
     </div>
   );

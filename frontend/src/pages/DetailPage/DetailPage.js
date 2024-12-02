@@ -1,12 +1,14 @@
 import './DetailPage.css';
 import { FaLocationDot } from 'react-icons/fa6';
 import { FaRegHeart } from 'react-icons/fa';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import apiRequest from '../../config/apiRequest';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthContext';
 
 const DetailPage = () => {
+  const { currentUser } = useContext(AuthContext);
   const { id } = useParams();
   const [item, setItem] = useState(null);
 
@@ -68,11 +70,17 @@ const DetailPage = () => {
           <p>{item.description}</p>
         </div>
         <div className="buttons">
+          {/* <div className="offer">
+            <Link to={`/trade-offer/${item._id}`}>Offer a Trade</Link>
+          </div> */}
           <div className="offer">
-            <Link to={{ pathname: '/trade-offer', state: { item } }}>
-              Offer a Trade
-            </Link>
+            {item.owner._id === currentUser._id || item.status === 'Traded' ? (
+              <div disabled className="disabled"></div>
+            ) : (
+              <Link to={`/trade-offer/${item._id}`}>Offer a Trade</Link>
+            )}
           </div>
+
           <div className="det-wishlist">
             <FaRegHeart />
           </div>
