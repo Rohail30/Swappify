@@ -49,7 +49,7 @@ const ItemSchema = new mongoose.Schema(
         },
         status: {
             type: String,
-            enum: ["available", "traded", "in trade"],
+            enum: ["available", "traded"],
             required: true,
             default: "available",
         },
