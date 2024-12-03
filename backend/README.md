@@ -18,3 +18,6 @@
 | DELETE | /api/wishlist                   | Remove item from wishlist| N/A             | `itemId`                              |
 | GET    | /api/wishlist                   | Retrieve wishlist     | N/A                | N/A                                   |
 | POST   | /api/trades                     | Offer a trade         | N/A                | `fromUser`, `toUser`, `ItemOffered`, `ItemWanted` |
+| GET    | /api/trades                     | Retrieve all trades   | N/A                | N/A                                   |
+| PUT    | /api/trades/:id/accept          | Accept a trade by ID  | `tradeId`          | N/A                                   |
+| PUT    | /api/trades/:id/reject          | Reject a trade by ID  | `tradeId`          | N/A                                   |
