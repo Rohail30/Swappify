@@ -73,12 +73,14 @@ const ItemList = () => {
           `/api/items/search?${query.toString()}`
         );
 
-        // setItems(res.data.items);
-        // Assuming you have the current user's ID in a variable `currentUserId`
-        const currentUserId = currentUser._id; // Replace with actual logic to get user ID
-        const filteredItems = res.data.items.filter(
-          (item) => item.owner !== currentUserId
-        );
+        let filteredItems = res.data.items;
+
+        if (currentUser) {
+          const currentUserId = currentUser._id;
+          filteredItems = filteredItems.filter(
+            (item) => item.owner !== currentUserId
+          );
+        }
 
         setItems(filteredItems);
       } catch (error) {

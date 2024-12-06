@@ -63,7 +63,7 @@ const Offer = () => {
       }
     } catch (error) {
       console.error('Error confirming trade:', error);
-      alert('Failed to confirm trade. Please try again.', error);
+      alert('This item is already in process.', error);
     }
   };
 
@@ -94,7 +94,7 @@ const Offer = () => {
             &nbsp;
             <GiConfirmed />
           </div>
-          <div className="trade-msg">Yes</div>
+          {/* <div className="trade-msg">Yes</div> */}
         </div>
         <div className="item">
           {selectedItem ? (
