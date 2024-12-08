@@ -14,6 +14,9 @@ import ForgetPassword from './pages/ForgetPassword/ForgetPass';
 import Home from './pages/Home/Home';
 import PublicProfile from './pages/PublicProfile/PublicProfile';
 import Offer from './pages/TradeOffer/Offer';
+import TradeManage from './pages/TradeManage/TradeManage';
+import ReceivedRequests from './pages/TradeManage/ReceivedRequests';
+import SentRequests from './pages/TradeManage/SentRequests';
 
 function App() {
   return (
@@ -34,6 +37,9 @@ function App() {
         <Route exact path="/" element={<Home />} />
         <Route exact path="/user/:id" element={<PublicProfile />} />
         <Route exact path="/trade-offer/:id" element={<Offer />} />
+        <Route exact path="/trade-manage" element={<TradeManage />} />
+        <Route exact path="/trade-manage/rec" element={<ReceivedRequests />} />
+        <Route exact path="/trade-manage/sent" element={<SentRequests />} />
       </Routes>
     </div>
   );
