@@ -70,16 +70,13 @@ const DetailPage = () => {
           <p>{item.description}</p>
         </div>
         <div className="buttons">
-          {/* <div className="offer">
-            <Link to={`/trade-offer/${item._id}`}>Offer a Trade</Link>
-          </div> */}
-          <div className="offer">
-            {item.owner._id === currentUser._id || item.status === 'Traded' ? (
-              <div disabled className="disabled"></div>
-            ) : (
+          {item.owner._id === currentUser._id || item.status === 'Traded' ? (
+            ""
+          ) : (
+            <div className="offer">
               <Link to={`/trade-offer/${item._id}`}>Offer a Trade</Link>
-            )}
-          </div>
+            </div>
+          )}
 
           <div className="det-wishlist">
             <FaRegHeart />
