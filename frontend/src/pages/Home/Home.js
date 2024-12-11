@@ -17,7 +17,7 @@ const Home = () => {
         <div className="text">
           <h1>Discover Something New With</h1>
           <h2>Swappify!</h2>
-          <Link to={`/trade-manage`}>
+          <Link to={`/item-listing`}>
             <div className="h-button">Explore</div>
           </Link>
         </div>
@@ -33,7 +33,7 @@ const Home = () => {
           <div className="text">
             <h1>Trade What You Have!</h1>
             <h2>Browse a World of Option</h2>
-            <Link to={`/trade-manage`}>
+            <Link to={`/item-listing`}>
               <div className="h-button">Explore</div>
             </Link>
           </div>

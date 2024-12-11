@@ -17,6 +17,8 @@ import Offer from './pages/TradeOffer/Offer';
 import TradeManage from './pages/TradeManage/TradeManage';
 import ReceivedRequests from './pages/TradeManage/ReceivedRequests';
 import SentRequests from './pages/TradeManage/SentRequests';
+import Sidebar from './pages/Sidebar/Sidebar';
+import UserProfile from './pages/UserProfile/UserProfile';
 
 function App() {
   return (
@@ -40,6 +42,8 @@ function App() {
         <Route exact path="/trade-manage" element={<TradeManage />} />
         <Route exact path="/trade-manage/rec" element={<ReceivedRequests />} />
         <Route exact path="/trade-manage/sent" element={<SentRequests />} />
+        <Route exact path="/sidebar" element={<Sidebar />} />
+        <Route exact path="/userprof" element={<UserProfile />} />
       </Routes>
     </div>
   );
