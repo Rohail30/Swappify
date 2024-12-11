@@ -21,3 +21,4 @@
 | GET    | /api/trades                     | Retrieve all trades   | N/A                | N/A                                   |
 | PUT    | /api/trades/:id/accept          | Accept a trade by ID  | `tradeId`          | N/A                                   |
 | PUT    | /api/trades/:id/reject          | Reject a trade by ID  | `tradeId`          | N/A                                   |
+| PUT    | /api/trades/:id/cancel          | Cancel a trade by ID  | `tradeId`          | N/A                                   |
