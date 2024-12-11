@@ -145,4 +145,40 @@ const rejectTrade = async (req, res) => {
 }
 
 
-module.exports = { offerTrade, getTrades, acceptTrade, rejectTrade };
+// @desc    Cancel trade
+// @route   PUT /api/trades/:id/cancel
+// @access  Private
+
+const cancelTrade = async (req, res) => {
+    const userId = req.userId;
+    const tradeId = req.params.id;
+
+    if (!tradeId) {
+        return res.status(400).json({ error: true, message: "Trade ID is required" });
+    }
+
+    try {
+        const trade = await Trade.findById(tradeId);
+
+        if (!trade) {
+            return res.status(404).json({ error: true, message: "Trade not found" });
+        }
+
+        if (trade.fromUser != userId) {
+            return res.status(401).json({ error: true, message: "Not authorized to cancel this trade" });
+        }
+
+        if (trade.status !== "pending") {
+            return res.status(400).json({ error: true, message: "Trade is not pending" });
+        }
+
+        await Trade.findByIdAndUpdate(tradeId, { status: "cancelled" });
+        return res.status(200).json({ error: false, message: "Trade cancelled successfully" })
+
+    } catch (error) {
+        return res.status(500).json({ error: true, message: error.message });
+    }
+}
+
+
+module.exports = { offerTrade, getTrades, acceptTrade, rejectTrade, cancelTrade };
