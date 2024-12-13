@@ -8,15 +8,14 @@
 
 .wishlist .heading {
   width: 100%;
-  min-height: 70px;
   display: flex;
   align-items: center;
-  border-top: 1px solid #cccccc;
-  border-bottom: 1px solid #cccccc;
+  margin-bottom: 20px;
 }
 
 .wishlist .heading h1 {
-  margin-left: 50px;
+  font-size: 30px;
+  font-weight: 400;
 }
 
 .wishlist .card-container {
