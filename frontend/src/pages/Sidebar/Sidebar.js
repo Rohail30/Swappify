@@ -1,19 +1,3 @@
-// import './Sidebar.css';
-
-// const Sidebar = () => {
-//   return (
-//     <div className="Sidebar">
-//       <div className="user-prof">
-//         <h1>User Profile</h1>
-//         <h1>MyList</h1>
-//         <h1>WishList</h1>
-//         <h1>Trade Managent</h1>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Sidebar;
 import './Sidebar.css';
 import { CgProfile } from 'react-icons/cg';
 import { FaRegHeart } from 'react-icons/fa';
