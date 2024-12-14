@@ -26,8 +26,9 @@ const SentRequests = () => {
         </div>
         <div>
           <div className="mid-sec">
-            <div className="Status">
+            <div className="status">
               <h1>Current Status</h1>
+              <div className="cancel">Cancel request </div>
             </div>
           </div>
         </div>

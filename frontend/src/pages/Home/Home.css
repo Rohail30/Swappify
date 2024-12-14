@@ -31,11 +31,11 @@
 
 .home .top-container .text h1 {
   font-size: 40px;
-  color: black;
+  color: #5d7080;
 }
 .home .top-container .text h2 {
   font-size: 45px;
-  color: #18a661;
+  color: #97d5c8;
 }
 
 .home .h-button {
@@ -55,7 +55,7 @@
 }
 
 .home .h-button:hover {
-  background-color: #18a661;
+  background-color: var(--button-hover-color);
 }
 
 .home .top-container .image {
@@ -106,12 +106,8 @@
   background-image: url(texture.webp);
 }
 
-.home .boxes .box-right .texgt {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 10px;
+.home .boxes .box-right .text {
+  color: #5d7080;
 }
 
 .home .category {
@@ -149,6 +145,7 @@
 
 .home .category .cat-items .cat .icon {
   font-size: 120px;
+  color: black;
 }
 
 .home .h-cards {
@@ -267,5 +264,5 @@
 
 .home .other .icons .cust-i {
   font-size: 35px;
-  color: #18a661;
+  color: #97d5c8;
 }
