@@ -101,6 +101,18 @@ const acceptTrade = async (req, res) => {
         await Item.findByIdAndUpdate(trade.ItemOffered, { status: "traded" });
         await Item.findByIdAndUpdate(trade.ItemWanted, { status: "traded" });
 
+        await Trade.updateMany(
+            {
+                $or: [
+                    { ItemOffered: trade.ItemOffered, status: "pending" },
+                    { ItemWanted: trade.ItemOffered, status: "pending" },
+                    { ItemOffered: trade.ItemWanted, status: "pending" },
+                    { ItemWanted: trade.ItemWanted, status: "pending" },
+                ]
+            },
+            { status: "cancelled" }
+        )
+
         return res.status(200).json({ error: false, message: "Trade accepted successfully" })
 
     } catch (error) {
