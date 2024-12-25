@@ -12,11 +12,10 @@ const ReceivedRequests = () => {
     const fetchItems = async () => {
       try {
         const res = await apiRequest.get(`/api/trades`);
-        console.log(res.data.trades); // Debug the response structure
+        console.log(res.data.trades);
 
-        let filteredItems = res.data.trades; // Assuming trades are returned in `res.data.trades`
+        let filteredItems = res.data.trades;
 
-        // Filter trades where the current user is the sender
         const currentUserId = currentUser._id;
         filteredItems = filteredItems.filter(
           (item) =>
@@ -39,7 +38,7 @@ const ReceivedRequests = () => {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
       alert('Trade accepted successfully!');
-      setItems(items.filter((item) => item._id !== tradeId)); // Remove accepted trade
+      setItems(items.filter((item) => item._id !== tradeId));
     } catch (error) {
       console.error('Error accepting trade:', error);
       alert('Failed to accept trade');
@@ -52,7 +51,7 @@ const ReceivedRequests = () => {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
       alert('Trade rejected successfully!');
-      setItems(items.filter((item) => item._id !== tradeId)); // Remove rejected trade
+      setItems(items.filter((item) => item._id !== tradeId));
     } catch (error) {
       console.error('Error rejecting trade:', error);
       alert('Failed to reject trade');
