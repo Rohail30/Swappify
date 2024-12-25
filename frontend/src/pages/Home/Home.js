@@ -59,7 +59,7 @@ const Home = () => {
       <div className="h-cards">
         <div className="h-card">
           <div className="img-con">
-            <img src="/c1.svg" alt="" />
+            <img src="/c2.svg" alt="" />
           </div>
           <h3>Barter Exchange</h3>
           <p>
@@ -70,7 +70,7 @@ const Home = () => {
         </div>
         <div className="h-card">
           <div className="img-con">
-            <img src="/c2.svg" alt="" />
+            <img src="/c1.svg" alt="" />
           </div>
           <h3>Flexible Trading</h3>
           <p>
