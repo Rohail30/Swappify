@@ -29,7 +29,7 @@ const ReceivedRequests = () => {
           <div className="mid-sec">
             <div className="actions">
               <div className="offer-button">
-                <h4>Received</h4>
+                <h4>Accept</h4>
               </div>
               <AiOutlineSwap />
               <div className="offer-button">

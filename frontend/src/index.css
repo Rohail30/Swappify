@@ -10,7 +10,12 @@ a {
 }
 
 body {
-  font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
   /* overflow: hidden; */
   overflow-y: scroll;
+}
+
+:root {
+  --button-color: #5d7080;
+  --button-hover-color: #97d5c8;
 }

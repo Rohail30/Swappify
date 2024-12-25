@@ -12,11 +12,11 @@
 }
 
 .Navbar a:hover {
-  color: #5D7080;
+  color: #5d7080;
 }
 
 .Navbar .left .logo:hover {
-  color: black;
+  color: #97d5c8;
 }
 
 .Navbar .left {
@@ -26,17 +26,17 @@
 }
 
 .Navbar img {
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
 }
 
 .Navbar .left .logo {
   font-weight: bold;
-  font-size: 20px;
+  font-size: 18px;
   display: flex;
   align-items: center;
+  color: black;
 }
-
 
 .Navbar .right .right-menu {
   display: flex;
@@ -58,7 +58,7 @@
 }
 
 .Navbar .right .right-menu button:hover {
-  color: #5D7080;
+  color: #5d7080;
 }
 
 .Navbar .right .right-menu .user {
@@ -111,7 +111,6 @@
     justify-content: center;
     align-items: center;
   }
-
 
   .Navbar .right .right-menu {
     display: none;
@@ -174,5 +173,4 @@
     padding: 0;
     transition: color 0.3s ease;
   }
-
 }

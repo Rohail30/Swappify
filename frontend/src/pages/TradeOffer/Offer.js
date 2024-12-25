@@ -82,7 +82,14 @@ const Offer = () => {
             <div className="line"></div>
           </div>
           <div className="title">
-            <h4>{item.name}</h4>
+            <h4>
+              {item.name.length > 25
+                ? item.name.slice(0, 25) + '...'
+                : item.name}
+            </h4>
+            <h3>
+              ${item.price.min} - ${item.price.max}
+            </h3>
           </div>
           <div className="button">
             <div className="view">View Details</div>
@@ -114,6 +121,9 @@ const Offer = () => {
                     ? selectedItem.name.slice(0, 25) + '...'
                     : selectedItem.name}
                 </h4>
+                <h3>
+                  ${selectedItem.price.min} - ${selectedItem.price.max}
+                </h3>
               </div>
               <div
                 className="remove-button"

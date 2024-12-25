@@ -44,9 +44,6 @@ const MyList = () => {
           <h1>My List</h1>
         </div>
         <div className="buttons">
-          <Link to="/wishlist">
-            <button>Wishlist</button>
-          </Link>
           <Link to="/add-item">
             <button>Create New Post</button>
           </Link>

@@ -90,7 +90,7 @@
   background-color: #18a661;
 }
 
-.Sent .tradepage-container .mid-sec .actions {
+.Sent .tradepage-container .mid-sec .status {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -98,7 +98,7 @@
   gap: 10px;
 }
 
-.Sent .tradepage-container .mid-sec .actions .offer-button {
+.Sent .tradepage-container .mid-sec .cancel {
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -112,8 +112,8 @@
   background-color: #18a661;
 }
 
-.Sent .tradepage-container .mid-sec .actions .offer-button:hover {
-  background-color: #006a4e;
+.Sent .tradepage-container .mid-sec .cancel:hover {
+  background-color: #d50000;
 }
 
 .Sent .tradepage-container .offered-item {

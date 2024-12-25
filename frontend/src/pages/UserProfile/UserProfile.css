@@ -1,0 +1,87 @@
+.user-profile .up {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.user-profile .container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: aliceblue;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.user-profile .container .propic {
+  width: 135px;
+  height: 135px;
+  background-color: #18a661;
+  border-radius: 50%;
+  border: 2px solid #006a4e;
+  overflow: hidden;
+}
+
+.user-profile .container .propic img {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.user-profile .info {
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  gap: 10px;
+}
+
+#user-info-heading {
+  margin-bottom: 10px;
+}
+
+.user-profile h1 {
+  font-size: 24px;
+  color: black;
+}
+
+.user-profile span {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: black;
+}
+
+.user-profile b {
+  color: black;
+}
+
+.user-profile button {
+  padding: 10px 15px;
+  font-size: 16px;
+  color: white;
+  background-color: #18a661;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.user-profile button:hover {
+  background-color: #006a4e;
+}
+
+@media (max-width: 738px) {
+  .user-profile .container {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .user-profile .container .info-sec {
+    flex-direction: column;
+  }
+}

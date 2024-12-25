@@ -1,38 +1,49 @@
-import './profile.css';
-import { useContext } from 'react';
-import { Link } from 'react-router-dom';
-import { AuthContext } from '../../context/AuthContext';
+// import Sidebar from '../Sidebar/Sidebar';
+// import UserProfile from '../UserProfile/UserProfile';
+// import MyList from '../MyList/MyList';
+// import './profile.css';
+// import Wishlist from '../Wishlist/Wishlist';
+// import TradeManage from '../TradeManage/TradeManage';
+
+// const ProfilePage = () => {
+//   return (
+//     <div className="profilePage">
+//       <div className="bar">
+//         <Sidebar />
+//       </div>
+//       <div className="pages">
+//         <UserProfile />
+//         <MyList />
+//         <Wishlist />
+//         <TradeManage />
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default ProfilePage;
+import { useState } from 'react';
+import Sidebar from '../Sidebar/Sidebar';
+import UserProfile from '../UserProfile/UserProfile';
 import MyList from '../MyList/MyList';
+import Wishlist from '../Wishlist/Wishlist';
+import TradeManage from '../TradeManage/TradeManage';
+import './profile.css';
 
 const ProfilePage = () => {
-  const { currentUser } = useContext(AuthContext);
+  const [activePage, setActivePage] = useState('UserProfile'); // Default to UserProfile
 
   return (
     <div className="profilePage">
-      <div className="container">
-        <div className="info-sec">
-          <div className="propic">
-            <img src="/user.png" alt="" />
-          </div>
-          <div className="info">
-            <h1 id="user-info-heading">User Information</h1>
-            <span>
-              Full Name: <b>{currentUser.name}</b>
-            </span>
-            <span>
-              E-Mail: <b>{currentUser.email}</b>
-            </span>
-            <span>
-              Mobile: <b>{currentUser.mobile}</b>
-            </span>
-          </div>
-        </div>
-
-        <Link to="/update-profile">
-          <button>Update Profile</button>
-        </Link>
+      <div className="bar">
+        <Sidebar setActivePage={setActivePage} />
       </div>
-      <MyList />
+      <div className="pages">
+        {activePage === 'UserProfile' && <UserProfile />}
+        {activePage === 'MyList' && <MyList />}
+        {activePage === 'Wishlist' && <Wishlist />}
+        {activePage === 'TradeManage' && <TradeManage />}
+      </div>
     </div>
   );
 };

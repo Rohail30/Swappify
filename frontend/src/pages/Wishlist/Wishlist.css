@@ -1,5 +1,4 @@
 .wishlist {
-  margin-top: 50px;
   height: 500px;
   display: flex;
   align-items: center;
@@ -9,24 +8,26 @@
 
 .wishlist .heading {
   width: 100%;
-  min-height: 70px;
   display: flex;
   align-items: center;
-  border-top: 1px solid #cccccc;
-  border-bottom: 1px solid #cccccc;
+  margin-bottom: 20px;
 }
 
 .wishlist .heading h1 {
-  margin-left: 50px;
+  font-size: 30px;
+  font-weight: 400;
 }
 
 .wishlist .card-container {
   width: 100%;
   gap: 20px;
+  padding: 20px;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
+  align-items: flex-start;
   flex-direction: row;
+  background-color: aliceblue;
 }
 
 .wishlist .card-container .wishlistcard {

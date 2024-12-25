@@ -1,0 +1,33 @@
+/* .Sidebar {
+  width: 300px;
+  height: 500px;
+  background-color: yellowgreen;
+} */
+.Sidebar {
+  padding: 20px;
+  width: 220px;
+  /* height: 100vh; */
+}
+
+.user-prof h1 {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 200px;
+  font-size: 16px;
+  color: black;
+  font-weight: 500;
+  cursor: pointer;
+  margin-bottom: 25px;
+  transition: 0.3s;
+}
+
+.user-prof h1:hover {
+  font-size: 18px;
+  color: #006a4e;
+}
+
+.user-prof h1.active {
+  font-weight: bold;
+  color: blue;
+}
