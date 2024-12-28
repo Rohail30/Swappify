@@ -14,12 +14,30 @@ const Offer = () => {
   const [selectedItem, setSelectedItem] = useState(null);
   const { id } = useParams();
   const [item, setItem] = useState(null);
+  const [tradeMessage, setTradeMessage] = useState('');
+
+  // Function to evaluate trade
+  const evaluateTrade = (itemOffered, itemWanted) => {
+    const minPriceDifference = Math.abs(
+      itemOffered.price.min - itemWanted.price.min
+    );
+
+    return minPriceDifference > 50
+      ? 'Not a good trade. The price difference is significant.'
+      : 'Good trade! The price difference is acceptable.';
+  };
 
   useEffect(() => {
     const fetchItems = async () => {
       try {
         const res = await apiRequest.get(`api/items/user/${currentUser._id}`);
-        setItems(res.data.items);
+        // setItems(res.data.items);
+        let filteredItems = res.data.items;
+        filteredItems = filteredItems.filter(
+          (item) => item.status === 'available'
+        );
+
+        setItems(filteredItems || []);
       } catch (error) {
         console.log(error);
       }
@@ -40,6 +58,16 @@ const Offer = () => {
     fetchItemDetails();
   }, [id]);
 
+  // Update trade message whenever the selected item changes
+  useEffect(() => {
+    if (selectedItem && item) {
+      const message = evaluateTrade(selectedItem, item);
+      setTradeMessage(message);
+    } else {
+      setTradeMessage('');
+    }
+  }, [selectedItem, item]);
+
   const handleConfirmTrade = async () => {
     if (!selectedItem) {
       alert('Please select an item to offer!');
@@ -56,8 +84,9 @@ const Offer = () => {
     try {
       const res = await apiRequest.post('/api/trades', tradeData);
       if (!res.data.error) {
-        alert('Trade offered successfully!');
+        alert(`Trade offered successfully!`);
         setSelectedItem(null);
+        setTradeMessage('');
       } else {
         alert(res.data.message || 'Trade failed.');
       }
@@ -95,13 +124,14 @@ const Offer = () => {
             <div className="view">View Details</div>
           </div>
         </div>
-        <div>
+        <div className="mid">
           <div className="offer-button" onClick={handleConfirmTrade}>
-            <h4>Confirm Trade</h4>
+            <h4>Offer Trade</h4>
             &nbsp;
             <GiConfirmed />
           </div>
-          {/* <div className="trade-msg">Yes</div> */}
+          {/* Display the trade evaluation message here */}
+          <div className="trade-msg">{tradeMessage}</div>
         </div>
         <div className="item">
           {selectedItem ? (
@@ -127,7 +157,10 @@ const Offer = () => {
               </div>
               <div
                 className="remove-button"
-                onClick={() => setSelectedItem(null)}
+                onClick={() => {
+                  setSelectedItem(null);
+                  setTradeMessage('');
+                }}
               >
                 Remove Item
               </div>

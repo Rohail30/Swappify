@@ -25,6 +25,15 @@ const DetailPage = () => {
     fetchItemDetails();
   }, [id]);
 
+  const addToWishlist = async (itemId) => {
+    try {
+      await apiRequest.post('/api/wishlist', { itemId });
+      alert('Item added to wishlist!');
+    } catch (error) {
+      alert('Item already in wishlist!');
+    }
+  };
+
   if (!item) {
     return <p>Loading item details...</p>;
   }
@@ -70,17 +79,21 @@ const DetailPage = () => {
           <p>{item.description}</p>
         </div>
         <div className="buttons">
-          {item.owner._id === currentUser._id || item.status === 'Traded' ? (
-            ""
+          {item.owner._id === currentUser._id || item.status === 'traded' ? (
+            ''
           ) : (
-            <div className="offer">
-              <Link to={`/trade-offer/${item._id}`}>Offer a Trade</Link>
-            </div>
+            <>
+              <div className="offer">
+                <Link to={`/trade-offer/${item._id}`}>Offer a Trade</Link>
+              </div>
+              <div
+                className="det-wishlist"
+                onClick={() => addToWishlist(item._id)}
+              >
+                <FaRegHeart />
+              </div>
+            </>
           )}
-
-          <div className="det-wishlist">
-            <FaRegHeart />
-          </div>
         </div>
       </div>
     </div>

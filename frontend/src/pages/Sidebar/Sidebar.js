@@ -3,6 +3,7 @@ import { CgProfile } from 'react-icons/cg';
 import { FaRegHeart } from 'react-icons/fa';
 import { FaList } from 'react-icons/fa';
 import { MdOutlineSettings } from 'react-icons/md';
+import { HiOutlineClipboardList } from 'react-icons/hi';
 
 const Sidebar = ({ setActivePage }) => {
   return (
@@ -23,6 +24,10 @@ const Sidebar = ({ setActivePage }) => {
         <h1 onClick={() => setActivePage('TradeManage')}>
           <MdOutlineSettings />
           &nbsp; Trade Management
+        </h1>
+        <h1 onClick={() => setActivePage('OrderList')}>
+          <HiOutlineClipboardList />
+          &nbsp; Order List
         </h1>
       </div>
     </div>

@@ -144,7 +144,14 @@
 }
 
 .home .category .cat-items .cat .icon {
+  cursor: pointer;
   font-size: 120px;
+  color: black;
+  transition: 0.3s;
+}
+
+.home .category .cat-items .cat .icon:hover {
+  font-size: 140px;
   color: black;
 }
 

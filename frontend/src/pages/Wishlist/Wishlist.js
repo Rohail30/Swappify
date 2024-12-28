@@ -76,10 +76,6 @@ const Wishlist = () => {
                 <div className="price">
                   <h2>{`Est. Value: ${item.price.min} - ${item.price.max}`}</h2>
                 </div>
-                <div className="location">
-                  <h3>{item.location}</h3>
-                  <h3>{item.category}</h3>
-                </div>
               </div>
               <div className="buttons">
                 <div className="button1">

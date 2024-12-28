@@ -78,7 +78,8 @@ const ItemList = () => {
         if (currentUser) {
           const currentUserId = currentUser._id;
           filteredItems = filteredItems.filter(
-            (item) => item.owner !== currentUserId
+            (item) =>
+              item.owner !== currentUserId && item.status === 'available'
           );
         }
 

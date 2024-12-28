@@ -33,6 +33,7 @@
 .mylist .cards {
   width: 100%;
   margin-top: 20px;
+  padding: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -41,7 +42,7 @@
 }
 
 .mylist .cards .card-container {
-  width: 90%;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   gap: 20px;

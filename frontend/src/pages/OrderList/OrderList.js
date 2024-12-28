@@ -1,0 +1,65 @@
+import './OrderList.css';
+import apiRequest from '../../config/apiRequest';
+import { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../../context/AuthContext';
+
+const OrderList = () => {
+  const [items, setItems] = useState([]);
+  const { currentUser } = useContext(AuthContext);
+
+  useEffect(() => {
+    const fetchItems = async () => {
+      try {
+        const res = await apiRequest.get(`/api/trades`);
+        console.log(res.data.trades);
+
+        let filteredItems = res.data.trades;
+
+        const currentUserId = currentUser._id;
+        filteredItems = filteredItems.filter(
+          (item) => String(item.fromUser._id) === String(currentUserId)
+        );
+
+        setItems(filteredItems || []);
+      } catch (error) {
+        console.error('Error fetching trades:', error);
+      }
+    };
+
+    fetchItems();
+  }, [currentUser]);
+
+  return (
+    <div className="order-list">
+      <div className="heading">
+        <span>Order List</span>
+      </div>
+
+      <div className="orderpage-container">
+        {/* <div className="order_id">Order-ID: {item._id}</div> */}
+        <table>
+          <tr>
+            <th>Order-ID</th>
+            <th>Status</th>
+            <th>Date</th>
+            <th>Time</th>
+          </tr>
+          {items.length === 0 ? (
+            <p className="empty-text">No items yet! Add one now.</p>
+          ) : (
+            items.map((item) => (
+              <tr>
+                <td>{item._id}</td>
+                <td>{item.status}</td>
+                <td>{new Date(item.createdAt).toLocaleDateString()}</td>
+                <td>{new Date(item.createdAt).toLocaleTimeString()}</td>
+              </tr>
+            ))
+          )}
+        </table>
+      </div>
+    </div>
+  );
+};
+
+export default OrderList;

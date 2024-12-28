@@ -19,6 +19,8 @@ import ReceivedRequests from './pages/TradeManage/ReceivedRequests';
 import SentRequests from './pages/TradeManage/SentRequests';
 import Sidebar from './pages/Sidebar/Sidebar';
 import UserProfile from './pages/UserProfile/UserProfile';
+import OrderList from './pages/OrderList/OrderList';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
@@ -44,7 +46,10 @@ function App() {
         <Route exact path="/trade-manage/sent" element={<SentRequests />} />
         <Route exact path="/sidebar" element={<Sidebar />} />
         <Route exact path="/userprof" element={<UserProfile />} />
+        <Route exact path="/orderlist" element={<OrderList />} />
       </Routes>
+
+      <Footer />
     </div>
   );
 }
