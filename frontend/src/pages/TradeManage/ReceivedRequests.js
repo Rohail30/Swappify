@@ -34,9 +34,7 @@ const ReceivedRequests = () => {
 
   const handleAccept = async (tradeId) => {
     try {
-      await apiRequest.put(`/api/trades/${tradeId}/accept`, null, {
-        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
-      });
+      await apiRequest.put(`/api/trades/${tradeId}/accept`);
       alert('Trade accepted successfully!');
       setItems(items.filter((item) => item._id !== tradeId));
     } catch (error) {
@@ -47,9 +45,7 @@ const ReceivedRequests = () => {
 
   const handleReject = async (tradeId) => {
     try {
-      await apiRequest.put(`/api/trades/${tradeId}/reject`, null, {
-        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
-      });
+      await apiRequest.put(`/api/trades/${tradeId}/reject`);
       alert('Trade rejected successfully!');
       setItems(items.filter((item) => item._id !== tradeId));
     } catch (error) {

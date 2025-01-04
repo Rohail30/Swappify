@@ -32,11 +32,9 @@ const SentRequests = () => {
 
   const handleCancel = async (tradeId) => {
     try {
-      await apiRequest.put(`/api/trades/${tradeId}/cancel`, null, {
-        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
-      });
+      await apiRequest.put(`/api/trades/${tradeId}/cancel`);
       alert('Trade cancelled successfully!');
-      setItems(items.filter((item) => item._id !== tradeId)); // Remove cancelled trade
+      setItems(items.filter((item) => item._id !== tradeId));
     } catch (error) {
       console.error('Error cancelling trade:', error);
       alert('Failed to cancel trade');
