@@ -16,7 +16,6 @@ const Offer = () => {
   const [item, setItem] = useState(null);
   const [tradeMessage, setTradeMessage] = useState('');
 
-  // Function to evaluate trade
   const evaluateTrade = (itemOffered, itemWanted) => {
     const minPriceDifference = Math.abs(
       itemOffered.price.min - itemWanted.price.min
@@ -31,7 +30,6 @@ const Offer = () => {
     const fetchItems = async () => {
       try {
         const res = await apiRequest.get(`api/items/user/${currentUser._id}`);
-        // setItems(res.data.items);
         let filteredItems = res.data.items;
         filteredItems = filteredItems.filter(
           (item) => item.status === 'available'
@@ -58,7 +56,6 @@ const Offer = () => {
     fetchItemDetails();
   }, [id]);
 
-  // Update trade message whenever the selected item changes
   useEffect(() => {
     if (selectedItem && item) {
       const message = evaluateTrade(selectedItem, item);
@@ -91,8 +88,7 @@ const Offer = () => {
         alert(res.data.message || 'Trade failed.');
       }
     } catch (error) {
-      console.error('Error confirming trade:', error);
-      alert('This item is already in process.', error);
+      alert(error.response.data.message);
     }
   };
 
@@ -130,7 +126,6 @@ const Offer = () => {
             &nbsp;
             <GiConfirmed />
           </div>
-          {/* Display the trade evaluation message here */}
           <div className="trade-msg">{tradeMessage}</div>
         </div>
         <div className="item">

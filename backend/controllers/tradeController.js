@@ -34,6 +34,11 @@ const offerTrade = async (req, res) => {
         return res.status(400).json({ error: true, message: "Trade already exists" });
     }
 
+    const reverseTradeExists = await Trade.find({ fromUser: toUser, toUser: fromUser, ItemOffered: ItemWanted, ItemWanted: ItemOffered, status: "pending" });
+    if (reverseTradeExists.length > 0) {
+        return res.status(400).json({ error: true, message: "Same trade already offered by the other user" });
+    }
+
     try {
         const newTrade = await Trade.create({
             fromUser,
