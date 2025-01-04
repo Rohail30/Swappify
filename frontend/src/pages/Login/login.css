@@ -1,74 +1,74 @@
 .login {
-    margin-top: 50px;
-    height: 100%;
-    display: flex;
+  margin-top: 50px;
+  height: 100%;
+  display: flex;
+  margin-bottom: 50px;
 }
 
 .login .formContainer {
-    flex: 3;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  flex: 3;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .login .formContainer form {
-    width: 60%;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .login .formContainer form input {
-    padding: 20px;
-    border: 1px solid gray;
-    border-radius: 5px;
+  padding: 20px;
+  border: 1px solid gray;
+  border-radius: 5px;
 }
 
 .login .formContainer form button {
-    padding: 20px;
-    border-radius: 5px;
-    border: none;
-    background-color: #5d7080;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
+  padding: 20px;
+  border-radius: 5px;
+  border: none;
+  background-color: #5d7080;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .login .formContainer form button:hover {
-    background-color: #97D5C9;
+  background-color: #97d5c9;
 }
 
 .login .formContainer form span {
-    color: rgba(255, 0, 0, 0.591);
+  color: rgba(255, 0, 0, 0.591);
 }
 
 .login .formContainer form a {
-    font-size: 14px;
-    color: gray;
-    border-bottom: 1px solid gray;
-    width: max-content;
+  font-size: 14px;
+  color: gray;
+  border-bottom: 1px solid gray;
+  width: max-content;
 }
 
 .login .imgContainer {
-    flex: 2;
-    background-color: #ecfffd;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  flex: 2;
+  background-color: #ecfffd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .login .imgContainer img {
-    width: 100%;
+  width: 100%;
 }
 
 @media (max-width: 738px) {
+  .login .formContainer form {
+    width: 80%;
+  }
 
-    .login .formContainer form {
-        width: 80%;
-    }
-
-    .login .imgContainer {
-        display: none;
-    }
+  .login .imgContainer {
+    display: none;
+  }
 }

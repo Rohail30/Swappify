@@ -40,10 +40,10 @@ const Navbar = () => {
             </div>
           ) : (
             <>
-              <a href="/login">Login</a>
-              <a href="/register" className="register">
+              <Link to="/login">Login</Link>
+              <Link to="/register" className="register">
                 Register
-              </a>
+              </Link>
             </>
           )}
         </div>
@@ -52,13 +52,15 @@ const Navbar = () => {
             src="/menu.png"
             alt=""
             onClick={() => setOpen(!open)}
-            style={{ transform: open ? 'rotate(90deg)' : 'none' }}
+            style={{
+              transform: open ? 'rotate(90deg)' : 'none',
+            }}
           />
         </div>
 
         <div className={open ? 'menu active' : 'menu'}>
-          <a href="/">Home</a>
-          <a href="/">Swap!</a>
+          <Link to="/">Home</Link>
+          <Link to="/">Swap!</Link>
           {currentUser ? (
             <>
               <Link to="/profile" className="profile">

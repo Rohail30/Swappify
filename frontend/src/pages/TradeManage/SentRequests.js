@@ -18,7 +18,9 @@ const SentRequests = () => {
 
         const currentUserId = currentUser._id;
         filteredItems = filteredItems.filter(
-          (item) => String(item.fromUser._id) === String(currentUserId)
+          (item) =>
+            String(item.fromUser._id) === String(currentUserId) &&
+            item.status === 'pending'
         );
 
         setItems(filteredItems || []);
@@ -94,7 +96,7 @@ const SentRequests = () => {
                         className="cancel"
                         onClick={() => handleCancel(item._id)}
                       >
-                        Cancel Request
+                        Cancel
                       </div>
                     )}
                   </div>

@@ -7,6 +7,11 @@
   min-height: 100vh;
 }
 
+.trade-manage h1 {
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+
 .trade-manage .top {
   gap: 20px;
   display: flex;
@@ -16,14 +21,14 @@
 }
 
 .trade-manage .top h1 {
-  font-size: 30px;
+  font-size: 25px;
   font-weight: 400;
   color: gray;
   transition: color 0.3s ease;
 }
 
 .trade-manage .top h1.active {
-  font-size: 30px;
+  font-size: 25px;
   color: black;
   font-weight: 500;
 }

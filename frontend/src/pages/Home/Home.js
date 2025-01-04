@@ -48,7 +48,7 @@ const Home = () => {
             </Link>
           </div>
           <div className="cat">
-            <Link to={`/item-listing`}>
+            <Link to={`/item-listing?category=sports & outdoors`}>
               <MdSportsTennis className="icon" />
             </Link>
           </div>
