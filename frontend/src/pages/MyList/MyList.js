@@ -84,20 +84,26 @@ const MyList = () => {
                       <div className="view">Details</div>
                     </div>
                   </Link>
-                  <div className="button2">
-                    <Link to={`/edit-item/${item._id}`}>
-                      <div className="edit">
-                        <MdEdit className="cust-i" />
+                  {item.status === 'traded' ? (
+                    ''
+                  ) : (
+                    <>
+                      <div className="button2">
+                        <Link to={`/edit-item/${item._id}`}>
+                          <div className="edit">
+                            <MdEdit className="cust-i" />
+                          </div>
+                        </Link>
+                        {/* <div className="delete"><MdDelete /></div> */}
+                        <div
+                          className="delete"
+                          onClick={() => handleDelete(item._id)}
+                        >
+                          <MdDelete className="cust-i" />
+                        </div>
                       </div>
-                    </Link>
-                    {/* <div className="delete"><MdDelete /></div> */}
-                    <div
-                      className="delete"
-                      onClick={() => handleDelete(item._id)}
-                    >
-                      <MdDelete className="cust-i" />
-                    </div>
-                  </div>
+                    </>
+                  )}
                 </div>
               </div>
             ))

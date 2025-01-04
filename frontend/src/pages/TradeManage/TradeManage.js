@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import ReceivedRequests from './ReceivedRequests';
 import SentRequests from './SentRequests';
 import './TradeManage.css';
+import OrderList from './OrderList';
 
 const TradeManage = () => {
   const [activePage, setActivePage] = useState('received');
@@ -27,9 +28,19 @@ const TradeManage = () => {
             Sent
           </h1>
         </div>
+
+        <div className="button-Sent">
+          <h1
+            className={activePage === 'order-list' ? 'active' : ''}
+            onClick={() => setActivePage('order-list')}
+          >
+            Order-List
+          </h1>
+        </div>
       </div>
       {activePage === 'received' && <ReceivedRequests />}
       {activePage === 'sent' && <SentRequests />}
+      {activePage === 'order-list' && <OrderList />}
     </div>
   );
 };

@@ -29,7 +29,7 @@ import MyList from '../MyList/MyList';
 import Wishlist from '../Wishlist/Wishlist';
 import TradeManage from '../TradeManage/TradeManage';
 import './profile.css';
-import OrderList from '../OrderList/OrderList';
+import OrderList from '../TradeManage/OrderList';
 
 const ProfilePage = () => {
   const [activePage, setActivePage] = useState('UserProfile'); // Default to UserProfile
