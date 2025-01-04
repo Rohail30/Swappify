@@ -79,15 +79,19 @@ const MyList = () => {
                   <h2>{item.status}</h2>
                 </div>
                 <div className="buttons">
-                  <Link to={`/detail-page/${item._id}`}>
-                    <div className="button1">
-                      <div className="view">Details</div>
-                    </div>
-                  </Link>
                   {item.status === 'traded' ? (
-                    ''
+                    <Link to={`/detail-page/${item._id}`}>
+                      <div className="button-view">
+                        <div className="view">Details</div>
+                      </div>
+                    </Link>
                   ) : (
                     <>
+                      <Link to={`/detail-page/${item._id}`}>
+                        <div className="button1">
+                          <div className="view">Details</div>
+                        </div>
+                      </Link>
                       <div className="button2">
                         <Link to={`/edit-item/${item._id}`}>
                           <div className="edit">

@@ -144,6 +144,23 @@
   font-weight: bold;
 }
 
+.mylistcard .button-view {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 180px;
+  height: 40px;
+  color: white;
+  border-radius: 20px;
+  transition: 0.3s;
+  background-color: #18a661;
+}
+
+.mylistcard .button-view:hover {
+  background-color: #006a4e;
+}
+
 .mylistcard .button1 {
   cursor: pointer;
   display: flex;
