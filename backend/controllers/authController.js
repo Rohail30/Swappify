@@ -22,6 +22,10 @@ const register = async (req, res) => {
         return res.status(400).json({ error: true, message: 'Please enter a valid email and mobile number' });
     }
 
+    if (password.length < 8) {
+        return res.status(400).json({ error: true, message: 'Password must be at least 8 characters long' });
+    }
+
     try {
         const userExists = await User.findOne({ email });
 
