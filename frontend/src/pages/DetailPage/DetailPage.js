@@ -79,17 +79,12 @@ const DetailPage = () => {
           <p>{item.description}</p>
         </div>
         <div className="buttons">
-          {item.owner._id === currentUser._id || item.status === 'traded' ? (
-            ''
-          ) : (
+          {currentUser && item.owner._id !== currentUser._id && item.status !== 'traded' && (
             <>
               <div className="offer">
                 <Link to={`/trade-offer/${item._id}`}>Offer a Trade</Link>
               </div>
-              <div
-                className="det-wishlist"
-                onClick={() => addToWishlist(item._id)}
-              >
+              <div className="det-wishlist" onClick={() => addToWishlist(item._id)}>
                 <FaRegHeart />
               </div>
             </>
