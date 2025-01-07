@@ -12,7 +12,6 @@ const SentRequests = () => {
     const fetchItems = async () => {
       try {
         const res = await apiRequest.get(`/api/trades`);
-        console.log(res.data.trades);
 
         let filteredItems = res.data.trades;
 
@@ -49,7 +48,7 @@ const SentRequests = () => {
         <p className="empty-text">No items yet! Add one now.</p>
       ) : (
         items.map((item) => (
-          <div className="tradepage-container">
+          <div className="tradepage-container" key={item._id}>
             {/* <div className="order_id">Order-ID: {item._id}</div> */}
             <div className="item-cards">
               <div className="requested-item ">

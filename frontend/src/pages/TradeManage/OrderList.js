@@ -11,7 +11,6 @@ const OrderList = () => {
     const fetchItems = async () => {
       try {
         const res = await apiRequest.get(`/api/trades`);
-        console.log(res.data.trades);
 
         let filteredItems = res.data.trades;
 
@@ -32,31 +31,30 @@ const OrderList = () => {
   return (
     <div className="order-list">
       <div className="orderpage-container">
-        {/* <div className="order_id">Order-ID: {item._id}</div> */}
-        <table>
-          <tr>
-            <th>Order-ID</th>
-            <th>Status</th>
-            <th>Date</th>
-            <th>Time</th>
-          </tr>
-          {items.length === 0 ? (
-            <p className="empty-text">No items yet! Add one now.</p>
-          ) : (
-            items.map((item) => (
-              <tr key={item._id}>
-                <td data-label="Order-ID">{item._id}</td>
-                <td data-label="Status">{item.status}</td>
-                <td data-label="Date">
-                  {new Date(item.createdAt).toLocaleDateString()}
-                </td>
-                <td data-label="Time">
-                  {new Date(item.createdAt).toLocaleTimeString()}
-                </td>
+        {items.length === 0 ? (
+          <p className="empty-text">No items yet! Add one now.</p>
+        ) : (
+          <table>
+            <thead>
+              <tr>
+                <th>Order-ID</th>
+                <th>Status</th>
+                <th>Date</th>
+                <th>Time</th>
               </tr>
-            ))
-          )}
-        </table>
+            </thead>
+            <tbody>
+              {items.map((item) => (
+                <tr key={item._id}>
+                  <td>{item._id}</td>
+                  <td>{item.status}</td>
+                  <td>{new Date(item.createdAt).toLocaleDateString()}</td>
+                  <td>{new Date(item.createdAt).toLocaleTimeString()}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
       </div>
     </div>
   );

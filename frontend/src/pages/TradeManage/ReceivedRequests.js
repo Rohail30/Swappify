@@ -12,7 +12,6 @@ const ReceivedRequests = () => {
     const fetchItems = async () => {
       try {
         const res = await apiRequest.get(`/api/trades`);
-        console.log(res.data.trades);
 
         let filteredItems = res.data.trades;
 
@@ -60,7 +59,7 @@ const ReceivedRequests = () => {
         <p className="empty-text">No items yet! Add one now.</p>
       ) : (
         items.map((item) => (
-          <div className="tradepage-container">
+          <div className="tradepage-container" key={item._id}>
             <div className="requested-item ">
               <div className="header">
                 <h1>Item Wanted</h1>
