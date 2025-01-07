@@ -11,3 +11,21 @@
 .profilePage .pages {
   width: 800px;
 }
+
+.profilePage .bar {
+  width: 220px;
+}
+
+@media (max-width: 738px) {
+  .profilePage {
+    flex-direction: column;
+  }
+
+  .profilePage .bar {
+    width: 100%;
+  }
+
+  .profilePage .pages {
+    width: 100%;
+  }
+}

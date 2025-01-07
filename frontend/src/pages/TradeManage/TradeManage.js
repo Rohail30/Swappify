@@ -11,7 +11,7 @@ const TradeManage = () => {
     <div className="trade-manage">
       <h1>Trade Management</h1>
       <div className="top">
-        <div className="Rec">
+        <div className="head">
           <h1
             className={activePage === 'received' ? 'active' : ''}
             onClick={() => setActivePage('received')}
@@ -20,7 +20,7 @@ const TradeManage = () => {
           </h1>
         </div>
 
-        <div className="button-Sent">
+        <div className="head">
           <h1
             className={activePage === 'sent' ? 'active' : ''}
             onClick={() => setActivePage('sent')}
@@ -29,7 +29,7 @@ const TradeManage = () => {
           </h1>
         </div>
 
-        <div className="button-Sent">
+        <div className="head">
           <h1
             className={activePage === 'order-list' ? 'active' : ''}
             onClick={() => setActivePage('order-list')}

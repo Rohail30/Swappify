@@ -54,3 +54,48 @@
   padding: 8px;
   text-align: left;
 }
+
+@media (max-width: 738px) {
+  .order-list .orderpage-container table {
+    display: block;
+  }
+
+  .order-list .orderpage-container table tr {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .order-list .orderpage-container table th {
+    display: none;
+  }
+
+  .order-list .orderpage-container table td {
+    display: block;
+    text-align: left;
+    padding: 10px;
+    position: relative;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .order-list .orderpage-container table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 10px;
+    font-weight: bold;
+    color: #333;
+    text-align: left;
+  }
+
+  .order-list .orderpage-container table th {
+    background-color: #18a661;
+    color: white;
+    text-align: left;
+  }
+
+  .order-list .orderpage-container table td {
+    text-align: left;
+    padding-left: 110px;
+    text-overflow: ellipsis;
+  }
+}

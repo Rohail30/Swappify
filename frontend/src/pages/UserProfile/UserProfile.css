@@ -1,3 +1,6 @@
+.user-profile {
+  width: 100%;
+}
 .user-profile .up {
   font-size: 30px;
   margin-bottom: 20px;
@@ -76,12 +79,11 @@
 }
 
 @media (max-width: 738px) {
-  .user-profile .container {
-    flex-direction: column;
-    justify-content: center;
+  .user-profile .up {
+    font-size: 25px;
   }
 
-  .user-profile .container .info-sec {
-    flex-direction: column;
+  .user-profile span {
+    font-size: 12px;
   }
 }

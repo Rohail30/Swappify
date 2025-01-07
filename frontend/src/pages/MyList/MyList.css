@@ -223,21 +223,17 @@
 }
 
 @media (max-width: 738px) {
-  .mylist {
-    background-color: white;
-  }
-
   .mylist .container {
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
   }
 
-  .mylist .container .buttons {
-    flex-direction: column;
+  .mylist .info {
+    margin-bottom: 10px;
   }
 
-  .mylist .cards .card-container {
-    width: 100%;
+  .mylist .info h1 {
+    font-size: 25px;
   }
 }

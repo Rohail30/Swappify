@@ -182,3 +182,9 @@
 .wishlist .wishlistcard .button2 .delete .custom-icon {
   font-size: 20px;
 }
+
+@media (max-width: 738px) {
+  .wishlist .heading h1 {
+    font-size: 25px;
+  }
+}

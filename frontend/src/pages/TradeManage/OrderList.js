@@ -31,10 +31,6 @@ const OrderList = () => {
 
   return (
     <div className="order-list">
-      <div className="heading">
-        <span>Order List</span>
-      </div>
-
       <div className="orderpage-container">
         {/* <div className="order_id">Order-ID: {item._id}</div> */}
         <table>
@@ -48,11 +44,15 @@ const OrderList = () => {
             <p className="empty-text">No items yet! Add one now.</p>
           ) : (
             items.map((item) => (
-              <tr>
-                <td>{item._id}</td>
-                <td>{item.status}</td>
-                <td>{new Date(item.createdAt).toLocaleDateString()}</td>
-                <td>{new Date(item.createdAt).toLocaleTimeString()}</td>
+              <tr key={item._id}>
+                <td data-label="Order-ID">{item._id}</td>
+                <td data-label="Status">{item.status}</td>
+                <td data-label="Date">
+                  {new Date(item.createdAt).toLocaleDateString()}
+                </td>
+                <td data-label="Time">
+                  {new Date(item.createdAt).toLocaleTimeString()}
+                </td>
               </tr>
             ))
           )}
