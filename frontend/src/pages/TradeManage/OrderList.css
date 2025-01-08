@@ -72,10 +72,12 @@
   .order-list .orderpage-container table td {
     display: block;
     text-align: left;
-    padding: 10px;
+    padding-left: 100px;
     position: relative;
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    width: 230px;
   }
 
   .order-list .orderpage-container table td::before {
@@ -85,17 +87,5 @@
     font-weight: bold;
     color: #333;
     text-align: left;
-  }
-
-  .order-list .orderpage-container table th {
-    background-color: #18a661;
-    color: white;
-    text-align: left;
-  }
-
-  .order-list .orderpage-container table td {
-    text-align: left;
-    padding-left: 110px;
-    text-overflow: ellipsis;
   }
 }

@@ -45,11 +45,15 @@ const OrderList = () => {
             </thead>
             <tbody>
               {items.map((item) => (
-                <tr key={item._id}>
-                  <td>{item._id}</td>
-                  <td>{item.status}</td>
-                  <td>{new Date(item.createdAt).toLocaleDateString()}</td>
-                  <td>{new Date(item.createdAt).toLocaleTimeString()}</td>
+                <tr>
+                  <td data-label="Order-ID">{item._id}</td>
+                  <td data-label="Status">{item.status}</td>
+                  <td data-label="Date">
+                    {new Date(item.createdAt).toLocaleDateString()}
+                  </td>
+                  <td data-label="Time">
+                    {new Date(item.createdAt).toLocaleTimeString()}
+                  </td>
                 </tr>
               ))}
             </tbody>

@@ -272,20 +272,13 @@ const ItemList = () => {
                       </div>
                     </Link>
                   </div>
-                  {/* <Link to={`/detail-page/${item._id}`}>
-                                        <div className="button1">
-                                            <div className="view">View details</div>
-                                        </div>
-                                    </Link> */}
                   <div className="button2">
-                    <Link to="#">
-                      <div
-                        className="wish-list"
-                        onClick={() => addToWishlist(item._id)}
-                      >
-                        <FaRegHeart className="cust-i" />
-                      </div>
-                    </Link>
+                    <div
+                      className="wish-list"
+                      onClick={() => addToWishlist(item._id)}
+                    >
+                      <FaRegHeart className="cust-i" />
+                    </div>
                   </div>
                 </div>
               </div>

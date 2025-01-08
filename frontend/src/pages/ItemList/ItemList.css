@@ -162,16 +162,6 @@
   color: black;
 }
 
-@media (max-width: 738px) {
-  .itemlist {
-    background-color: #ffffff;
-  }
-
-  .itemlist.info {
-    width: 100%;
-  }
-}
-
 .itemlist .cards .card-container {
   width: 100%;
   gap: 25px;
@@ -335,11 +325,22 @@
 }
 
 @media (max-width: 738px) {
-  .itemlistcard {
-    background-color: #ffffff;
+  .itemlist {
+    flex-direction: column;
+    gap: 20px;
   }
 
-  .itemlistcard .info {
+  .itemlist .filter {
     width: 100%;
+  }
+
+  .itemlist .cards {
+    width: 100%;
+  }
+
+  .itemlist .cards .card-container {
+    gap: 25px;
+    justify-content: center;
+    align-items: center;
   }
 }
