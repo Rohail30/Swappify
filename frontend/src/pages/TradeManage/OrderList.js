@@ -45,7 +45,7 @@ const OrderList = () => {
             </thead>
             <tbody>
               {items.map((item) => (
-                <tr>
+                <tr key={item._id}>
                   <td data-label="Order-ID">{item._id}</td>
                   <td data-label="Status">{item.status}</td>
                   <td data-label="Date">
