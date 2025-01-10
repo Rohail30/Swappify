@@ -8,34 +8,35 @@ const ReceivedRequests = () => {
   const [items, setItems] = useState([]);
   const { currentUser } = useContext(AuthContext);
 
+  const fetchItems = async () => {
+    try {
+      const res = await apiRequest.get(`/api/trades`);
+
+      let filteredItems = res.data.trades;
+
+      const currentUserId = currentUser._id;
+      filteredItems = filteredItems.filter(
+        (item) =>
+          String(item.toUser._id) === String(currentUserId) &&
+          item.status === 'pending'
+      );
+
+      setItems(filteredItems || []);
+    } catch (error) {
+      console.error('Error fetching trades:', error);
+    }
+  };
+
   useEffect(() => {
-    const fetchItems = async () => {
-      try {
-        const res = await apiRequest.get(`/api/trades`);
-
-        let filteredItems = res.data.trades;
-
-        const currentUserId = currentUser._id;
-        filteredItems = filteredItems.filter(
-          (item) =>
-            String(item.toUser._id) === String(currentUserId) &&
-            item.status === 'pending'
-        );
-
-        setItems(filteredItems || []);
-      } catch (error) {
-        console.error('Error fetching trades:', error);
-      }
-    };
-
     fetchItems();
+    // eslint-disable-next-line
   }, [currentUser]);
 
   const handleAccept = async (tradeId) => {
     try {
       await apiRequest.put(`/api/trades/${tradeId}/accept`);
       alert('Trade accepted successfully!');
-      setItems(items.filter((item) => item._id !== tradeId));
+      fetchItems();
     } catch (error) {
       console.error('Error accepting trade:', error);
       alert('Failed to accept trade');
@@ -46,7 +47,7 @@ const ReceivedRequests = () => {
     try {
       await apiRequest.put(`/api/trades/${tradeId}/reject`);
       alert('Trade rejected successfully!');
-      setItems(items.filter((item) => item._id !== tradeId));
+      fetchItems();
     } catch (error) {
       console.error('Error rejecting trade:', error);
       alert('Failed to reject trade');
