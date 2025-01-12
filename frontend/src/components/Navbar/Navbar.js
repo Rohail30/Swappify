@@ -60,7 +60,7 @@ const Navbar = () => {
 
         <div className={open ? 'menu active' : 'menu'}>
           <Link to="/">Home</Link>
-          <Link to="/">Swap!</Link>
+          <Link to="/item-listing">Swap!</Link>
           {currentUser ? (
             <>
               <Link to="/profile" className="profile">
@@ -70,10 +70,10 @@ const Navbar = () => {
             </>
           ) : (
             <>
-              <a href="/login">Login</a>
-              <a href="/register" className="register">
+              <Link to="/login">Login</Link>
+              <Link to="/register" className="register">
                 Register
-              </a>
+              </Link>
             </>
           )}
         </div>
