@@ -1,5 +1,5 @@
 .wishlist {
-  height: 500px;
+  min-height: 450px;
   display: flex;
   align-items: center;
   flex-direction: column;

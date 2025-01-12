@@ -117,7 +117,9 @@ const Offer = () => {
             </h3>
           </div>
           <div className="button">
-            <div className="view">View Details</div>
+            <Link to={`/detail-page/${item._id}`} className="view">
+              View Details
+            </Link>
           </div>
         </div>
         <div className="mid">

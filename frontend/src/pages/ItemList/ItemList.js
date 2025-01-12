@@ -225,7 +225,7 @@ const ItemList = () => {
 
         <div className="card-container">
           {items.length === 0 ? (
-            <p className="empty-text">No items yet!</p>
+            <p className="empty-text">No Items to show</p>
           ) : (
             items.map((item) => (
               <div className="itemlistcard" key={item._id}>

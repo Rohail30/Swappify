@@ -57,7 +57,7 @@ const ReceivedRequests = () => {
   return (
     <div className="Received">
       {items.length === 0 ? (
-        <p className="empty-text">No items yet! Add one now.</p>
+        <p className="empty-text">No Received SentRequest</p>
       ) : (
         items.map((item) => (
           <div className="tradepage-container" key={item._id}>

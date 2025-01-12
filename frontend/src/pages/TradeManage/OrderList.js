@@ -32,7 +32,7 @@ const OrderList = () => {
     <div className="order-list">
       <div className="orderpage-container">
         {items.length === 0 ? (
-          <p className="empty-text">No items yet! Add one now.</p>
+          <p className="empty-text">Your Order List is empty</p>
         ) : (
           <table>
             <thead>

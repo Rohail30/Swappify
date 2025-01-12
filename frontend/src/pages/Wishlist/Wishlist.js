@@ -50,7 +50,7 @@ const Wishlist = () => {
       </div>
       <div className="card-container">
         {items.length === 0 ? (
-          <p className="empty-text">No items yet! Add one now.</p>
+          <p className="empty-text">Your Wishlist is Empty!</p>
         ) : (
           items.map((item) => (
             <div className="wishlistcard" key={item._id}>

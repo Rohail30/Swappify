@@ -5,6 +5,7 @@
   justify-content: flex-start;
   align-items: flex-start;
   border-radius: 10px;
+  min-height: 450px;
 }
 
 .mylist .container {
