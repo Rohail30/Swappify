@@ -423,9 +423,14 @@
 }
 
 @media (max-width: 738px) {
+  .offerpage {
+    width: 100%;
+  }
   .offerpage .offerpage-container {
     flex-direction: column;
     justify-content: center;
+    height: 800px;
+    gap: 20px;
   }
 
   .offerpage .offerpage-container .info-sec {

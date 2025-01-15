@@ -2,6 +2,7 @@ import './Sent.css';
 import apiRequest from '../../config/apiRequest';
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../context/AuthContext';
+import { GiCancel } from 'react-icons/gi';
 import { Link } from 'react-router-dom';
 
 const SentRequests = () => {
@@ -89,12 +90,20 @@ const SentRequests = () => {
                     <h1>{item.status}</h1>
                     {/* <div className="cancel">Cancel request </div> */}
                     {item.status === 'pending' && (
-                      <div
-                        className="cancel"
-                        onClick={() => handleCancel(item._id)}
-                      >
-                        Cancel
-                      </div>
+                      <>
+                        <div
+                          className="cancel"
+                          onClick={() => handleCancel(item._id)}
+                        >
+                          Cancel
+                        </div>
+                        <div
+                          className="cross"
+                          onClick={() => handleCancel(item._id)}
+                        >
+                          <GiCancel />
+                        </div>
+                      </>
                     )}
                   </div>
                 </div>

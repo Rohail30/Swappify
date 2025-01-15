@@ -197,10 +197,19 @@
 
 @media (max-width: 738px) {
   .detailPage {
-    background-color: #ffffff;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .detailPage .img-container {
+    width: 100%;
+  }
+  .detailPage .info {
+    width: 100%;
   }
 
-  .detailPage .info {
+  .detailPage .other {
     width: 100%;
   }
 }

@@ -7,11 +7,6 @@ const Footer = () => {
         <div className="copyright">
           <p>Copyright © Swappify 2024.</p>
         </div>
-        <div className="others">
-          <p>Careers</p>
-          <p>Terms & Conditions</p>
-          <p>Privacy Policy</p>
-        </div>
       </div>
     </div>
   );

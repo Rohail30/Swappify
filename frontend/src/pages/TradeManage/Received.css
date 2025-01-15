@@ -194,6 +194,20 @@
 }
 
 @media (max-width: 738px) {
+  .Received .header h1 {
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .Received .title h4 {
+    font-size: 8px;
+    font-weight: 500;
+  }
+
+  .Received .pricerange h3 {
+    font-size: 8px;
+  }
+
   .Received .tradepage-container .info-sec {
     flex-direction: column;
   }
@@ -207,14 +221,44 @@
   }
 
   .Received .tradepage-container {
-    height: 800px;
-    flex-direction: column;
-    gap: 50px;
+    height: 250px;
+    flex-direction: row;
+    width: 100%;
   }
 
   .Received .tradepage-container .mid-sec {
-    background-color: white;
+    background-color: none;
     padding: 10px;
     border-radius: 5px;
+  }
+
+  .Received .tradepage-container .mid-sec .actions {
+    gap: 5px;
+  }
+
+  .Received .tradepage-container .mid-sec .actions .offer-button {
+    width: 25px;
+    height: 10px;
+    font-size: 6px;
+  }
+
+  .Received .tradepage-container .requested-item {
+    width: 110px;
+    height: 220px;
+  }
+
+  .Received .tradepage-container .requested-item .button {
+    width: 90px;
+    height: 18px;
+  }
+
+  .Received .tradepage-container .offered-item {
+    width: 110px;
+    height: 220px;
+  }
+
+  .Received .tradepage-container .offered-item .remove-button {
+    width: 90px;
+    height: 18px;
   }
 }
