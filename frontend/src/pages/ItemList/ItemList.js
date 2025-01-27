@@ -115,7 +115,7 @@ const ItemList = () => {
 
   const addToWishlist = async (itemId) => {
     try {
-      await apiRequest.post('/api/wishlist', { itemId });
+      await apiRequest.post(`/api/wishlist/${itemId}`);
       alert('Item added to wishlist!');
     } catch (error) {
       alert('Item already in wishlist!');

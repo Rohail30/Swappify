@@ -9,7 +9,7 @@ const User = require('../models/UserModel');
 
 const addItemToWishlist = async (req, res) => {
     const userId = req.userId;
-    const { itemId } = req.body;
+    const itemId = req.params.itemId;
 
     if (!userId || !itemId) {
         return res.status(400).json({ error: true, message: 'User ID and Item ID are required' });

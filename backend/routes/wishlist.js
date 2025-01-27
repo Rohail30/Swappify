@@ -6,7 +6,7 @@ const verifyToken = require('../middleware/verifyToken');
 
 
 // @desc    Add item to wishlist
-router.post('/api/wishlist', verifyToken, addItemToWishlist);
+router.post('/api/wishlist/:itemId', verifyToken, addItemToWishlist);
 
 // @desc    Remove item from wishlist
 router.delete('/api/wishlist/:itemId', verifyToken, removeItemFromWishlist);
