@@ -211,7 +211,7 @@ const searchItems = async (req, res) => {
     }
 
     if (condition) {
-      query.condition = { $regex: condition, $options: 'i' };
+      query.condition = { $regex: condition };
     }
 
     if (priceMin || priceMax) {
