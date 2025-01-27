@@ -32,6 +32,7 @@ const addItemToWishlist = async (req, res) => {
 
         if (!wishlist) {
             wishlist = new Wishlist({ userId, items: [] });
+            await wishlist.save();
         }
 
         const isItemInWishlist = await Wishlist.findOne({ userId, 'items.itemId': itemId });
@@ -40,8 +41,7 @@ const addItemToWishlist = async (req, res) => {
             return res.status(400).json({ error: true, message: 'Item already in wishlist' });
         }
 
-        wishlist.items.push({ itemId });
-        await wishlist.save();
+        await Wishlist.updateOne({ userId }, { $push: { items: { itemId } } });
 
         return res.status(201).json({ error: false, message: 'Item added to wishlist' });
     }
@@ -79,7 +79,8 @@ const removeItemFromWishlist = async (req, res) => {
         let wishlist = await Wishlist.findOne({ userId });
 
         if (!wishlist) {
-            return res.status(404).json({ error: true, message: 'Wishlist not found' });
+            wishlist = new Wishlist({ userId, items: [] });
+            await wishlist.save();
         }
 
         const isItemInWishlist = await Wishlist.findOne({ userId, 'items.itemId': itemId });
