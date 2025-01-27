@@ -24,7 +24,7 @@ const addItem = async (req, res) => {
   }
 
   if (!req.file) {
-    return res.status(400).json({ error: true, message: 'Image is required' });
+    return res.status(400).json({ error: true, message: 'Image is required. Only jpeg, jpg & png files are allowed' });
   }
 
   try {

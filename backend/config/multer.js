@@ -27,7 +27,7 @@ const fileFilter = (req, file, cb) => {
         return cb(null, true);
     }
     else {
-        cb(new Error("Only jpeg, jpg & png files are allowed"), false);
+        return cb(null, false);
     }
 }
 
