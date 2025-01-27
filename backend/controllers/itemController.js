@@ -214,9 +214,12 @@ const searchItems = async (req, res) => {
       query.condition = { $regex: condition };
     }
 
-    if (priceMin || priceMax) {
-      query['price.min'] = { $gte: priceMin || 0 };
-      query['price.max'] = { $lte: priceMax || Infinity };
+    if (priceMin) {
+      query["price.min"] = { $gte: parseInt(priceMin) }
+    }
+
+    if (priceMax) {
+      query["price.max"] = { $lte: parseInt(priceMax) }
     }
 
     const items = await Item.find(query);
