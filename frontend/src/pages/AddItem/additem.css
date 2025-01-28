@@ -1,100 +1,100 @@
 .newItemPage {
-    height: 100%;
-    display: flex;
+  height: 100%;
+  display: flex;
+  margin-bottom: 50px;
 }
 
 .newItemPage .formContainer {
-    flex: 3;
-    height: 100%;
-    width: 60vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  flex: 3;
+  height: 100%;
+  width: 60vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .newItemPage .formContainer form {
-    width: 60%;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .newItemPage .formContainer form input {
-    padding: 15px;
-    border: 1px solid gray;
-    border-radius: 5px;
+  padding: 15px;
+  border: 1px solid gray;
+  border-radius: 5px;
 }
 
 .newItemPage .formContainer form textarea {
-    resize: vertical;
-    width: 100%;
-    height: 100px;
+  resize: vertical;
+  width: 100%;
+  height: 100px;
 }
 
 .newItemPage .formContainer form input,
 .newItemPage .formContainer form textarea,
 .newItemPage .formContainer form select {
-    /* padding: 15px; */
-    padding: 5px 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-    outline: none;
-    font-size: 16px;
+  /* padding: 15px; */
+  padding: 5px 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+  font-size: 16px;
 }
 
 .newItemPage .formContainer form button {
-    padding: 20px;
-    border-radius: 5px;
-    border: none;
-    background-color: #5d7080;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
+  padding: 20px;
+  border-radius: 5px;
+  border: none;
+  background-color: #5d7080;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .newItemPage .formContainer form button:hover {
-    background-color: #97D5C9;
+  background-color: #97d5c9;
 }
 
 .newItemPage .formContainer form span {
-    color: rgba(255, 0, 0, 0.591);
+  color: rgba(255, 0, 0, 0.591);
 }
 
 .newItemPage .formContainer form a {
-    font-size: 14px;
-    color: gray;
-    border-bottom: 1px solid gray;
-    width: max-content;
+  font-size: 14px;
+  color: gray;
+  border-bottom: 1px solid gray;
+  width: max-content;
 }
 
 .newItemPage .imgContainer {
-    flex: 2;
-    background-color: #ecfffd;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  flex: 2;
+  background-color: #ecfffd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .newItemPage .imgContainer img {
-    width: 100%;
+  width: 100%;
 }
 
 .newItemPage .imagePreview img {
-    width: 300px;
-    height: auto;
-    margin-left: 72px;
-    border: 2px solid #cccccc;
-    border-radius: 8px;
+  width: 300px;
+  height: auto;
+  margin-left: 72px;
+  border: 2px solid #cccccc;
+  border-radius: 8px;
 }
 
 @media (max-width: 738px) {
+  .newItemPage .formContainer form {
+    width: 80%;
+  }
 
-    .newItemPage .formContainer form {
-        width: 80%;
-    }
-
-    .newItemPage .imgContainer {
-        display: none;
-    }
+  .newItemPage .imgContainer {
+    display: none;
+  }
 }
