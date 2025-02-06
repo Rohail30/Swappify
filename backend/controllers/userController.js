@@ -68,20 +68,4 @@ const updateUser = async (req, res) => {
 }
 
 
-// @desc    Get all Users
-// @route   GET /api/users
-// @access  Public
-
-const getAllUsers = async (req, res) => {
-    try {
-        const users = await User.find();
-
-        return res.status(200).json({ error: false, users });
-    }
-    catch (error) {
-        return res.status(500).json({ error: true, message: error.message });
-    }
-}
-
-
-module.exports = { getUser, updateUser, getAllUsers };
+module.exports = { getUser, updateUser };
