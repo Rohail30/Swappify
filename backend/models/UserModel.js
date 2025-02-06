@@ -1,3 +1,4 @@
+const e = require("express");
 const mongoose = require("mongoose");
 
 const UserSchema = new mongoose.Schema(
@@ -24,6 +25,10 @@ const UserSchema = new mongoose.Schema(
          default: false,
       },
       isAdmin: {
+         type: Boolean,
+         default: false,
+      },
+      isBan: {
          type: Boolean,
          default: false,
       },
