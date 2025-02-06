@@ -1,7 +1,12 @@
 const User = require('../models/UserModel');
+const Item = require('../models/ItemModel');
+const Wishlist = require('../models/WishllistModel');
+const Trade = require("../models/tradeModel");
 const validator = require('validator');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const fs = require('fs');
+const path = require('path');
 
 
 // @desc    Login an Admin
@@ -74,5 +79,91 @@ const getAllUsers = async (req, res) => {
     }
 }
 
+//@desc     Get all items
+//@route    GET /api/admin/items
+//@access   Private
 
-module.exports = { login, logout, getAllUsers };
+const getAllItems = async (req, res) => {
+    try {
+        if (req.isAdmin == false) {
+            return res.status(403).json({ error: true, message: 'Not authorized as an admin' });
+        }
+        const items = await Item.find();
+
+        return res.status(200).json({ error: false, items });
+    } catch (error) {
+        return res.status(500).json({ error: true, message: error.message });
+    }
+};
+
+
+//@desc     Ban a user
+//@route    PUT /api/admin/ban/:id
+//@access   Private
+
+const banUser = async (req, res) => {
+    const { id } = req.params;
+
+    try {
+
+        if (req.isAdmin == false) {
+            return res.status(403).json({ error: true, message: 'Not authorized as an admin' });
+        }
+
+        const user = await User.findById(id);
+
+        if (!user) {
+            return res.status(400).json({ error: true, message: 'User not found' });
+        }
+
+        user.isBan = true;
+        await user.save();
+
+        await Item.deleteMany({ owner: id, status: 'available' });
+
+        await Trade.deleteMany({ $or: [{ fromUser: id }, { toUser: id }], status: 'pending' });
+
+        return res.status(200).json({ error: false, message: 'User banned successfully' });
+    }
+    catch (error) {
+        return res.status(500).json({ error: true, message: error.message });
+    }
+}
+
+
+//@desc     Delete an item
+//@route    DELETE /api/admin/item/:id
+//@access   Private
+
+const deleteItem = async (req, res) => {
+    const { id } = req.params;
+
+    try {
+
+        if (req.isAdmin == false) {
+            return res.status(403).json({ error: true, message: 'Not authorized as an admin' });
+        }
+
+        const item = await Item.findOne({ _id: id, status: 'available' });
+
+        if (!item) {
+            return res.status(404).json({ error: true, message: 'Item not found OR Item is already traded' });
+        }
+
+        await Item.findByIdAndDelete(id);
+        await Trade.deleteMany({ $or: [{ ItemOffered: id }, { ItemWanted: id }] });
+        await Wishlist.updateMany(
+            { 'items.itemId': id },
+            { $pull: { items: { itemId: id } } }
+        );
+
+        fs.unlinkSync(path.join(__dirname, `../public${item.image}`));
+
+        return res.status(200).json({ error: false, message: 'Item deleted successfully' });
+    } catch (error) {
+        return res.status(500).json({ error: true, message: error.message });
+    }
+
+}
+
+module.exports = { login, logout, getAllUsers, getAllItems, banUser, deleteItem };
