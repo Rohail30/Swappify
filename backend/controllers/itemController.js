@@ -170,13 +170,14 @@ const deleteItem = async (req, res) => {
   const id = req.params.id;
 
   try {
-    const item = await Item.findById(id);
+    const item = await Item.findOne({ _id: id, status: 'available' });
 
     if (!item) {
-      return res.status(404).json({ error: true, message: 'Item not found' });
+      return res.status(404).json({ error: true, message: 'Item not found OR Item is already traded' });
     }
 
     await Item.findByIdAndDelete(id);
+    await Trade.deleteMany({ $or: [{ ItemOffered: id }, { ItemWanted: id }] });
     await Wishlist.updateMany(
       { 'items.itemId': id },
       { $pull: { items: { itemId: id } } }
