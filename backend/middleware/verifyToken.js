@@ -12,6 +12,10 @@ const verifyToken = (req, res, next) => {
             return res.status(401).json({ error: true, message: 'User not authenticated' });
         }
 
+        if (data.isBan) {
+            return res.status(403).json({ error: true, message: 'User is banned' });
+        }
+
         req.userId = data.userId;
         req.isAdmin = data.isAdmin;
 
