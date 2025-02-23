@@ -82,7 +82,7 @@ const ReceivedRequests = () => {
                 </h4>
               </div>
               <div className="pricerange">
-                <h3>{`${item.ItemWanted.price.min} - ${item.ItemWanted.price.max}`}</h3>
+                <h3>{`${item.ItemWanted.price.min} Rs - ${item.ItemWanted.price.max} Rs`}</h3>
               </div>
               <div className="button">
                 <div className="view">View Details</div>
@@ -128,7 +128,7 @@ const ReceivedRequests = () => {
                 </h4>
               </div>
               <div className="pricerange">
-                <h3>{`${item.ItemOffered.price.min} - ${item.ItemOffered.price.max}`}</h3>
+                <h3>{`${item.ItemOffered.price.min} Rs - ${item.ItemOffered.price.max} Rs`}</h3>
               </div>
               <div className="remove-button">View Details</div>
             </div>
