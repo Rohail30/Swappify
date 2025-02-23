@@ -74,7 +74,7 @@ const Wishlist = () => {
                   <h2>{item.status}</h2>
                 </div>
                 <div className="price">
-                  <h2>{`Est. Value: ${item.price.min} - ${item.price.max}`}</h2>
+                  <h2>{`Est. Value Pkr: ${item.price.min} - ${item.price.max}`}</h2>
                 </div>
               </div>
               <div className="buttons">

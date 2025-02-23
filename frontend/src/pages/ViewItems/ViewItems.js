@@ -50,7 +50,7 @@ const ViewItems = () => {
                   <th>Condition</th>
                   <th>Category</th>
                   <th>Location</th>
-                  <th>Price</th>
+                  <th>Price (PKR)</th>
                   <th>Status</th>
                   <th>Date Added</th>
                   <th>Action</th>
@@ -64,8 +64,7 @@ const ViewItems = () => {
                     <td>{item.condition}</td>
                     <td>{item.category}</td>
                     <td>{item.location}</td>
-                    {/* <td>{item.price}</td> */}
-                    <td>{`$${item.price.min} - $${item.price.max}`}</td>
+                    <td>{`${item.price.min} - ${item.price.max}`}</td>
                     <td>{item.status}</td>
                     <td>{new Date(item.createdAt).toLocaleDateString()}</td>
                     <td>

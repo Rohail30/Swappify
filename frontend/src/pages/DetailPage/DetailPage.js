@@ -48,7 +48,7 @@ const DetailPage = () => {
           <div className="left">
             <div className="detail1">
               <h1>{item.name}</h1>
-              <h2>{`Est. Value: ${item.price.min} - ${item.price.max}`}</h2>
+              <h2>{`Est. Value in Pkr: ${item.price.min} - ${item.price.max}`}</h2>
             </div>
             <div className="icon">
               <FaLocationDot size={14} />

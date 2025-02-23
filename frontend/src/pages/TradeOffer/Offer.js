@@ -113,7 +113,7 @@ const Offer = () => {
                 : item.name}
             </h4>
             <h3>
-              ${item.price.min} - ${item.price.max}
+              {item.price.min} Rs - {item.price.max} Rs
             </h3>
           </div>
           <div className="button">
@@ -149,7 +149,7 @@ const Offer = () => {
                     : selectedItem.name}
                 </h4>
                 <h3>
-                  ${selectedItem.price.min} - ${selectedItem.price.max}
+                  {selectedItem.price.min} Rs - {selectedItem.price.max} Rs
                 </h3>
               </div>
               <div
