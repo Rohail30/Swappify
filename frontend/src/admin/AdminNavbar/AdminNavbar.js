@@ -26,9 +26,13 @@ const AdminNavbar = () => {
           &nbsp;
           <span>SWAPPIFY</span>
         </div>
-        <Link to="/admin/portal">
-          <h1>Dashboard</h1>
-        </Link>
+        {currentUser ? (
+          <Link to="/admin/portal">
+            <h1>Dashboard</h1>
+          </Link>
+        ) : (
+          <></>
+        )}
       </div>
       <div className="right">
         {currentUser ? (
