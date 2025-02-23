@@ -1,0 +1,59 @@
+.admin-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 50px;
+  padding-right: 50px;
+  width: 100%;
+  height: 80px;
+  margin-bottom: 50px;
+  background-color: #181818;
+}
+
+.admin-navbar h1 {
+  font-weight: bold;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  color: white;
+  cursor: pointer;
+}
+
+.admin-navbar .left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+
+.admin-navbar .left .logo img {
+  width: 30px;
+  height: 30px;
+}
+
+.admin-navbar .left .logo {
+  padding: 5px;
+  font-weight: bold;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  color: white;
+  border: 2px solid white;
+  border-top-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.admin-navbar .right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+.admin-navbar .right .log-out {
+  color: white;
+  font-size: 30px;
+  cursor: pointer;
+}

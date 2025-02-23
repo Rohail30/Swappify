@@ -1,0 +1,85 @@
+.admin-login {
+  margin-top: 50px;
+  width: 90%;
+  height: 70vh;
+  display: flex;
+  margin-bottom: 50px;
+}
+
+.admin-login .formContainer {
+  flex: 3;
+  width: 60%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-login .formContainer img {
+  width: 40px;
+  height: 40px;
+}
+
+.admin-login .formContainer form {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.admin-login .formContainer form input {
+  width: 100%;
+  padding: 20px;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+.admin-login .formContainer form button {
+  width: 100%;
+  padding: 20px;
+  border-radius: 5px;
+  border: none;
+  background-color: #5d7080;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.admin-login .formContainer form button:hover {
+  background-color: #97d5c9;
+}
+
+.admin-login .formContainer form span {
+  color: rgba(255, 0, 0, 0.591);
+}
+
+.admin-login .formContainer form a {
+  font-size: 14px;
+  color: gray;
+  border-bottom: 1px solid gray;
+  width: max-content;
+}
+
+.admin-login .imgContainer {
+  flex: 2;
+  background-color: #ecfffd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-login .imgContainer img {
+  width: 100%;
+}
+
+@media (max-width: 738px) {
+  .admin-login .formContainer form {
+    width: 80%;
+  }
+
+  .admin-login .imgContainer {
+    display: none;
+  }
+}

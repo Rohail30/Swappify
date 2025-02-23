@@ -104,6 +104,10 @@
     height: 40px;
   }
 
+  .Navbar .left {
+    margin-left: 30px;
+  }
+
   .Navbar .left a:not(.logo) {
     display: none;
   }

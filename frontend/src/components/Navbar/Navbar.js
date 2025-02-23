@@ -34,7 +34,7 @@ const Navbar = () => {
           {currentUser ? (
             <div className="user">
               <Link to="/profile" className="profile">
-                <button>Profile</button>
+                <button>{currentUser.name.split(' ')[0]}</button>
               </Link>
               <button onClick={handleLogout}>Logout</button>
             </div>

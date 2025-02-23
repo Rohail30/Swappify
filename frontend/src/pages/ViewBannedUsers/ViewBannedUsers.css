@@ -1,0 +1,77 @@
+.view-banned-users {
+  width: 100%;
+  height: 100%;
+}
+
+.view-banned-users h1 {
+  margin-left: 40px;
+}
+
+.view-banned-users .table {
+  padding: 40px;
+}
+
+.view-banned-users .table table {
+  border-left: none;
+  border-right: none;
+  border-collapse: collapse;
+  width: 95%;
+  overflow: hidden;
+}
+
+.view-banned-users .table table tr:nth-child(even) td {
+  background-color: #bdefe3;
+}
+
+.view-banned-users .table table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  color: white;
+  font-weight: 600;
+  background-color: #008080;
+  padding: 8px;
+}
+
+.view-banned-users .table table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+
+  border: none;
+}
+
+.view-banned-users .table .ban {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 22px;
+  border-radius: 50%;
+  transition: 0.2s;
+  width: 30px;
+  height: 30px;
+
+  background-color: gray;
+}
+
+.view-banned-users .table .ban:hover {
+  background-color: #f44336;
+}
+
+.view-banned-users .table .ban:hover::after {
+  content: 'Delete this item';
+  position: absolute;
+  font-size: 16px;
+  margin-bottom: 35px;
+  transform: translateY(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.view-banned-users .table .ban-i {
+  color: white;
+}

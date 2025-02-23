@@ -173,7 +173,10 @@ const deleteItem = async (req, res) => {
     const item = await Item.findOne({ _id: id, status: 'available' });
 
     if (!item) {
-      return res.status(404).json({ error: true, message: 'Item not found OR Item is already traded' });
+      return res.status(404).json({
+        error: true,
+        message: 'Item not found OR Item is already traded',
+      });
     }
 
     await Item.findByIdAndDelete(id);
@@ -199,7 +202,7 @@ const deleteItem = async (req, res) => {
 
 const getAllItems = async (req, res) => {
   try {
-    const items = await Item.find();
+    const items = await Item.find().populate('owner', 'name');
 
     return res.status(200).json({ error: false, items });
   } catch (error) {

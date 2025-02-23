@@ -1,10 +1,10 @@
-import './login.css';
+import './AdminLogin.css';
 import { useState, useContext } from 'react';
 import apiRequest from '../../config/apiRequest';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 
-const Login = () => {
+const AdminLogin = () => {
   const { updateUser } = useContext(AuthContext);
 
   const navigate = useNavigate();
@@ -18,13 +18,13 @@ const Login = () => {
 
     try {
       const body = { email, password };
-      const res = await apiRequest.post('/api/auth/login', body);
+      const res = await apiRequest.post('/api/admin/login', body);
 
       setError(null);
 
       updateUser(res.data.user);
 
-      navigate('/');
+      navigate('/admin/portal');
     } catch (error) {
       setError(
         error.response?.data?.message || 'An error occurred. Please try again.'
@@ -33,11 +33,12 @@ const Login = () => {
   };
 
   return (
-    <div className="login">
+    <div className="admin-login">
       <div className="formContainer">
         <form onSubmit={handleSubmit}>
-          <h1>Welcome Back</h1>
-
+          <h1>Swappify</h1>
+          <img src="/logo1.png" alt="" />
+          <h1>Admin Login</h1>
           <input
             type="email"
             placeholder="Email"
@@ -48,18 +49,12 @@ const Login = () => {
             placeholder="Password"
             onChange={(e) => setPassword(e.target.value)}
           />
-
           <button type="submit">Login</button>
           {error && <span>{error}</span>}
-          <Link to="/register">Don't have an account? Register</Link>
-          <Link to="/forget-password">Forgot Password? Reset Here</Link>
         </form>
-      </div>
-      <div className="imgContainer">
-        <img src="/bg.png" alt="" />
       </div>
     </div>
   );
 };
 
-export default Login;
+export default AdminLogin;

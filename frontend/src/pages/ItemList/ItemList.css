@@ -336,14 +336,23 @@
 @media (max-width: 738px) {
   .itemlist {
     flex-direction: column;
+    align-items: center;
     gap: 20px;
   }
 
   .itemlist .filter {
-    width: 100%;
+    width: 90%;
+  }
+
+  .itemlist .search {
+    width: 90%;
   }
 
   .itemlist .cards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     width: 100%;
   }
 

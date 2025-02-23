@@ -1,0 +1,67 @@
+.view-users {
+  width: 100%;
+  height: 100%;
+}
+
+.view-users h1 {
+  margin-left: 40px;
+}
+
+.view-users .table {
+  padding: 40px;
+}
+
+.view-users .table table {
+  border-left: none;
+  border-right: none;
+  border-collapse: collapse;
+  width: 95%;
+  overflow: hidden;
+}
+
+.view-users .table table tr:nth-child(even) td {
+  /* background: #e3e3e3; */
+  background-color: #bdefe3;
+}
+
+.view-users .table table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  color: white;
+  font-weight: 600;
+  background-color: #008080;
+  padding: 8px;
+}
+
+.view-users .table table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  border-left: none;
+  border-right: none;
+}
+
+.view-users .table .ban {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 22px;
+  border-radius: 50%;
+  transition: 0.2s;
+  width: 30px;
+  height: 30px;
+  /* background-color: #eceeef; */
+  background-color: gray;
+}
+
+.view-users .table .ban:hover {
+  background-color: #f44336;
+}
+
+.view-users .table .ban-i {
+  color: white;
+}
