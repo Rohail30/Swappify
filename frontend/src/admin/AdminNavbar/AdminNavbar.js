@@ -2,12 +2,13 @@ import './AdminNavbar.css';
 import { Link } from 'react-router-dom';
 import { MdLogout } from 'react-icons/md';
 import { AuthContext } from '../../context/AuthContext';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import apiRequest from '../../config/apiRequest';
 import { useNavigate } from 'react-router-dom';
 
 const AdminNavbar = () => {
   const navigate = useNavigate();
+  const location = window.location;
 
   const { currentUser, updateUser } = useContext(AuthContext);
 
@@ -17,6 +18,23 @@ const AdminNavbar = () => {
     updateUser(null);
     navigate('/admin');
   };
+
+  useEffect(() => {
+    if (currentUser && currentUser.isAdmin === false) {
+      updateUser(null);
+      localStorage.removeItem('user');
+      navigate('/admin');
+    }
+    else if (!currentUser) {
+      navigate('/admin');
+    }
+    else {
+      if (location.pathname === '/admin') {
+        navigate('/admin/portal');
+      }
+    }
+  }, [currentUser, navigate, updateUser, location]);
+
 
   return (
     <div className="admin-navbar">
