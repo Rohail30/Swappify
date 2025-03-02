@@ -21,7 +21,7 @@ const SentRequests = () => {
           (item) =>
             String(item.fromUser._id) === String(currentUserId) &&
             item.status === 'pending' &&
-            item.counterTrade === false
+            item.isCounterTrade === false
         );
 
         setItems(filteredItems || []);
