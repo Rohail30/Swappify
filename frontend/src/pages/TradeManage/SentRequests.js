@@ -20,7 +20,8 @@ const SentRequests = () => {
         filteredItems = filteredItems.filter(
           (item) =>
             String(item.fromUser._id) === String(currentUserId) &&
-            item.status === 'pending'
+            item.status === 'pending' &&
+            item.counterTrade === false
         );
 
         setItems(filteredItems || []);
@@ -50,45 +51,49 @@ const SentRequests = () => {
       ) : (
         items.map((item) => (
           <div className="tradepage-container" key={item._id}>
-            {/* <div className="order_id">Order-ID: {item._id}</div> */}
             <div className="item-cards">
-              <div className="requested-item ">
-                <div className="header">
-                  <h1>Item Wanted</h1>
-                </div>
-                <div className="image">
-                  <img
-                    src={`http://localhost:5000${item.ItemWanted.image}`}
-                    alt="Item"
-                  />
-                </div>
-                <div className="line-container">
-                  <div className="line"></div>
-                </div>
-                <div className="title">
-                  <h4>
-                    {item.ItemWanted.name.length > 16
-                      ? item.ItemWanted.name.slice(0, 16) + '...'
-                      : item.ItemWanted.name}
-                  </h4>
-                </div>
-                <div className="pricerange">
-                  <h3>{`${item.ItemWanted.price.min} Rs - ${item.ItemWanted.price.max} Rs`}</h3>
-                </div>
-                <div className="button">
-                  <Link
-                    to={`/detail-page/${item.ItemWanted._id}`}
-                    className="view"
-                  >
-                    View Details
-                  </Link>
-                </div>
-              </div>
+
+              {Array.isArray(item.ItemWanted)
+                ? item.ItemWanted.map((wantedItem) => (
+                  <div className="requested-item" key={wantedItem._id}>
+                    <div className="header">
+                      <h1>Item Wanted</h1>
+                    </div>
+                    <div className="image">
+                      <img
+                        src={`http://localhost:5000${wantedItem.image}`}
+                        alt="Item"
+                      />
+                    </div>
+                    <div className="line-container">
+                      <div className="line"></div>
+                    </div>
+                    <div className="title">
+                      <h4>
+                        {wantedItem.name.length > 16
+                          ? wantedItem.name.slice(0, 16) + '...'
+                          : wantedItem.name}
+                      </h4>
+                    </div>
+                    <div className="pricerange">
+                      <h3>{`${wantedItem.price.min} Rs - ${wantedItem.price.max} Rs`}</h3>
+                    </div>
+                    <div className="button">
+                      <Link
+                        to={`/detail-page/${wantedItem._id}`}
+                        className="view"
+                      >
+                        View Details
+                      </Link>
+                    </div>
+                  </div>
+                ))
+                : null}
+
               <div>
                 <div className="mid-sec">
                   <div className="status">
                     <h1>{item.status}</h1>
-                    {/* <div className="cancel">Cancel request </div> */}
                     {item.status === 'pending' && (
                       <>
                         <div
@@ -108,6 +113,7 @@ const SentRequests = () => {
                   </div>
                 </div>
               </div>
+
               <div className="offered-item">
                 <div className="header">
                   <h1>Item Offered</h1>
