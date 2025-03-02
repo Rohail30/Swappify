@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const { offerTrade, getTrades, acceptTrade, rejectTrade, cancelTrade } = require('../controllers/tradeController');
+const { offerTrade, getTrades, acceptTrade, rejectTrade, cancelTrade, counterTrade } = require('../controllers/tradeController');
 const verifyToken = require('../middleware/verifyToken');
 
 
@@ -21,5 +21,8 @@ router.put('/api/trades/:id/reject', verifyToken, rejectTrade);
 
 // @desc    Cancel trade
 router.put('/api/trades/:id/cancel', verifyToken, cancelTrade);
+
+// @desc    Counter trade offer
+router.post("/api/trades/:id/counter", verifyToken, counterTrade);
 
 module.exports = router;

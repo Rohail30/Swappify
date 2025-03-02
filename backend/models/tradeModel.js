@@ -17,17 +17,21 @@ const TradeSchema = new mongoose.Schema(
             ref: "Item",
             required: true,
         },
-        ItemWanted: {
+        ItemWanted: [{
             type: mongoose.Schema.Types.ObjectId,
             ref: "Item",
             required: true,
-        },
+        }],
         status: {
             type: String,
             enum: ["pending", "accepted", "rejected", "cancelled"],
             required: true,
             default: "pending",
         },
+        isCounterTrade: {
+            type: Boolean,
+            default: false,
+        }
     }, { timestamps: true }
 );
 
