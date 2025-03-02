@@ -10,81 +10,46 @@ const offerTrade = async (req, res) => {
   const { fromUser, toUser, ItemOffered, ItemWanted } = req.body;
 
   if (!fromUser || !toUser || !ItemOffered || !ItemWanted) {
-    return res
-      .status(400)
-      .json({ error: true, message: 'Please enter all the required fields' });
+    return res.status(400).json({ error: true, message: 'Please enter all the required fields' });
   }
 
   const usersExist = await User.find({ _id: { $in: [fromUser, toUser] } });
+
   if (usersExist.length !== 2) {
-    return res
-      .status(400)
-      .json({ error: true, message: 'One or more users do not exist' });
+    return res.status(400).json({ error: true, message: 'One or more users do not exist' });
   }
 
   const itemsExist = await Item.find({
     _id: { $in: [ItemOffered, ItemWanted] },
   });
+
   if (itemsExist.length !== 2) {
-    return res
-      .status(400)
-      .json({ error: true, message: 'One or more items do not exist' });
+    return res.status(400).json({ error: true, message: 'One or more items do not exist' });
   }
 
-  const itemStatus = await Item.find({
-    _id: { $in: [ItemOffered, ItemWanted] },
-    status: 'traded',
-  });
+  const itemStatus = await Item.find({ _id: { $in: [ItemOffered, ItemWanted] }, status: 'traded' });
+
   if (itemStatus.length > 0) {
-    return res
-      .status(400)
-      .json({ error: true, message: 'One or more items are already traded' });
+    return res.status(400).json({ error: true, message: 'One or more items are already traded' });
   }
 
-  const tradeExists = await Trade.find({
-    fromUser,
-    toUser,
-    ItemOffered,
-    ItemWanted,
-    status: 'pending',
-  });
+  const tradeExists = await Trade.find({ fromUser, toUser, ItemOffered, ItemWanted, status: 'pending', });
+
   if (tradeExists.length > 0) {
-    return res
-      .status(400)
-      .json({ error: true, message: 'Trade already exists' });
+    return res.status(400).json({ error: true, message: 'Trade already exists' });
   }
 
-  const reverseTradeExists = await Trade.find({
-    fromUser: toUser,
-    toUser: fromUser,
-    ItemOffered: ItemWanted,
-    ItemWanted: ItemOffered,
-    status: 'pending',
-  });
+  const reverseTradeExists = await Trade.find({ fromUser: toUser, toUser: fromUser, ItemOffered: ItemWanted, ItemWanted: ItemOffered, status: 'pending' });
+
   if (reverseTradeExists.length > 0) {
-    return res
-      .status(400)
-      .json({
-        error: true,
-        message: 'Same trade already offered by the other user',
-      });
+    return res.status(400).json({ error: true, message: 'Same trade already offered by the other user' });
   }
 
   try {
-    const newTrade = await Trade.create({
-      fromUser,
-      toUser,
-      ItemOffered,
-      ItemWanted,
-    });
+    const newTrade = await Trade.create({ fromUser, toUser, ItemOffered, ItemWanted });
 
-    return res
-      .status(200)
-      .json({
-        error: false,
-        message: 'Trade offered successfully',
-        trade: newTrade,
-      });
+    return res.status(200).json({ error: false, message: 'Trade offered successfully', trade: newTrade });
+
   } catch (error) {
     return res.status(500).json({ error: true, message: error.message });
   }
@@ -121,9 +86,7 @@ const acceptTrade = async (req, res) => {
   const tradeId = req.params.id;
 
   if (!tradeId) {
-    return res
-      .status(400)
-      .json({ error: true, message: 'Trade ID is required' });
+    return res.status(400).json({ error: true, message: 'Trade ID is required' });
   }
 
   try {
@@ -134,15 +97,11 @@ const acceptTrade = async (req, res) => {
     }
 
     if (trade.toUser != userId) {
-      return res
-        .status(401)
-        .json({ error: true, message: 'Not authorized to accept this trade' });
+      return res.status(401).json({ error: true, message: 'Not authorized to accept this trade' });
     }
 
     if (trade.status !== 'pending') {
-      return res
-        .status(400)
-        .json({ error: true, message: 'Trade is not pending' });
+      return res.status(400).json({ error: true, message: 'Trade is not pending' });
     }
 
     await Trade.findByIdAndUpdate(tradeId, { status: 'accepted' });
@@ -161,9 +120,7 @@ const acceptTrade = async (req, res) => {
       { status: 'cancelled' }
     );
 
-    return res
-      .status(200)
-      .json({ error: false, message: 'Trade accepted successfully' });
+    return res.status(200).json({ error: false, message: 'Trade accepted successfully' });
   } catch (error) {
     return res.status(500).json({ error: true, message: error.message });
   }
@@ -178,9 +135,7 @@ const rejectTrade = async (req, res) => {
   const tradeId = req.params.id;
 
   if (!tradeId) {
-    return res
-      .status(400)
-      .json({ error: true, message: 'Trade ID is required' });
+    return res.status(400).json({ error: true, message: 'Trade ID is required' });
   }
 
   try {
@@ -191,21 +146,17 @@ const rejectTrade = async (req, res) => {
     }
 
     if (trade.toUser != userId) {
-      return res
-        .status(401)
-        .json({ error: true, message: 'Not authorized to reject this trade' });
+      return res.status(401).json({ error: true, message: 'Not authorized to reject this trade' });
     }
 
     if (trade.status !== 'pending') {
-      return res
-        .status(400)
-        .json({ error: true, message: 'Trade is not pending' });
+      return res.status(400).json({ error: true, message: 'Trade is not pending' });
     }
 
     await Trade.findByIdAndUpdate(tradeId, { status: 'rejected' });
-    return res
-      .status(200)
-      .json({ error: false, message: 'Trade rejected successfully' });
+
+    return res.status(200).json({ error: false, message: 'Trade rejected successfully' });
+
   } catch (error) {
     return res.status(500).json({ error: true, message: error.message });
   }
@@ -220,9 +171,7 @@ const cancelTrade = async (req, res) => {
   const tradeId = req.params.id;
 
   if (!tradeId) {
-    return res
-      .status(400)
-      .json({ error: true, message: 'Trade ID is required' });
+    return res.status(400).json({ error: true, message: 'Trade ID is required' });
   }
 
   try {
@@ -233,30 +182,20 @@ const cancelTrade = async (req, res) => {
     }
 
     if (trade.fromUser != userId) {
-      return res
-        .status(401)
-        .json({ error: true, message: 'Not authorized to cancel this trade' });
+      return res.status(401).json({ error: true, message: 'Not authorized to cancel this trade' });
     }
 
     if (trade.status !== 'pending') {
-      return res
-        .status(400)
-        .json({ error: true, message: 'Trade is not pending' });
+      return res.status(400).json({ error: true, message: 'Trade is not pending' });
     }
 
     await Trade.findByIdAndUpdate(tradeId, { status: 'cancelled' });
-    return res
-      .status(200)
-      .json({ error: false, message: 'Trade cancelled successfully' });
+
+    return res.status(200).json({ error: false, message: 'Trade cancelled successfully' });
+
   } catch (error) {
     return res.status(500).json({ error: true, message: error.message });
   }
 };
 
-module.exports = {
-  offerTrade,
-  getTrades,
-  acceptTrade,
-  rejectTrade,
-  cancelTrade,
-};
+module.exports = { offerTrade, getTrades, acceptTrade, rejectTrade, cancelTrade };

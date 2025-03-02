@@ -8,50 +8,22 @@ const path = require('path');
 // @access  Private
 
 const addItem = async (req, res) => {
-  const {
-    name,
-    description,
-    owner,
-    condition,
-    category,
-    location,
-    priceMin,
-    priceMax,
-  } = req.body;
+  const { name, description, owner, condition, category, location, priceMin, priceMax } = req.body;
 
-  if (
-    !name ||
-    !description ||
-    !owner ||
-    !condition ||
-    !category ||
-    !location ||
-    !priceMin ||
-    !priceMax
-  ) {
-    return res
-      .status(400)
-      .json({ error: true, message: 'Please enter all the required fields' });
+  if (!name || !description || !owner || !condition || !category || !location || !priceMin || !priceMax) {
+    return res.status(400).json({ error: true, message: 'Please enter all the required fields' });
   }
 
   if (Number(priceMin) < 0 || Number(priceMax) < 0) {
-    return res
-      .status(400)
-      .json({ error: true, message: 'Price cannot be negative' });
+    return res.status(400).json({ error: true, message: 'Price cannot be negative' });
   }
 
   if (Number(priceMin) > Number(priceMax)) {
-    return res.status(400).json({
-      error: true,
-      message: 'Minimum price cannot be greater than maximum price',
-    });
+    return res.status(400).json({ error: true, message: 'Minimum price cannot be greater than maximum price' });
   }
 
   if (!req.file) {
-    return res.status(400).json({
-      error: true,
-      message: 'Image is required. Only jpeg, jpg & png files are allowed',
-    });
+    return res.status(400).json({ error: true, message: 'Image is required. Only jpeg, jpg & png files are allowed' });
   }
 
   try {
@@ -69,11 +41,7 @@ const addItem = async (req, res) => {
       },
     });
 
-    return res.status(200).json({
-      error: false,
-      message: 'Item added successfully',
-      item: newItem,
-    });
+    return res.status(200).json({ error: false, message: 'Item added successfully', item: newItem });
   } catch (error) {
     return res.status(500).json({ error: true, message: error.message });
   }
@@ -84,43 +52,18 @@ const addItem = async (req, res) => {
 // @access  Private
 
 const updateItem = async (req, res) => {
-  const {
-    name,
-    description,
-    owner,
-    condition,
-    category,
-    location,
-    priceMin,
-    priceMax,
-  } = req.body;
+  const { name, description, owner, condition, category, location, priceMin, priceMax } = req.body;
 
-  if (
-    !name ||
-    !description ||
-    !owner ||
-    !condition ||
-    !category ||
-    !location ||
-    !priceMin ||
-    !priceMax
-  ) {
-    return res
-      .status(400)
-      .json({ error: true, message: 'Please enter all the required fields' });
+  if (!name || !description || !owner || !condition || !category || !location || !priceMin || !priceMax) {
+    return res.status(400).json({ error: true, message: 'Please enter all the required fields' });
   }
 
   if (Number(priceMin) < 0 || Number(priceMax) < 0) {
-    return res
-      .status(400)
-      .json({ error: true, message: 'Price cannot be negative' });
+    return res.status(400).json({ error: true, message: 'Price cannot be negative' });
   }
 
   if (Number(priceMin) > Number(priceMax)) {
-    return res.status(400).json({
-      error: true,
-      message: 'Minimum price cannot be greater than maximum price',
-    });
+    return res.status(400).json({ error: true, message: 'Minimum price cannot be greater than maximum price' });
   }
 
   try {
@@ -152,11 +95,7 @@ const updateItem = async (req, res) => {
       { new: true }
     );
 
-    return res.status(200).json({
-      error: false,
-      message: 'Item updated successfully',
-      updatedItem,
-    });
+    return res.status(200).json({ error: false, message: 'Item updated successfully', updatedItem });
   } catch (error) {
     return res.status(500).json({ error: true, message: error.message });
   }
@@ -173,10 +112,7 @@ const deleteItem = async (req, res) => {
     const item = await Item.findOne({ _id: id, status: 'available' });
 
     if (!item) {
-      return res.status(404).json({
-        error: true,
-        message: 'Item not found OR Item is already traded',
-      });
+      return res.status(404).json({ error: true, message: 'Item not found OR Item is already traded' });
     }
 
     await Item.findByIdAndDelete(id);
@@ -188,9 +124,7 @@ const deleteItem = async (req, res) => {
 
     fs.unlinkSync(path.join(__dirname, `../public${item.image}`));
 
-    return res
-      .status(200)
-      .json({ error: false, message: 'Item deleted successfully' });
+    return res.status(200).json({ error: false, message: 'Item deleted successfully' });
   } catch (error) {
     return res.status(500).json({ error: true, message: error.message });
   }
@@ -284,12 +218,4 @@ const searchItems = async (req, res) => {
   }
 };
 
-module.exports = {
-  addItem,
-  updateItem,
-  deleteItem,
-  getAllItems,
-  getItem,
-  getItemsByUser,
-  searchItems,
-};
+module.exports = { addItem, updateItem, deleteItem, getAllItems, getItem, getItemsByUser, searchItems };

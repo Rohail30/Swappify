@@ -1,15 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const {
-  addItem,
-  updateItem,
-  deleteItem,
-  getAllItems,
-  getItem,
-  getItemsByUser,
-  searchItems,
-} = require('../controllers/itemController');
+const { addItem, updateItem, deleteItem, getAllItems, getItem, getItemsByUser, searchItems } = require('../controllers/itemController');
 const upload = require('../config/multer');
 const verifyToken = require('../middleware/verifyToken');
 
