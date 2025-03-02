@@ -21,6 +21,7 @@
 | PUT    | /api/trades/:id/accept          | Accept a trade by ID  | `tradeId`          | N/A                                   |
 | PUT    | /api/trades/:id/reject          | Reject a trade by ID  | `tradeId`          | N/A                                   |
 | PUT    | /api/trades/:id/cancel          | Cancel a trade by ID  | `tradeId`          | N/A                                   |
+| POST   | /api/trades/:id/counters        | Counter a trade by ID | `tradeId`          | `ItemOffered`, `ItemWanted`           |
 | POST   | /api/admin/login                | Login as admin         | N/A                | `email`, `password`                   |
 | GET    | /api/admin/logout               | Logout as admin        | N/A                | N/A                                   |
 | GET    | /api/admin/users                | Retrieve all users    | N/A                | N/A                                   |
