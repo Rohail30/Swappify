@@ -130,6 +130,35 @@ const banUser = async (req, res) => {
     }
 }
 
+//@desc     Unban a user
+//@route    PUT /api/admin/unban/:id
+//@access   Private
+
+const unbanUser = async (req, res) => {
+    const { id } = req.params;
+
+    try {
+
+        if (req.isAdmin == false) {
+            return res.status(403).json({ error: true, message: 'Not authorized as an admin' });
+        }
+
+        const user = await User.findById(id);
+
+        if (!user) {
+            return res.status(400).json({ error: true, message: 'User not found' });
+        }
+
+        user.isBan = false;
+        await user.save();
+
+        return res.status(200).json({ error: false, message: 'User unbanned successfully' });
+    }
+    catch (error) {
+        return res.status(500).json({ error: true, message: error.message });
+    }
+}
+
 
 //@desc     Delete an item
 //@route    DELETE /api/admin/item/:id
@@ -166,4 +195,4 @@ const deleteItem = async (req, res) => {
 
 }
 
-module.exports = { login, logout, getAllUsers, getAllItems, banUser, deleteItem };
+module.exports = { login, logout, getAllUsers, getAllItems, banUser, unbanUser, deleteItem };
