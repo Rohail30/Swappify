@@ -319,4 +319,4 @@ const counterTrade = async (req, res) => {
   }
 };
 
-module.exports = { offerTrade, getTrades, acceptTrade, rejectTrade, cancelTrade, counterTrade };
+module.exports = { offerTrade, getTrades, acceptTrade, rejectTrade, cancelTrade, counterTrade, getTradeById };

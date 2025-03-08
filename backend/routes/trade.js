@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const { offerTrade, getTrades, acceptTrade, rejectTrade, cancelTrade, counterTrade } = require('../controllers/tradeController');
+const { offerTrade, getTrades, acceptTrade, rejectTrade, cancelTrade, counterTrade, getTradeById } = require('../controllers/tradeController');
 const verifyToken = require('../middleware/verifyToken');
 
 
