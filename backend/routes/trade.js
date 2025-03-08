@@ -8,6 +8,8 @@ const verifyToken = require('../middleware/verifyToken');
 // @desc    Offer new trade
 router.post('/api/trades', verifyToken, offerTrade);
 
+// @desc    Get trade by ID
+router.get('/api/trades/:id', verifyToken, getTradeById);
 
 // @desc    Get all trades
 router.get('/api/trades', verifyToken, getTrades);

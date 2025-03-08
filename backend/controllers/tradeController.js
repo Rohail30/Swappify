@@ -94,6 +94,35 @@ const getTrades = async (req, res) => {
   }
 };
 
+
+// @desc   Get trade by ID
+// @route  GET /api/trades/:id
+// @access Private
+
+const getTradeById = async (req, res) => {
+  const tradeId = req.params.id;
+
+  if (!tradeId) {
+    return res.status(400).json({ error: true, message: 'Trade ID is required' });
+  }
+
+  try {
+    const trade = await Trade.findById(tradeId)
+      .populate('ItemOffered')
+      .populate('ItemWanted');
+
+    if (!trade) {
+      return res.status(404).json({ error: true, message: 'Trade not found' });
+    }
+
+    return res.status(200).json({ error: false, trade });
+
+  } catch (error) {
+    return res.status(500).json({ error: true, message: error.message });
+  }
+};
+
+
 // @desc    Accept trade
 // @route   PUT /api/trades/:id/accept
 // @access  Private
