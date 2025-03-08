@@ -153,18 +153,16 @@ const Dashboard = () => {
                 </div>
               </div>
               <div className="l2b1-lay2">
-                <div className="ban">
-                  <div className="icon-b">
-                    <Link to="/admin/items">
+                <Link to="/admin/banned">
+                  <div className="ban">
+                    <div className="icon-b">
                       <ImBlocked className="custom-b" />
-                    </Link>
-                  </div>
-                  <div className="text">
-                    <Link to="/admin/banned">
+                    </div>
+                    <div className="text">
                       <p>Banned Users</p>
-                    </Link>
+                    </div>
                   </div>
-                </div>
+                </Link>
               </div>
             </div>
             <div className="l2-box2">

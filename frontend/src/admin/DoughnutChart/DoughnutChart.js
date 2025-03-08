@@ -10,6 +10,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 const DoughnutChart = () => {
   const [itemCount, setItemCount] = useState(0);
   const [userCount, setUserCount] = useState(0);
+  const [banUserCount, setbanUserCount] = useState(0);
 
   useEffect(() => {
     const fetchItemDetails = async () => {
@@ -36,14 +37,27 @@ const DoughnutChart = () => {
     fetchUserDetails();
   });
 
+  useEffect(() => {
+    const fetchUserDetails = async () => {
+      try {
+        const res = await apiRequest.get('/api/admin/users');
+        const filteredUsers = res.data.users.filter((user) => user.isBan);
+        setbanUserCount(filteredUsers.length);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchUserDetails();
+  });
+
   const data = {
-    labels: ['Items', 'Users'],
+    labels: ['Items', 'Users', 'Banned Users'],
     datasets: [
       {
         label: 'Total',
-        data: [itemCount, userCount],
-        backgroundColor: ['#73B5EB', '#112299'],
-        borderColor: ['#73B5EB', '#112299'],
+        data: [itemCount, userCount, banUserCount],
+        backgroundColor: ['#73B5EB', '#112299', '#1891FF'],
+        borderColor: ['#73B5EB', '#112299', '#1891FF'],
         borderWidth: 1,
       },
     ],

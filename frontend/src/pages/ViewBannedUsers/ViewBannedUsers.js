@@ -8,18 +8,42 @@ import { useContext } from 'react';
 const ViewBannedUsers = () => {
   const { currentUser } = useContext(AuthContext);
   const [users, setUsers] = useState([]);
+  const [itemCount, setItemCount] = useState({});
 
   useEffect(() => {
     const fetchUserDetails = async () => {
       try {
         const res = await apiRequest.get('/api/admin/users');
-        setUsers(res.data.users);
+        const filteredUsers = res.data.users.filter((user) => user.isBan);
+
+        setUsers(filteredUsers);
       } catch (error) {
         console.log(error);
       }
     };
     fetchUserDetails();
   });
+
+  useEffect(() => {
+    const fetchUserItems = async () => {
+      try {
+        const userItemCounts = {};
+
+        for (const user of users) {
+          const res = await apiRequest.get(`/api/items/user/${user._id}`);
+          userItemCounts[user._id] = res.data.items.length;
+        }
+
+        setItemCount(userItemCounts);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    if (users.length > 0) {
+      fetchUserItems();
+    }
+  }, [users]);
 
   const handleBan = async (id) => {
     const confirmDelete = window.confirm(
@@ -58,7 +82,7 @@ const ViewBannedUsers = () => {
                     <td>{user.name}</td>
                     <td>{user.mobile}</td>
                     <td>{user.email}</td>
-                    <td>23</td>
+                    <td>{itemCount[user._id] ?? 'Loading...'}</td>
                     <td>
                       <div className="ban" onClick={() => handleBan(user._id)}>
                         <MdBlock className="ban-i" />

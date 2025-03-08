@@ -3,6 +3,7 @@ import { AiOutlineSwap } from 'react-icons/ai';
 import apiRequest from '../../config/apiRequest';
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../context/AuthContext';
+import { Link } from 'react-router-dom';
 
 const ReceivedRequests = () => {
   const [items, setItems] = useState([]);
@@ -62,58 +63,67 @@ const ReceivedRequests = () => {
       ) : (
         items.map((item) => (
           <div className="tradepage-container" key={item._id}>
-
             {Array.isArray(item.ItemWanted)
               ? item.ItemWanted.map((wantedItem) => (
-                <div className="requested-item" key={wantedItem._id}>
-                  <div className="header">
-                    <h1>Item Wanted</h1>
-                  </div>
-                  <div className="image">
-                    <img
-                      src={`http://localhost:5000${wantedItem.image}`}
-                      alt="Item"
-                    />
-                  </div>
-                  <div className="line-container">
-                    <div className="line"></div>
-                  </div>
-                  <div className="title">
-                    <h4>
-                      {wantedItem.name.length > 16
-                        ? wantedItem.name.slice(0, 16) + '...'
-                        : wantedItem.name}
-                    </h4>
-                  </div>
-                  <div className="pricerange">
-                    <h3>{`${wantedItem.price.min} Rs - ${wantedItem.price.max} Rs`}</h3>
-                  </div>
-                  <div className="button">
-                    <div className="view">View Details</div>
-                  </div>
-                </div>
-              ))
-              : null}
+                  <>
+                    <div className="requested-item" key={wantedItem._id}>
+                      <div className="header">
+                        <h1>Item Wanted</h1>
+                      </div>
+                      <div className="image">
+                        <img
+                          src={`http://localhost:5000${wantedItem.image}`}
+                          alt="Item"
+                        />
+                      </div>
+                      <div className="line-container">
+                        <div className="line"></div>
+                      </div>
+                      <div className="title">
+                        <h4>
+                          {wantedItem.name.length > 16
+                            ? wantedItem.name.slice(0, 16) + '...'
+                            : wantedItem.name}
+                        </h4>
+                      </div>
+                      <div className="pricerange">
+                        <h3>{`${wantedItem.price.min} Rs - ${wantedItem.price.max} Rs`}</h3>
+                      </div>
+                      <div className="button">
+                        <Link to={`/trade-offer/${item.ItemWanted._id}`}>
+                          <div className="view">View Details</div>
+                        </Link>
+                      </div>
+                    </div>
 
-            <div>
-              <div className="mid-sec">
-                <div className="actions">
-                  <div
-                    className="offer-button"
-                    onClick={() => handleAccept(item._id)}
-                  >
-                    <h4>Accept</h4>
-                  </div>
-                  <AiOutlineSwap />
-                  <div
-                    className="offer-button"
-                    onClick={() => handleReject(item._id)}
-                  >
-                    <h4>Reject</h4>
-                  </div>
-                </div>
-              </div>
-            </div>
+                    <div>
+                      <div className="mid-sec">
+                        <div className="actions">
+                          <div
+                            className="offer-button"
+                            onClick={() => handleAccept(item._id)}
+                          >
+                            <h4>Accept</h4>
+                          </div>
+                          <AiOutlineSwap />
+                          <div
+                            className="offer-button"
+                            onClick={() => handleReject(item._id)}
+                          >
+                            <h4>Reject</h4>
+                          </div>
+                          <AiOutlineSwap />
+                          <div className="offer-button">
+                            <Link to={`/counter-offer/${item._id}`}>
+                              <h4>Counter Offer</h4>
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </>
+                ))
+              : null}
             <div className="offered-item">
               <div className="header">
                 <h1>Item Offered</h1>

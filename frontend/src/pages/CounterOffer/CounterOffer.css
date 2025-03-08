@@ -1,0 +1,453 @@
+.counter-offer-page {
+  margin-top: 20px;
+  margin-bottom: 50px;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  min-height: 100vh;
+}
+
+/*  
+  
+  
+  ---------------------------Item-Requested CSS--------------------------- 
+  
+  
+  
+  */
+
+.counter-offer-page .offerpage-container {
+  width: 100%;
+  height: 400px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: aliceblue;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.counter-offer-page .offerpage-container .offer-item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  width: 250px;
+  height: 320px;
+  gap: 18px;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.counter-offer-page .offer-item .line-container {
+  display: flex;
+  justify-content: center;
+  background-color: #006a4e;
+  width: 90%;
+}
+
+.counter-offer-page .offer-item .line-container .line {
+  width: 100%;
+  height: 1px;
+  background-color: #cccccc;
+}
+
+.counter-offer-page .offerpage-container .offer-item .image {
+  max-width: 200px;
+  height: 150px;
+}
+
+.counter-offer-page .offerpage-container .offer-item .image img {
+  width: 100%;
+  height: 100%;
+}
+
+.counter-offer-page .offerpage-container .offer-item h4 {
+  text-align: center;
+}
+
+.counter-offer-page .offerpage-container .offer-item h3 {
+  text-align: center;
+  font-size: 16px;
+  color: gray;
+}
+
+.counter-offer-page .offerpage-container .offer-item .button {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 160px;
+  height: 30px;
+  color: white;
+  border-radius: 10px;
+  transition: 0.3s;
+  background-color: #18a661;
+}
+
+.counter-offer-page .offerpage-container .offer-item .button a {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+
+/*  
+  
+  
+  ---------------------------offer-button CSS--------------------------- 
+  
+  
+  
+  */
+
+.counter-offer-page .offerpage-container .mid {
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.counter-offer-page .offerpage-container .offer-button {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  border-radius: 15px;
+  width: 150px;
+  height: 50px;
+  transition: 0.3s;
+  background-color: #18a661;
+}
+
+.counter-offer-page .offerpage-container .offer-button:hover {
+  background-color: #006a4e;
+}
+
+.counter-offer-page .offerpage-container .trade-msg {
+  text-align: center;
+}
+
+/*  
+  
+  
+  ---------------------------Item offering CSS--------------------------- 
+  
+  
+  
+  */
+
+.counter-offer-page .offerpage-container .item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  width: 280px;
+  height: 340px;
+  gap: 18px;
+  overflow: auto;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #cccccc;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.counter-offer-page .offerpage-container .item .selected-item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  width: 190px;
+  height: 300px;
+  gap: 15px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.counter-offer-page .offerpage-container .item .image {
+  width: 160px;
+  height: 150px;
+}
+
+.counter-offer-page .offerpage-container .item .image img {
+  width: 100%;
+  height: 100%;
+}
+
+.counter-offer-page .item .line-container {
+  display: flex;
+  justify-content: center;
+  background-color: #006a4e;
+  width: 90%;
+}
+
+.counter-offer-page .item .line-container .line {
+  width: 100%;
+  height: 1px;
+  background-color: #cccccc;
+}
+
+.counter-offer-page .item h4 {
+  text-align: center;
+}
+
+.counter-offer-page .item h3 {
+  text-align: center;
+  font-size: 16px;
+  color: gray;
+}
+
+.counter-offer-page .offerpage-container .item .image {
+  max-width: 200px;
+  height: 150px;
+}
+
+.counter-offer-page .offerpage-container .item .remove-button {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 30px;
+  color: white;
+  border-radius: 10px;
+  transition: 0.3s;
+  background-color: #18a661;
+}
+
+.counter-offer-page .offerpage-container .item .remove-button:hover {
+  background-color: #006a4e;
+}
+
+.counter-offer-page .offerpage-container .item .image .cust-i {
+  color: black;
+  width: 100%;
+  height: 100%;
+}
+
+.counter-offer-page .offerpage-container .item .dsp-msg h2 {
+  font-size: 20px;
+  color: black;
+  text-align: center;
+}
+
+#user-info-heading {
+  margin-bottom: 30px;
+}
+
+.counter-offer-page h1 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: black;
+}
+
+.counter-offer-page .offerpage-container .button {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 40px;
+  color: white;
+  border-radius: 20px;
+  transition: 0.3s;
+  background-color: #18a661;
+}
+
+.counter-offer-page .offerpage-container .button:hover {
+  background-color: #006a4e;
+}
+
+/*  
+  
+  
+  ---------------------------List Cards CSS--------------------------- 
+  
+  
+  
+  */
+
+.your-list {
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: aliceblue;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.your-list .info {
+  margin-top: 40px;
+  width: 100%;
+  text-align: center;
+}
+
+.your-list .cards {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.your-list .cards .card-container {
+  width: 76%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 20px;
+}
+
+.your-list h1 {
+  font-size: 34px;
+  color: black;
+}
+
+.counter-offer-page .offer-card {
+  margin-top: 40px;
+  width: 250px;
+  height: 330px;
+  border-radius: 20px;
+  /* overflow: hidden; */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  background-color: #ffffff;
+}
+
+.counter-offer-page .offer-card .image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 200px;
+}
+
+.counter-offer-page .offer-card .image-container .image {
+  max-width: 220px;
+  height: 180px;
+}
+
+.counter-offer-page .offer-card .image-container .image img {
+  width: 100%;
+  height: 100%;
+}
+
+.counter-offer-page .offer-card .line-container {
+  display: flex;
+  justify-content: center;
+}
+
+.counter-offer-page .offer-card .line-container .line {
+  width: 90%;
+  height: 1px;
+  background-color: #cccccc;
+}
+
+.counter-offer-page .offer-card .title {
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.counter-offer-page .offer-card .title h1 {
+  margin: 0;
+  padding: 0;
+  font-size: 18px;
+}
+
+.counter-offer-page .offer-card .status {
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+
+.counter-offer-page .offer-card .status h2 {
+  color: gray;
+  margin: 0;
+  padding: 0;
+  font-size: 15px;
+}
+
+.counter-offer-page .offer-card .buttons {
+  gap: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  /* margin: 20px; */
+  font-size: small;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.counter-offer-page .offer-card .button1 {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 30px;
+  color: white;
+  border-radius: 20px;
+  transition: 0.3s;
+  background-color: #18a661;
+}
+
+.counter-offer-page .offer-card .button1:hover {
+  background-color: #006a4e;
+}
+
+.counter-offer-page .offer-card .button2 {
+  gap: 10px;
+  color: white;
+  display: flex;
+  flex-direction: row;
+}
+
+.counter-offer-page .offer-card .button2 .cust-i {
+  font-size: 18px;
+}
+
+.counter-offer-page .offer-card .button2 .edit {
+  color: white;
+  cursor: pointer;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 30px;
+  transition: 0.3s;
+  background-color: #18a661;
+}
+
+.counter-offer-page .offer-card .button2 .edit:hover {
+  background-color: #006a4e;
+}
+
+@media (max-width: 738px) {
+  .counter-offer-page {
+    width: 100%;
+  }
+  .counter-offer-page .offerpage-container {
+    flex-direction: column;
+    justify-content: center;
+    height: 800px;
+    gap: 20px;
+  }
+
+  .counter-offer-page .offerpage-container .info-sec {
+    flex-direction: column;
+  }
+}

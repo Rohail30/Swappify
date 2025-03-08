@@ -22,7 +22,11 @@ const Sidebar = ({ setActivePage }) => {
         </h1>
         <h1 onClick={() => setActivePage('TradeManage')}>
           <MdOutlineSettings />
-          &nbsp; Trade Management
+          &nbsp; Trade
+        </h1>
+        <h1 onClick={() => setActivePage('TradeManage')}>
+          <MdOutlineSettings />
+          &nbsp; Advance Trade
         </h1>
       </div>
     </div>
