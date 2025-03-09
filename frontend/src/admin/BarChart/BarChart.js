@@ -32,9 +32,9 @@ const BarChart = () => {
         const counts = Object.values(locationCounts);
 
         const backgroundColors = locations.map(
-          () => 'rgba(151, 213, 200, 0.6)'
+          () => 'rgba(114, 180, 236, 0.6)'
         );
-        const borderColors = locations.map(() => 'rgba(151, 213, 200, 1)');
+        const borderColors = locations.map(() => 'rgba(9, 136, 254, 0.6)');
 
         setChartData({
           labels: locations,

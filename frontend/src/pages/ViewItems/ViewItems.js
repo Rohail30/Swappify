@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import apiRequest from '../../config/apiRequest';
 import { AuthContext } from '../../context/AuthContext';
 import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 
 const ViewItems = () => {
   const { currentUser } = useContext(AuthContext);
@@ -59,7 +60,9 @@ const ViewItems = () => {
               <tbody>
                 {items.map((item) => (
                   <tr>
-                    <td>{item.name}</td>
+                    <td>
+                      <Link to={`/detail-page/${item._id}`}>{item.name}</Link>
+                    </td>
                     <td>{item.owner.name}</td>
                     <td>{item.condition}</td>
                     <td>{item.category}</td>

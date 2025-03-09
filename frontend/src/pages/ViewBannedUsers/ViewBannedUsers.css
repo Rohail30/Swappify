@@ -56,11 +56,11 @@
 }
 
 .view-banned-users .table .ban:hover {
-  background-color: #f44336;
+  background-color: #18a661;
 }
 
 .view-banned-users .table .ban:hover::after {
-  content: 'Delete this item';
+  content: 'unban this user';
   position: absolute;
   font-size: 16px;
   margin-bottom: 35px;

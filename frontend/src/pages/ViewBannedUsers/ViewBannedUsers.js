@@ -1,9 +1,10 @@
 import './ViewBannedUsers.css';
-import { MdBlock } from 'react-icons/md';
+import { CgLockUnlock } from 'react-icons/cg';
 import { useEffect, useState } from 'react';
 import apiRequest from '../../config/apiRequest';
 import { AuthContext } from '../../context/AuthContext';
 import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 
 const ViewBannedUsers = () => {
   const { currentUser } = useContext(AuthContext);
@@ -46,13 +47,11 @@ const ViewBannedUsers = () => {
   }, [users]);
 
   const handleBan = async (id) => {
-    const confirmDelete = window.confirm(
-      'Do you really want to delete this item?'
-    );
+    const confirmDelete = window.confirm('Do you want to unban this user?');
 
     if (confirmDelete) {
       try {
-        await apiRequest.put(`/api/admin/ban/${id}`);
+        await apiRequest.put(`/api/admin/unban/${id}`);
         setUsers(users.filter((user) => user._id !== id));
       } catch (error) {
         console.log(error);
@@ -79,13 +78,15 @@ const ViewBannedUsers = () => {
               <tbody>
                 {users.map((user) => (
                   <tr>
-                    <td>{user.name}</td>
+                    <td>
+                      <Link to={`/user/${user._id}`}>{user.name}</Link>
+                    </td>
                     <td>{user.mobile}</td>
                     <td>{user.email}</td>
                     <td>{itemCount[user._id] ?? 'Loading...'}</td>
                     <td>
                       <div className="ban" onClick={() => handleBan(user._id)}>
-                        <MdBlock className="ban-i" />
+                        <CgLockUnlock className="ban-i" />
                       </div>
                     </td>
                   </tr>

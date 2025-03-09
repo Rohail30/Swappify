@@ -28,7 +28,6 @@ const TradeManage = () => {
             Sent
           </h1>
         </div>
-
         <div className="head">
           <h1
             className={activePage === 'order-list' ? 'active' : ''}

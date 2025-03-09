@@ -2,7 +2,8 @@ import './Sidebar.css';
 import { CgProfile } from 'react-icons/cg';
 import { FaRegHeart } from 'react-icons/fa';
 import { FaList } from 'react-icons/fa';
-import { MdOutlineSettings } from 'react-icons/md';
+import { FaExchangeAlt } from 'react-icons/fa';
+import { FaInfinity } from 'react-icons/fa6';
 
 const Sidebar = ({ setActivePage }) => {
   return (
@@ -21,11 +22,11 @@ const Sidebar = ({ setActivePage }) => {
           &nbsp; WishList
         </h1>
         <h1 onClick={() => setActivePage('TradeManage')}>
-          <MdOutlineSettings />
+          <FaExchangeAlt />
           &nbsp; Trade
         </h1>
-        <h1 onClick={() => setActivePage('TradeManage')}>
-          <MdOutlineSettings />
+        <h1 onClick={() => setActivePage('AdvanceTrade')}>
+          <FaInfinity />
           &nbsp; Advance Trade
         </h1>
       </div>

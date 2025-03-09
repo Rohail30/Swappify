@@ -3,7 +3,7 @@ import apiRequest from '../../config/apiRequest';
 import { CiImageOn } from 'react-icons/ci';
 import { GiConfirmed } from 'react-icons/gi';
 import { useEffect, useState, useContext } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 
 const CounterOffer = () => {
@@ -13,6 +13,7 @@ const CounterOffer = () => {
   const [tradeMessage, setTradeMessage] = useState('');
   const { id } = useParams();
   const { currentUser } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const evaluateTrade = (itemsOffered, itemWanted) => {
     if (!itemsOffered.length || !itemWanted) return '';
@@ -94,6 +95,7 @@ const CounterOffer = () => {
         alert('Trade offered successfully!');
         setSelectedItems([]);
         setTradeMessage('');
+        navigate('/');
       } else {
         alert(res.data.message || 'Trade failed.');
       }
@@ -163,8 +165,8 @@ const CounterOffer = () => {
                 </div>
                 <div className="dsp-msg">
                   <h4>
-                    {selected.name.length > 25
-                      ? selected.name.slice(0, 25) + '...'
+                    {selected.name.length > 12
+                      ? selected.name.slice(0, 12) + '...'
                       : selected.name}
                   </h4>
                   <h3>
@@ -180,12 +182,12 @@ const CounterOffer = () => {
               </div>
             ))
           ) : (
-            <>
-              <div className="image">
+            <div className="dsp-item">
+              <div className="dsp-image">
                 <CiImageOn className="cust-i" />
               </div>
               <div className="line-container">
-                <div className="line" style={{ background: 'black' }}></div>
+                <div className="line"></div>
               </div>
               <div className="dsp-msg">
                 <h2>
@@ -193,7 +195,7 @@ const CounterOffer = () => {
                   offer
                 </h2>
               </div>
-            </>
+            </div>
           )}
         </div>
       </div>

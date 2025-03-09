@@ -5,7 +5,7 @@ import MyList from '../MyList/MyList';
 import Wishlist from '../Wishlist/Wishlist';
 import TradeManage from '../TradeManage/TradeManage';
 import './profile.css';
-import OrderList from '../TradeManage/OrderList';
+import AdvanceTrade from '../AdvanceTrade/AdvanceTrade';
 
 const ProfilePage = () => {
   const [activePage, setActivePage] = useState('UserProfile');
@@ -20,7 +20,7 @@ const ProfilePage = () => {
         {activePage === 'MyList' && <MyList />}
         {activePage === 'Wishlist' && <Wishlist />}
         {activePage === 'TradeManage' && <TradeManage />}
-        {activePage === 'OrderList' && <OrderList />}
+        {activePage === 'AdvanceTrade' && <AdvanceTrade />}
       </div>
     </div>
   );

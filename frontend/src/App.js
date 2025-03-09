@@ -27,6 +27,7 @@ import ViewUsers from './pages/ViewUsers/ViewUsers';
 import ViewItems from './pages/ViewItems/ViewItems';
 import ViewBannedUsers from './pages/ViewBannedUsers/ViewBannedUsers';
 import CounterOffer from './pages/CounterOffer/CounterOffer';
+import AdvanceTrade from './pages/AdvanceTrade/AdvanceTrade';
 
 function App() {
   const location = useLocation();
@@ -63,6 +64,7 @@ function App() {
             <Route exact path="/trade-offer/:id" element={<Offer />} />
             <Route exact path="/counter-offer/:id" element={<CounterOffer />} />
             <Route exact path="/trade-manage" element={<TradeManage />} />
+            <Route exact path="/advance-trade" element={<AdvanceTrade />} />
             <Route
               exact
               path="/trade-manage/rec"

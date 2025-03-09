@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import apiRequest from '../../config/apiRequest';
 import { AuthContext } from '../../context/AuthContext';
 import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 
 const ViewUsers = () => {
   const { currentUser } = useContext(AuthContext);
@@ -78,7 +79,9 @@ const ViewUsers = () => {
               <tbody>
                 {users.map((user) => (
                   <tr>
-                    <td>{user.name}</td>
+                    <td>
+                      <Link to={`/user/${user._id}`}>{user.name}</Link>
+                    </td>
                     <td>{user.mobile}</td>
                     <td>{user.email}</td>
                     <td>{itemCount[user._id] ?? 'Loading...'}</td>
