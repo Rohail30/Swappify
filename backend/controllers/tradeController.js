@@ -48,11 +48,11 @@ const offerTrade = async (req, res) => {
     fromUser,
     toUser,
     ItemOffered,
-    ItemWanted: { $all: ItemWantedArray, $size: ItemWantedArray.length },
+    ItemWanted: { $all: ItemWantedArray },
     status: 'pending',
   });
 
-  if (tradeExists.length > 0) {
+  if (tradeExists.some(x => x.ItemWanted.length === ItemWantedArray.length)) {
     return res.status(400).json({ error: true, message: 'Trade already exists' });
   }
 
@@ -294,20 +294,6 @@ const counterTrade = async (req, res) => {
       return res.status(400).json({ error: true, message: "One or more items are already traded" });
     }
 
-    const reverseTradeExists = await Trade.find({
-      fromUser: trade.toUser,
-      toUser: trade.fromUser,
-      ItemOffered: ItemWanted[0],
-      ItemWanted: [ItemOffered],
-      status: "pending"
-    });
-
-    if (reverseTradeExists.length > 0) {
-      return res.status(400).json({ error: true, message: "Same trade already offered by the other user" });
-    }
-
-    await Trade.findByIdAndUpdate(tradeId, { status: "cancelled" });
-
     const counterTrade = await Trade.create({
       fromUser: userId,
       toUser: trade.fromUser,
@@ -315,6 +301,8 @@ const counterTrade = async (req, res) => {
       ItemWanted,
       isCounterTrade: true
     });
+
+    await Trade.findByIdAndUpdate(tradeId, { status: "cancelled" });
 
     return res.status(200).json({ error: false, message: "Counter trade sent successfully", trade: counterTrade });
 
