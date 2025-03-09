@@ -123,6 +123,11 @@ const banUser = async (req, res) => {
 
         await Trade.deleteMany({ $or: [{ fromUser: id }, { toUser: id }], status: 'pending' });
 
+        await Wishlist.updateMany(
+            { 'items.userId': id },
+            { $pull: { items: { userId: id } } }
+        );
+
         return res.status(200).json({ error: false, message: 'User banned successfully' });
     }
     catch (error) {

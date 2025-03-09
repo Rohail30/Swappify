@@ -273,6 +273,10 @@ const counterTrade = async (req, res) => {
       return res.status(401).json({ error: true, message: "Not authorized to counter this trade" });
     }
 
+    if (ItemWanted.length === 1 && trade.ItemOffered.toString() === ItemWanted[0]) {
+      return res.status(400).json({ error: true, message: "Single item trade cannot be countered with the same item" });
+    }
+
     const itemOwnership = await Item.find({
       $or: [
         { _id: ItemOffered, owner: trade.toUser },
