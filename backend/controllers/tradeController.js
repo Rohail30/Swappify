@@ -294,6 +294,25 @@ const counterTrade = async (req, res) => {
       return res.status(400).json({ error: true, message: "One or more items are already traded" });
     }
 
+    console.log("Old Trade ==>", trade);
+    console.log("Item Offered ==>", ItemOffered._id);
+    console.log("Item Wanted ==>", ItemWanted[0]);
+
+    if (ItemWanted.length === 1) {
+
+      const existingTrade = await Trade.findOne({
+        fromUser: userId,
+        toUser: trade.fromUser,
+        ItemOffered,
+        ItemWanted: { $all: ItemWanted },
+        status: "pending",
+      });
+
+      if (existingTrade) {
+        return res.status(400).json({ error: true, message: "Trade already exists" });
+      }
+    }
+
     const counterTrade = await Trade.create({
       fromUser: userId,
       toUser: trade.fromUser,
