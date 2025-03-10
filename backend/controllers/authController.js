@@ -45,9 +45,12 @@ const register = async (req, res) => {
 
         const verificationToken = await VerificationToken.create({ userId: user._id, token: jwt.sign({ userId: user._id }, process.env.JWT_SECRET) });
 
-        const emailText = `<a href="http://localhost:5000/api/auth/verify/${user._id}/${verificationToken.token}">Click here to verify your account</a>`;
+        const data = {
+            email: user.email,
+            url: `http://localhost:5000/api/auth/verify/${user._id}/${verificationToken.token}`
+        }
 
-        sendMail(email, 'Swappify Account Verification', emailText);
+        sendMail('accountVerification', data);
 
         return res.status(200).json({ error: false, message: 'User registered successfully. Please verify your email' });
     }
