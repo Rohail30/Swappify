@@ -43,12 +43,12 @@
 }
 
 .mylist .cards .card-container {
-  width: 100%;
+  max-width: 700px;
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
   flex-direction: row;
 }
 

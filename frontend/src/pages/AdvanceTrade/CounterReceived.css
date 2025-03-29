@@ -9,21 +9,63 @@
   min-height: 450px;
 }
 
+.CounterReceived .main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.CounterReceived span {
+  font-size: 16px;
+}
+
+.wanted-items-slider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.slider-button {
+  font-size: 24px;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background-color: white;
+  transition: 0.3s;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.slider-button:hover {
+  color: gray;
+}
+
+.prev-wanted {
+  left: -30px;
+}
+
+.next-wanted {
+  right: -30px;
+}
+
 .CounterReceived .header h1 {
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 600;
   margin: 0;
   padding: 0;
 }
 
 .CounterReceived .title h4 {
-  font-size: 12px;
+  font-size: 15px;
   margin: 0;
   padding: 0;
 }
 
 .CounterReceived .pricerange h3 {
-  font-size: 10px;
+  font-size: 12px;
   margin: 0;
   padding: 0;
   color: gray;
@@ -31,10 +73,10 @@
 
 .CounterReceived .tradepage-container {
   width: 100%;
-  min-height: 300px;
+  height: 320px;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
   background-color: aliceblue;
   padding: 10px;
@@ -44,11 +86,11 @@
 .CounterReceived .tradepage-container .item-cards {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
-  max-width: 330px;
-  min-height: 200px;
-  flex-wrap: wrap;
+  width: 220px;
+  height: 280px;
+  overflow: hidden;
   gap: 15px;
 }
 
@@ -57,8 +99,8 @@
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  width: 150px;
-  height: 190px;
+  width: 190px;
+  height: 260px;
   gap: 8px;
   padding: 20px;
   border-radius: 10px;
@@ -80,12 +122,13 @@
 }
 
 .CounterReceived .tradepage-container .requested-item .image {
-  max-width: 50px;
-  height: 50px;
+  max-width: 200px;
+  height: 100px;
 }
 
 .CounterReceived .tradepage-container .requested-item .image img {
   width: 100%;
+  height: 100%;
 }
 
 .CounterReceived .tradepage-container .requested-item .button {
@@ -93,8 +136,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100px;
-  height: 20px;
+  width: 130px;
+  height: 25px;
   font-size: 12px;
   color: white;
   border-radius: 20px;
@@ -139,6 +182,7 @@
   padding: 20px;
   border-radius: 10px;
   background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .CounterReceived .tradepage-container .offered-item .image {

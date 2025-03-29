@@ -7,7 +7,7 @@ const AdvanceTrade = () => {
   const [activePage, setActivePage] = useState('received');
 
   return (
-    <div className="trade-manage">
+    <div className="advance-manage">
       <h1>Advance Trade</h1>
       <div className="top">
         <div className="head">

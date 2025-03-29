@@ -4,10 +4,13 @@ import apiRequest from '../../config/apiRequest';
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import { Link } from 'react-router-dom';
+import { MdOutlineNavigateNext } from 'react-icons/md';
+import { GrFormPrevious } from 'react-icons/gr';
 
 const CounterReceived = () => {
   const [items, setItems] = useState([]);
   const { currentUser } = useContext(AuthContext);
+  const [wantedSlide, setWantedSlide] = useState(0);
 
   const fetchItems = async () => {
     try {
@@ -61,89 +64,115 @@ const CounterReceived = () => {
       {items.length === 0 ? (
         <p className="empty-text">No Received SentRequest</p>
       ) : (
-        items.map((item) => (
-          <div className="tradepage-container" key={item._id}>
-            <div className="offered-item">
-              <div className="header">
-                <h1>Item Offered</h1>
-              </div>
-              <div className="image">
-                <img
-                  src={`http://localhost:5000${item.ItemOffered.image}`}
-                  alt="Item"
-                />
-              </div>
-              <div className="line-container">
-                <div className="line"></div>
-              </div>
-              <div className="title">
-                <h4>
-                  {item.ItemOffered.name.length > 10
-                    ? item.ItemOffered.name.slice(0, 10) + '...'
-                    : item.ItemOffered.name}
-                </h4>
-              </div>
-              <div className="pricerange">
-                <h3>{`${item.ItemOffered.price.min} Rs - ${item.ItemOffered.price.max} Rs`}</h3>
-              </div>
-              <div className="remove-button">View Details</div>
-            </div>
-            <div className="mid-sec">
-              <div className="actions">
-                <div
-                  className="offer-button"
-                  onClick={() => handleAccept(item._id)}
-                >
-                  <h4>Accept</h4>
+        items.map((item) => {
+          const totalWanted = item.ItemWanted.length;
+
+          const nextWantedSlide = () => {
+            setWantedSlide((prev) => (prev + 1) % totalWanted);
+          };
+
+          const prevWantedSlide = () => {
+            setWantedSlide((prev) => (prev - 1 + totalWanted) % totalWanted);
+          };
+
+          return (
+            <div className="main">
+              <span>
+                <b>Order ID:</b> {item._id}
+              </span>
+              <div className="tradepage-container" key={item._id}>
+                <div className="offered-item">
+                  <div className="header">
+                    <h1>Item Offered</h1>
+                  </div>
+                  <div className="image">
+                    <img
+                      src={`http://localhost:5000${item.ItemOffered.image}`}
+                      alt="Item"
+                    />
+                  </div>
+                  <div className="line-container">
+                    <div className="line"></div>
+                  </div>
+                  <div className="title">
+                    <h4>
+                      {item.ItemOffered.name.length > 16
+                        ? item.ItemOffered.name.slice(0, 16) + '...'
+                        : item.ItemOffered.name}
+                    </h4>
+                  </div>
+                  <div className="pricerange">
+                    <h3>{`${item.ItemOffered.price.min} Rs - ${item.ItemOffered.price.max} Rs`}</h3>
+                  </div>
+                  <Link to={`/detail-page/${item.ItemOffered._id}`}>
+                    <div className="remove-button">View Details</div>
+                  </Link>
                 </div>
-                <AiOutlineSwap />
-                <div
-                  className="offer-button"
-                  onClick={() => handleReject(item._id)}
-                >
-                  <h4>Reject</h4>
+                <div className="mid-sec">
+                  <div className="actions">
+                    <div
+                      className="offer-button"
+                      onClick={() => handleAccept(item._id)}
+                    >
+                      <h4>Accept</h4>
+                    </div>
+                    <AiOutlineSwap />
+                    <div
+                      className="offer-button"
+                      onClick={() => handleReject(item._id)}
+                    >
+                      <h4>Reject</h4>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <div className="item-cards">
-              {Array.isArray(item.ItemWanted)
-                ? item.ItemWanted.map((wantedItem) => (
-                    <>
-                      <div className="requested-item" key={wantedItem._id}>
-                        <div className="header">
-                          <h1>Item Wanted</h1>
-                        </div>
-                        <div className="image">
-                          <img
-                            src={`http://localhost:5000${wantedItem.image}`}
-                            alt="Item"
-                          />
-                        </div>
-                        <div className="line-container">
-                          <div className="line"></div>
-                        </div>
-                        <div className="title">
-                          <h4>
-                            {wantedItem.name.length > 16
-                              ? wantedItem.name.slice(0, 16) + '...'
-                              : wantedItem.name}
-                          </h4>
-                        </div>
-                        <div className="pricerange">
-                          <h3>{`${wantedItem.price.min} Rs - ${wantedItem.price.max} Rs`}</h3>
-                        </div>
-                        <div className="button">
-                          <Link to={`/trade-offer/${item.ItemWanted._id}`}>
-                            <div className="view">View Details</div>
-                          </Link>
-                        </div>
+                <div className="wanted-items-slider">
+                  <GrFormPrevious
+                    onClick={prevWantedSlide}
+                    className="slider-button prev-wanted"
+                  />
+                  <div className="item-cards">
+                    <div className="requested-item">
+                      <div className="header">
+                        <h1>Item Wanted</h1>
                       </div>
-                    </>
-                  ))
-                : null}
+                      <div className="image">
+                        <img
+                          src={`http://localhost:5000${item.ItemWanted[wantedSlide].image}`}
+                          alt="Item"
+                        />
+                      </div>
+                      <div className="line-container">
+                        <div className="line"></div>
+                      </div>
+                      <div className="title">
+                        <h4>
+                          {item.ItemWanted[wantedSlide].name.length > 16
+                            ? item.ItemWanted[wantedSlide].name.slice(0, 16) +
+                              '...'
+                            : item.ItemWanted[wantedSlide].name}
+                        </h4>
+                      </div>
+                      <div className="pricerange">
+                        <h3>{`${item.ItemWanted[wantedSlide].price.min} Rs - ${item.ItemWanted[wantedSlide].price.max} Rs`}</h3>
+                      </div>
+
+                      <Link
+                        to={`/detail-page/${item.ItemWanted[wantedSlide]._id}`}
+                        className="view"
+                      >
+                        <div className="button">View Details</div>
+                      </Link>
+                    </div>
+                  </div>
+                  <MdOutlineNavigateNext
+                    onClick={nextWantedSlide}
+                    className="slider-button next-wanted"
+                  />
+                </div>
+              </div>
             </div>
-          </div>
-        ))
+          );
+        })
       )}
     </div>
   );

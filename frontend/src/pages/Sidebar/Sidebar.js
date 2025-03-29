@@ -4,6 +4,7 @@ import { FaRegHeart } from 'react-icons/fa';
 import { FaList } from 'react-icons/fa';
 import { FaExchangeAlt } from 'react-icons/fa';
 import { FaInfinity } from 'react-icons/fa6';
+import { MdOutlineHistory } from 'react-icons/md';
 
 const Sidebar = ({ setActivePage }) => {
   return (
@@ -28,6 +29,10 @@ const Sidebar = ({ setActivePage }) => {
         <h1 onClick={() => setActivePage('AdvanceTrade')}>
           <FaInfinity />
           &nbsp; Advance Trade
+        </h1>
+        <h1 onClick={() => setActivePage('TradeHistory')}>
+          <MdOutlineHistory />
+          &nbsp; Trade History
         </h1>
       </div>
     </div>
