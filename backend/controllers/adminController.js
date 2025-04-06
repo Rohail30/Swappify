@@ -119,14 +119,26 @@ const banUser = async (req, res) => {
         user.isBan = true;
         await user.save();
 
-        await Item.deleteMany({ owner: id, status: 'available' });
+        const items = await Item.find({ owner: id, status: 'available' });
+        const itemIds = items.map(item => item._id);
 
-        await Trade.deleteMany({ $or: [{ fromUser: id }, { toUser: id }], status: 'pending' });
+        await Item.deleteMany({ _id: { $in: itemIds } });
+
+        await Trade.deleteMany({
+            $or: [
+                { ItemOffered: { $in: itemIds } },
+                { ItemWanted: { $in: itemIds } }
+            ]
+        });
 
         await Wishlist.updateMany(
             { 'items.userId': id },
             { $pull: { items: { userId: id } } }
         );
+
+        for (const i of items) {
+            fs.unlinkSync(path.join(__dirname, `../public${i.image}`));
+        }
 
         const data = {
             email: user.email,
