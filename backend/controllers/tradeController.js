@@ -117,7 +117,9 @@ const getTradeById = async (req, res) => {
   try {
     const trade = await Trade.findById(tradeId)
       .populate('ItemOffered')
-      .populate('ItemWanted');
+      .populate('ItemWanted')
+      .populate('fromUser', 'name')
+      .populate('toUser', 'name');
 
     if (!trade) {
       return res.status(404).json({ error: true, message: 'Trade not found' });
