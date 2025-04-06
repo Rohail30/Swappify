@@ -65,7 +65,7 @@ const TradeHistory = () => {
                       <div className="owner">
                         <FaUser style={{ fontSize: '13px' }} />
                         <Link to={`/user/${trade.ItemOffered.owner._id}`}>
-                          {trade.ItemOffered.owner.name}
+                          {trade.fromUser.name}
                         </Link>
                       </div>
                       <div className="rating">
