@@ -20,7 +20,6 @@ const TradeHistoryDetail = () => {
       const fetchTrade = async () => {
         try {
           const res = await apiRequest.get(`/api/trades/${id}`);
-          // If your API returns { trade: { ... } } use that; otherwise assume res.data is the trade.
           const tradeData = res.data.trade ? res.data.trade : res.data;
           setTrade(tradeData);
         } catch (error) {
@@ -52,7 +51,10 @@ const TradeHistoryDetail = () => {
   return (
     <div className="historyDetailPage">
       <span>
-        <h4>Details for Order-ID: {trade._id}</h4>
+        <h4>
+          <b style={{ fontWeight: '600' }}>Order-ID: </b>
+          &nbsp; {trade._id}
+        </h4>
         <div className="want-items">Total Wanted Items: {totalWanted}</div>
         <div className="want-items">This trade is request by: </div>
       </span>
@@ -68,7 +70,7 @@ const TradeHistoryDetail = () => {
             </div>
             <div className="titles">
               <div className="left">
-                <div className="detail1">
+                <div className="detail">
                   <h1>{trade.ItemOffered?.name}</h1>
                   <h2>{`Est. Value in Pkr: ${trade.ItemOffered?.price?.min} - ${trade.ItemOffered?.price?.max}`}</h2>
                 </div>
@@ -111,15 +113,19 @@ const TradeHistoryDetail = () => {
         <div className="h-OfferedItem">
           <div className="other">
             <div className="wanted-is">
-              <GrFormPrevious
-                onClick={prevWantedSlide}
-                className="h-slider-button h-prev-wanted"
-              />
+              {totalWanted > 1 && (
+                <GrFormPrevious
+                  onClick={prevWantedSlide}
+                  className="h-slider-button h-prev-wanted"
+                />
+              )}
               Item Wanted
-              <MdOutlineNavigateNext
-                onClick={nextWantedSlide}
-                className="h-slider-button h-next-wanted"
-              />
+              {totalWanted > 1 && (
+                <MdOutlineNavigateNext
+                  onClick={nextWantedSlide}
+                  className="h-slider-button h-next-wanted"
+                />
+              )}
             </div>
 
             <div className="img-container">

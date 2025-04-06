@@ -10,13 +10,12 @@ import { GrFormPrevious } from 'react-icons/gr';
 const CounterSent = () => {
   const [items, setItems] = useState([]);
   const { currentUser } = useContext(AuthContext);
-  const [wantedSlide, setWantedSlide] = useState(0);
+  const [wantedSlides, setWantedSlides] = useState({});
 
   useEffect(() => {
     const fetchItems = async () => {
       try {
         const res = await apiRequest.get(`/api/trades`);
-
         let filteredItems = res.data.trades;
 
         const currentUserId = currentUser._id;
@@ -28,6 +27,12 @@ const CounterSent = () => {
         );
 
         setItems(filteredItems || []);
+
+        const initialSlides = {};
+        filteredItems.forEach((item) => {
+          initialSlides[item._id] = 0;
+        });
+        setWantedSlides(initialSlides);
       } catch (error) {
         console.error('Error fetching trades:', error);
       }
@@ -40,11 +45,25 @@ const CounterSent = () => {
     try {
       await apiRequest.put(`/api/trades/${tradeId}/cancel`);
       alert('Trade cancelled successfully!');
-      setItems(items.filter((item) => item._id !== tradeId));
+      setItems((prev) => prev.filter((item) => item._id !== tradeId));
     } catch (error) {
       console.error('Error cancelling trade:', error);
       alert('Failed to cancel trade');
     }
+  };
+
+  const nextWantedSlide = (tradeId, total) => {
+    setWantedSlides((prev) => ({
+      ...prev,
+      [tradeId]: (prev[tradeId] + 1) % total,
+    }));
+  };
+
+  const prevWantedSlide = (tradeId, total) => {
+    setWantedSlides((prev) => ({
+      ...prev,
+      [tradeId]: (prev[tradeId] - 1 + total) % total,
+    }));
   };
 
   return (
@@ -53,22 +72,16 @@ const CounterSent = () => {
         <p className="empty-text">No Sent request</p>
       ) : (
         items.map((item) => {
+          const tradeId = item._id;
           const totalWanted = item.ItemWanted.length;
-
-          const nextWantedSlide = () => {
-            setWantedSlide((prev) => (prev + 1) % totalWanted);
-          };
-
-          const prevWantedSlide = () => {
-            setWantedSlide((prev) => (prev - 1 + totalWanted) % totalWanted);
-          };
+          const currentSlide = wantedSlides[tradeId] || 0;
 
           return (
-            <div className="main">
+            <div className="main" key={tradeId}>
               <span>
-                <b>Order ID:</b> {item._id}
+                <b>Order ID:</b> {tradeId}
               </span>
-              <div className="tradepage-container" key={item._id}>
+              <div className="tradepage-container">
                 <div className="offered-item">
                   <div className="header">
                     <h1>Item Offered</h1>
@@ -90,7 +103,9 @@ const CounterSent = () => {
                     </h4>
                   </div>
                   <div className="pricerange">
-                    <h3>{`${item.ItemOffered.price.min} Rs - ${item.ItemOffered.price.max} Rs`}</h3>
+                    <h3>
+                      {`${item.ItemOffered.price.min} Rs - ${item.ItemOffered.price.max} Rs`}
+                    </h3>
                   </div>
                   <Link
                     to={`/detail-page/${item.ItemOffered._id}`}
@@ -107,13 +122,13 @@ const CounterSent = () => {
                       <>
                         <div
                           className="cancel"
-                          onClick={() => handleCancel(item._id)}
+                          onClick={() => handleCancel(tradeId)}
                         >
                           Cancel
                         </div>
                         <div
                           className="cross"
-                          onClick={() => handleCancel(item._id)}
+                          onClick={() => handleCancel(tradeId)}
                         >
                           <GiCancel />
                         </div>
@@ -122,13 +137,13 @@ const CounterSent = () => {
                   </div>
                 </div>
 
-                {/* Item Wanted Slider */}
                 <div className="wanted-items-slider">
-                  <GrFormPrevious
-                    onClick={prevWantedSlide}
-                    className="slider-button prev-wanted"
-                  />
-
+                  {totalWanted > 1 && (
+                    <GrFormPrevious
+                      onClick={() => prevWantedSlide(tradeId, totalWanted)}
+                      className="slider-button prev-wanted"
+                    />
+                  )}
                   <div className="item-cards">
                     <div className="requested-item">
                       <div className="header">
@@ -136,7 +151,7 @@ const CounterSent = () => {
                       </div>
                       <div className="image">
                         <img
-                          src={`http://localhost:5000${item.ItemWanted[wantedSlide].image}`}
+                          src={`http://localhost:5000${item.ItemWanted[currentSlide].image}`}
                           alt="Item"
                         />
                       </div>
@@ -145,28 +160,31 @@ const CounterSent = () => {
                       </div>
                       <div className="title">
                         <h4>
-                          {item.ItemWanted[wantedSlide].name.length > 16
-                            ? item.ItemWanted[wantedSlide].name.slice(0, 16) +
+                          {item.ItemWanted[currentSlide].name.length > 16
+                            ? item.ItemWanted[currentSlide].name.slice(0, 16) +
                               '...'
-                            : item.ItemWanted[wantedSlide].name}
+                            : item.ItemWanted[currentSlide].name}
                         </h4>
                       </div>
                       <div className="pricerange">
-                        <h3>{`${item.ItemWanted[wantedSlide].price.min} Rs - ${item.ItemWanted[wantedSlide].price.max} Rs`}</h3>
+                        <h3>
+                          {`${item.ItemWanted[currentSlide].price.min} Rs - ${item.ItemWanted[currentSlide].price.max} Rs`}
+                        </h3>
                       </div>
-
                       <Link
-                        to={`/detail-page/${item.ItemWanted[wantedSlide]._id}`}
+                        to={`/detail-page/${item.ItemWanted[currentSlide]._id}`}
                         className="view"
                       >
                         <div className="button">View Details</div>
                       </Link>
                     </div>
                   </div>
-                  <MdOutlineNavigateNext
-                    onClick={nextWantedSlide}
-                    className="slider-button next-wanted"
-                  />
+                  {totalWanted > 1 && (
+                    <MdOutlineNavigateNext
+                      onClick={() => nextWantedSlide(tradeId, totalWanted)}
+                      className="slider-button next-wanted"
+                    />
+                  )}
                 </div>
               </div>
             </div>
