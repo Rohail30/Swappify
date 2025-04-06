@@ -64,7 +64,9 @@ const TradeHistory = () => {
                       <h3>{trade.ItemOffered.name}</h3>
                       <div className="owner">
                         <FaUser style={{ fontSize: '13px' }} />
-                        Rohail
+                        <Link to={`/user/${trade.ItemOffered.owner._id}`}>
+                          {trade.ItemOffered.owner.name}
+                        </Link>
                       </div>
                       <div className="rating">
                         <IoIosStar style={{ color: 'gold' }} />
@@ -104,13 +106,12 @@ const TradeHistory = () => {
                     <p>{new Date(trade.createdAt).toLocaleDateString()}</p>
                   </div>
                   <div className="buttons">
-                    <div className="button1">Item details</div>
-
-                    <div className="button2">
-                      <Link to={`/history-detail/${trade._id}`}>
-                        Trade details
-                      </Link>
-                    </div>
+                    <Link to={`/detail-page/${trade.ItemOffered._id}`}>
+                      <div className="button1">Item details</div>
+                    </Link>
+                    <Link to={`/history-detail/${trade._id}`}>
+                      <div className="button2">Trade details</div>
+                    </Link>
                   </div>
                 </div>
               </div>
