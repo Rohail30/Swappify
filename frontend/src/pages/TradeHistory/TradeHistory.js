@@ -44,7 +44,7 @@ const TradeHistory = () => {
           <p className="empty-text">No Sent request</p>
         ) : (
           trades.map((trade) => (
-            <div className="item-container">
+            <div className="item-container" key={trade._id}>
               <span>
                 <b>Order ID:</b> {trade._id}
               </span>
