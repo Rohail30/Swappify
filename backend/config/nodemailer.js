@@ -57,6 +57,37 @@ const sendMail = (type, data) => {
             <p>Your item <strong>${data.itemName}</strong> has been deleted by the admin</p>
             `;
             break;
+
+        case 'receiveTradeOffer':
+            to = data.email;
+            subject = 'Swappify - Trade Offer Received';
+            html = `
+            <h2>Swappify - Trade Offer Received</h2>
+            <p>You have received a trade offer for your item <strong>${data.itemName}</strong></p>
+            <p>Please check your trade section for more details</p>
+            `;
+            break;
+
+        case 'tradeOfferAccepted':
+            to = data.email;
+            subject = 'Swappify - Trade Offer Accepted';
+            html = `
+            <h2>Swappify - Trade Offer Accepted</h2>
+            <p>Your trade offer for the item <strong>${data.itemName}</strong> has been accepted</p>
+            <p>Please check your trade section for more details</p>
+            `;
+            break;
+
+        case 'counterTradeOffer':
+            to = data.email;
+            subject = 'Swappify - Counter Trade Offer';
+            html = `
+            <h2>Swappify - Counter Trade Offer</h2>
+            <p>You have received a counter trade offer for your item <strong>${data.itemName}</strong></p>
+            <p>Please check your trade section for more details</p>
+            `;
+            break;
+
     }
 
     const mailOptions = {

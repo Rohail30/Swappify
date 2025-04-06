@@ -1,6 +1,7 @@
 const Trade = require('../models/tradeModel');
 const Item = require('../models/ItemModel');
 const User = require('../models/UserModel');
+const sendMail = require('../config/nodemailer');
 
 // @desc    Offer new trade
 // @route   POST /api/trades
@@ -64,6 +65,13 @@ const offerTrade = async (req, res) => {
 
   try {
     const newTrade = await Trade.create({ fromUser, toUser, ItemOffered, ItemWanted });
+
+    const data = {
+      email: usersExist[1].email,
+      itemName: itemsExist[1].name
+    };
+
+    sendMail('receiveTradeOffer', data);
 
     return res.status(200).json({ error: false, message: 'Trade offered successfully', trade: newTrade });
 
@@ -136,7 +144,9 @@ const acceptTrade = async (req, res) => {
   }
 
   try {
-    const trade = await Trade.findById(tradeId);
+    const trade = await Trade.findById(tradeId)
+      .populate('fromUser', 'email')
+      .populate('ItemOffered', 'name');
 
     if (!trade) {
       return res.status(404).json({ error: true, message: "Trade not found" });
@@ -167,6 +177,13 @@ const acceptTrade = async (req, res) => {
       },
       { status: "cancelled" }
     );
+
+    const data = {
+      email: trade.fromUser.email,
+      itemName: trade.ItemOffered.name
+    };
+
+    sendMail('tradeOfferAccepted', data);
 
     return res.status(200).json({ error: false, message: "Trade accepted successfully" });
   } catch (error) {
@@ -260,7 +277,10 @@ const counterTrade = async (req, res) => {
   }
 
   try {
-    const trade = await Trade.findById(tradeId);
+    const trade = await Trade.findById(tradeId)
+      .populate('fromUser', 'email')
+      .populate('ItemOffered', 'name');
+
     if (!trade) {
       return res.status(404).json({ error: true, message: "Trade not found" });
     }
@@ -294,10 +314,6 @@ const counterTrade = async (req, res) => {
       return res.status(400).json({ error: true, message: "One or more items are already traded" });
     }
 
-    console.log("Old Trade ==>", trade);
-    console.log("Item Offered ==>", ItemOffered._id);
-    console.log("Item Wanted ==>", ItemWanted[0]);
-
     if (ItemWanted.length === 1) {
 
       const existingTrade = await Trade.findOne({
@@ -322,6 +338,13 @@ const counterTrade = async (req, res) => {
     });
 
     await Trade.findByIdAndUpdate(tradeId, { status: "cancelled" });
+
+    const data = {
+      email: trade.fromUser.email,
+      itemName: trade.ItemOffered.name
+    };
+
+    sendMail('counterTradeOffer', data);
 
     return res.status(200).json({ error: false, message: "Counter trade sent successfully", trade: counterTrade });
 
