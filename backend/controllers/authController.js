@@ -157,9 +157,12 @@ const forgotPassword = async (req, res) => {
         user.password = hashedPassword;
         await user.save();
 
-        const emailText = `Your new password is ${randomPassword} Please change it after login`;
+        const data = {
+            email: user.email,
+            password: randomPassword
+        }
 
-        sendMail(email, 'Swappify New Password', emailText);
+        sendMail('passwordReset', data);
 
         return res.status(200).json({ error: false, message: 'New password sent to your email' });
     }

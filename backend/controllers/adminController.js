@@ -7,7 +7,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const fs = require('fs');
 const path = require('path');
-
+const sendMail = require('../config/nodemailer');
 
 // @desc    Login an Admin
 // @route   POST /api/admin/login
@@ -128,6 +128,13 @@ const banUser = async (req, res) => {
             { $pull: { items: { userId: id } } }
         );
 
+        const data = {
+            email: user.email,
+            action: 'Banned',
+        };
+
+        sendMail('adminAccountAction', data);
+
         return res.status(200).json({ error: false, message: 'User banned successfully' });
     }
     catch (error) {
@@ -157,6 +164,13 @@ const unbanUser = async (req, res) => {
         user.isBan = false;
         await user.save();
 
+        const data = {
+            email: user.email,
+            action: 'Unbanned',
+        };
+
+        sendMail('adminAccountAction', data);
+
         return res.status(200).json({ error: false, message: 'User unbanned successfully' });
     }
     catch (error) {
@@ -178,7 +192,7 @@ const deleteItem = async (req, res) => {
             return res.status(403).json({ error: true, message: 'Not authorized as an admin' });
         }
 
-        const item = await Item.findOne({ _id: id, status: 'available' });
+        const item = await Item.findOne({ _id: id, status: 'available' }).populate('owner', 'email');
 
         if (!item) {
             return res.status(404).json({ error: true, message: 'Item not found OR Item is already traded' });
@@ -192,6 +206,13 @@ const deleteItem = async (req, res) => {
         );
 
         fs.unlinkSync(path.join(__dirname, `../public${item.image}`));
+
+        const data = {
+            email: item.owner.email,
+            itemName: item.name,
+        };
+
+        sendMail('adminItemDelete', data);
 
         return res.status(200).json({ error: false, message: 'Item deleted successfully' });
     } catch (error) {
