@@ -88,9 +88,9 @@ const CounterReceived = () => {
 
           return (
             <div className="main" key={tradeId}>
-              <span>
+              {/* <span>
                 <b>Order ID:</b> {tradeId}
-              </span>
+              </span> */}
               <div className="tradepage-container">
                 <div className="offered-item">
                   <div className="header">

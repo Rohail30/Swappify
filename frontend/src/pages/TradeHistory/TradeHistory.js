@@ -4,7 +4,7 @@ import apiRequest from '../../config/apiRequest';
 import { AuthContext } from '../../context/AuthContext';
 import { Link } from 'react-router-dom';
 import { FaUser } from 'react-icons/fa6';
-import { IoIosStar } from 'react-icons/io';
+// import { IoIosStar } from 'react-icons/io';
 
 const TradeHistory = () => {
   const [trades, setTrades] = useState([]);
@@ -45,9 +45,9 @@ const TradeHistory = () => {
         ) : (
           trades.map((trade) => (
             <div className="item-container" key={trade._id}>
-              <span>
+              {/* <span>
                 <b>Order ID:</b> {trade._id}
-              </span>
+              </span> */}
               <div className="item">
                 <div className="left">
                   <div className="image">
@@ -61,7 +61,12 @@ const TradeHistory = () => {
                       {/* <h2>
                         Item Offered By: <b>Rohail</b>
                       </h2> */}
-                      <h3>{trade.ItemOffered.name}</h3>
+                      <h3>
+                        {' '}
+                        {trade.ItemOffered.name.length > 16
+                          ? trade.ItemOffered.name.slice(0, 16) + '...'
+                          : trade.ItemOffered.name}
+                      </h3>
                       <div className="owner">
                         <FaUser style={{ fontSize: '13px' }} />
                         <Link to={`/user/${trade.ItemOffered.owner._id}`}>
@@ -69,11 +74,12 @@ const TradeHistory = () => {
                         </Link>
                       </div>
                       <div className="rating">
+                        {/* <IoIosStar style={{ color: 'gold' }} />
                         <IoIosStar style={{ color: 'gold' }} />
                         <IoIosStar style={{ color: 'gold' }} />
                         <IoIosStar style={{ color: 'gold' }} />
-                        <IoIosStar style={{ color: 'gold' }} />
-                        <IoIosStar style={{ color: 'gold' }} />
+                        <IoIosStar style={{ color: 'gold' }} /> */}
+                        {/* Ratings will be displayed here */}
                       </div>
                     </div>
                     <div className="tail">

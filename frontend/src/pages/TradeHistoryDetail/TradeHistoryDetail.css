@@ -25,11 +25,7 @@
 }
 
 .historyDetailPage span h4 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   font-size: 25px;
-  font-weight: 400;
 }
 
 .historyDetailPage .h-container {
