@@ -6,6 +6,7 @@
 | POST   | /api/auth/forgotpassword        | Request password reset    | N/A                | `email`,`mobile`                                                                                     |
 | GET    | /api/users/:id                  | Retrieve a user by ID     | `userId`           | N/A                                                                                                  |
 | PUT    | /api/users/:id                  | Update a user by ID       | `userId`           | `name`, `email`, `password`, `mobile`                                                                |
+| GET    | /api/auth/logout                | Logout a user             | N/A                | N/A                                                                                                  |
 | POST   | /api/items/add                  | Add a new item            | N/A                | `image`, `name`, `description`, `owner`, `condition`, `category`, `location`, `priceMin`, `priceMax` |
 | PUT    | /api/items/update/:id           | Update an item by ID      | `itemId`           | `image`, `name`, `description`, `owner`, `condition`, `category`, `location`, `priceMin`, `priceMax` |
 | DELETE | /api/items/delete/:id           | Delete an item by ID      | `itemId`           | N/A                                                                                                  |
