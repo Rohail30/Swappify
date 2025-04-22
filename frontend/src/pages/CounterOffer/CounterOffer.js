@@ -46,7 +46,9 @@ const CounterOffer = () => {
 
     const fetchItems = async () => {
       try {
-        const res = await apiRequest.get(`/api/items/user/${trade.fromUser}`);
+        const res = await apiRequest.get(
+          `/api/items/user/${trade.fromUser._id}`
+        );
         const filteredItems = res.data.items.filter(
           (item) => item.status === 'available'
         );
@@ -57,7 +59,7 @@ const CounterOffer = () => {
     };
 
     fetchItems();
-  });
+  }, [trade]);
 
   useEffect(() => {
     if (selectedItems.length > 0 && trade?.ItemOffered) {
@@ -210,7 +212,7 @@ const CounterOffer = () => {
               <p>No items available.</p>
             ) : (
               items.map((item) => (
-                <div className="offer-card" key={item._id}>
+                <div className="offer-card">
                   <div className="image-container">
                     <div className="image">
                       <img

@@ -63,9 +63,9 @@ const ReceivedRequests = () => {
       ) : (
         items.map((item, index) => (
           <div className="main">
-            <span>
+            {/* <span>
               <b>Order ID:</b> {item._id}
-            </span>
+            </span> */}
             <div className="tradepage-container">
               {Array.isArray(item.ItemWanted)
                 ? item.ItemWanted.map((wantedItem) => (

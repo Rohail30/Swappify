@@ -51,9 +51,9 @@ const SentRequests = () => {
       ) : (
         items.map((item) => (
           <div className="main">
-            <span>
+            {/* <span>
               <b>Order ID:</b> {item._id}
-            </span>
+            </span> */}
             <div className="tradepage-container" key={item._id}>
               <div className="item-cards">
                 {Array.isArray(item.ItemWanted)

@@ -51,12 +51,16 @@ const TradeHistoryDetail = () => {
   return (
     <div className="historyDetailPage">
       <span>
-        <h4>
-          <b style={{ fontWeight: '600' }}>Order-ID: </b>
-          &nbsp; {trade._id}
+        <h4 style={{ fontWeight: '600', marginBottom: '10px' }}>
+          Trade History Details{' '}
         </h4>
+        <div className="want-items">
+          This trade is requested by:{' '}
+          <Link to={`/user/${trade.ItemOffered.owner._id}`}>
+            {trade.fromUser.name}
+          </Link>
+        </div>
         <div className="want-items">Total Wanted Items: {totalWanted}</div>
-        <div className="want-items">This trade is request by: </div>
       </span>
       <div className="h-container">
         <div className="h-OfferedItem">
