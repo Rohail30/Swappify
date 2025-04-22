@@ -132,9 +132,11 @@ const banUser = async (req, res) => {
         });
 
         await Wishlist.updateMany(
-            { 'items.userId': id },
-            { $pull: { items: { userId: id } } }
+            { 'items.itemId': { $in: itemIds } },
+            { $pull: { items: { itemId: { $in: itemIds } } } }
         );
+
+        await Wishlist.deleteOne({ userId: id });
 
         for (const i of items) {
             fs.unlinkSync(path.join(__dirname, `../public${i.image}`));
