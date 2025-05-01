@@ -85,7 +85,7 @@ const TradeHistoryDetail = () => {
               </div>
               <div className="right">
                 <Link to={`/user/${trade.ItemOffered?.owner?._id}`}>
-                  <h2>{trade.ItemOffered?.owner?.name}</h2>
+                  <h2>{trade.fromUser.name.split(' ')[0]}</h2>
                 </Link>
                 <h3>
                   {new Date(trade.ItemOffered?.createdAt).toLocaleDateString()}
@@ -164,7 +164,7 @@ const TradeHistoryDetail = () => {
                   <Link
                     to={`/user/${trade.ItemWanted[wantedSlide]?.owner?._id}`}
                   >
-                    <h2>{trade.ItemWanted[wantedSlide]?.owner?.name}</h2>
+                    <h2>{trade.toUser.name.split(' ')[0]}</h2>
                   </Link>
                 )}
                 {totalWanted > 0 && (

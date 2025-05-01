@@ -336,7 +336,7 @@
 .counter-offer-page .offer-card {
   margin-top: 40px;
   width: 250px;
-  height: 330px;
+  height: 345px;
   border-radius: 20px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   background-color: #ffffff;
@@ -374,6 +374,7 @@
 .counter-offer-page .offer-card .title {
   margin-left: 20px;
   margin-top: 20px;
+  margin-bottom: 5px;
 }
 
 .counter-offer-page .offer-card .title h1 {
@@ -392,6 +393,10 @@
   margin: 0;
   padding: 0;
   font-size: 15px;
+}
+
+.counter-offer-page .offer-card .status h4 {
+  font-size: 13px;
 }
 
 .counter-offer-page .offer-card .buttons {

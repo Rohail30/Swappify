@@ -24,7 +24,7 @@ const CounterOffer = () => {
     );
     const minPriceDifference = Math.abs(totalMinPrice - itemWanted.price.min);
 
-    return minPriceDifference > 50
+    return minPriceDifference > 7000
       ? 'Not a good trade. The price difference is significant.'
       : 'Good trade! The price difference is acceptable.';
   };
@@ -233,7 +233,9 @@ const CounterOffer = () => {
                   </div>
                   <div className="status">
                     <h2>{item.status}</h2>
+                    <h4>{`Est. Value Pkr: ${item.price.min} - ${item.price.max}`}</h4>
                   </div>
+
                   <div className="buttons">
                     <Link to={`/detail-page/${item._id}`}>
                       <div className="button1">

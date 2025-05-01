@@ -41,7 +41,7 @@ const TradeHistory = () => {
       <h1>TradeHistory</h1>
       <div className="container">
         {trades.length === 0 ? (
-          <p className="empty-text">No Sent request</p>
+          <p className="empty-text">No History</p>
         ) : (
           trades.map((trade) => (
             <div className="item-container" key={trade._id}>
@@ -101,7 +101,7 @@ const TradeHistory = () => {
                         Status: <b>{trade.status}</b>
                       </h4>
                       <h4>
-                        Price Range:&nbsp;
+                        Price:&nbsp;
                         <b>{`${trade.ItemOffered.price.min} Rs - ${trade.ItemOffered.price.max} Rs`}</b>
                       </h4>
                     </div>
