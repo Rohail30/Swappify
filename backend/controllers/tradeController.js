@@ -94,7 +94,9 @@ const getTrades = async (req, res) => {
       .populate('fromUser', 'name')
       .populate('toUser', 'name')
       .populate('ItemOffered')
-      .populate('ItemWanted');
+      .populate('ItemWanted')
+      .populate("counteredFrom")
+      .sort({ isCounterTrade: 1, createdAt: 1 })
 
     return res.status(200).json({ error: false, trades });
   } catch (error) {
@@ -336,7 +338,8 @@ const counterTrade = async (req, res) => {
       toUser: trade.fromUser,
       ItemOffered,
       ItemWanted,
-      isCounterTrade: true
+      isCounterTrade: true,
+      counteredFrom: tradeId
     });
 
     await Trade.findByIdAndUpdate(tradeId, { status: "cancelled" });
