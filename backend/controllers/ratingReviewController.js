@@ -44,4 +44,30 @@ const rateTrade = async (req, res) => {
     }
 }
 
-module.exports = { rateTrade };
+
+// @desc    Rate & Review for a Trade
+// @route   GET /api/rating/trade/:id
+// @access  Private
+const getTradeRating = async (req, res) => {
+    const tradeId = req.params.id;
+
+    if (!tradeId) {
+        return res.status(400).json({ error: true, message: "Trade ID is required" });
+    }
+
+    try {
+        const ratingReview = await RatingReview.findOne({ tradeId });
+
+        if (!ratingReview) {
+            return res.status(404).json({ error: true, message: "Rating & Review not found" });
+        }
+
+        return res.status(200).json({ error: false, ratingReview });
+
+    } catch (error) {
+        return res.status(500).json({ error: true, message: error.message });
+    }
+}
+
+
+module.exports = { rateTrade, getTradeRating };
