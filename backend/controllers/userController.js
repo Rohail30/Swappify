@@ -1,6 +1,7 @@
 const validator = require('validator');
 const bcrypt = require('bcryptjs');
 const User = require('../models/UserModel');
+const RatingReview = require('../models/RatingReviewModel');
 
 
 // @desc    Get User details
@@ -19,6 +20,13 @@ const getUser = async (req, res) => {
 
         if (!user) {
             return res.status(404).json({ error: true, message: 'User not found' });
+        }
+
+        const UserRating = await RatingReview.find({ ratedUser: userId });
+
+        if (UserRating) {
+            const averageRating = UserRating.reduce((sum, r) => sum + r.rating, 0) / UserRating.length;
+            user.averageRating = averageRating;
         }
 
         return res.status(200).json({ error: false, user });
