@@ -40,4 +40,6 @@ const TradeSchema = new mongoose.Schema(
     }, { timestamps: true }
 );
 
-module.exports = mongoose.model("Trade", TradeSchema);
+
+const Trade = mongoose.models.Trade || mongoose.model("Trade", TradeSchema);
+module.exports = Trade;

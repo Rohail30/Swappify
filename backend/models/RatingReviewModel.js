@@ -33,4 +33,5 @@ const RatingReviewSchema = new mongoose.Schema(
 );
 
 
-module.exports = mongoose.model("RatingReview", RatingReviewSchema);
+const RatingReview = mongoose.models.RatingReview || mongoose.model("RatingReview", RatingReviewSchema);
+module.exports = RatingReview;
