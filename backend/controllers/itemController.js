@@ -1,3 +1,4 @@
+const Trade = require('../models/TradeModel');
 const Item = require('../models/ItemModel');
 const Wishlist = require('../models/WishllistModel');
 const fs = require('fs');
@@ -116,11 +117,18 @@ const deleteItem = async (req, res) => {
     }
 
     await Item.findByIdAndDelete(id);
-    await Trade.deleteMany({ $or: [{ ItemOffered: id }, { ItemWanted: id }] });
-    await Wishlist.updateMany(
-      { 'items.itemId': id },
-      { $pull: { items: { itemId: id } } }
-    );
+    await Trade.deleteMany({
+      $or: [
+        { ItemOffered: id },
+        { ItemWanted: { $in: [id] } }
+      ]
+    });
+
+    await
+      await Wishlist.updateMany(
+        { 'items.itemId': id },
+        { $pull: { items: { itemId: id } } }
+      );
 
     fs.unlinkSync(path.join(__dirname, `../public${item.image}`));
 
