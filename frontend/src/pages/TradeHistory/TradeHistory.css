@@ -45,7 +45,7 @@
 
 .trade-history h4 {
   margin-bottom: 5px;
-  font-size: 14px;
+  font-size: 16px;
   color: gray;
   font-weight: 400;
   /* font-family: cursive; */
@@ -169,4 +169,11 @@
 
 .trade-history .container .item .right .button2:hover {
   background-color: #006a4e;
+}
+
+.trade-group {
+  border: 3px solid #444;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 10px;
 }
