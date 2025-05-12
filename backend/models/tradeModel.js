@@ -31,11 +31,6 @@ const TradeSchema = new mongoose.Schema(
         isCounterTrade: {
             type: Boolean,
             default: false,
-        },
-        counteredFrom: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Trade",
-            default: null
         }
     }, { timestamps: true }
 );

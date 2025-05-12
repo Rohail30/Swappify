@@ -21,7 +21,7 @@ const Offer = () => {
       itemOffered.price.min - itemWanted.price.min
     );
 
-    return minPriceDifference > 50
+    return minPriceDifference > 7000
       ? 'Not a good trade. The price difference is significant.'
       : 'Good trade! The price difference is acceptable.';
   };

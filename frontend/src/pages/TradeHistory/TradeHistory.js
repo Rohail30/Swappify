@@ -33,6 +33,9 @@ const TradeHistory = () => {
         filteredItems.sort(
           (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
         );
+        filteredItems.sort(
+          (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
+        );
 
         // Reorganize: originals first, followed by their counter trades
         const sortedTrades = [];
@@ -182,6 +185,13 @@ const TradeHistory = () => {
                                 </h4>
                                 <h4>
                                   Status: <b>{item.status}</b>
+                                  Trade type:{' '}
+                                  <b>
+                                    {item.isCounterTrade ? 'Counter' : 'Normal'}
+                                  </b>
+                                </h4>
+                                <h4>
+                                  Status: <b>{item.status}</b>
                                 </h4>
                                 <h4>
                                   Price Range:&nbsp;
@@ -192,6 +202,9 @@ const TradeHistory = () => {
                           </div>
                           <div className="right">
                             <div className="date">
+                              <p>
+                                {new Date(item.createdAt).toLocaleDateString()}
+                              </p>
                               <p>
                                 {new Date(item.createdAt).toLocaleDateString()}
                               </p>
