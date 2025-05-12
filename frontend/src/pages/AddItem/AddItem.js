@@ -34,8 +34,13 @@ const AddItem = () => {
     const handleChange = (e) => {
         if (e.target.name === "image") {
             const file = e.target.files[0];
-            setItemData({ ...itemData, image: file });
-            setImagePreview(URL.createObjectURL(file));
+            if (file) {
+                setItemData({ ...itemData, image: file });
+                setImagePreview(URL.createObjectURL(file));
+            } else {
+                setItemData({ ...itemData, image: null });
+                setImagePreview(null);
+            }
             setError(null);
         } else {
             setItemData({ ...itemData, [e.target.name]: e.target.value });
