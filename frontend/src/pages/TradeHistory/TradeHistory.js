@@ -4,10 +4,14 @@ import apiRequest from '../../config/apiRequest';
 import { AuthContext } from '../../context/AuthContext';
 import { Link } from 'react-router-dom';
 import { FaUser } from 'react-icons/fa6';
+import { IoIosStar } from 'react-icons/io';
+
+// import { FaArrowDownLong } from 'react-icons/fa6';
 
 const TradeHistory = () => {
   const [trades, setTrades] = useState([]);
   const { currentUser } = useContext(AuthContext);
+  const [ratings, setRatings] = useState({});
 
   useEffect(() => {
     const fetchItems = async () => {
@@ -26,7 +30,9 @@ const TradeHistory = () => {
         );
 
         // Sort by createdAt to maintain chronological order
-        filteredItems.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+        filteredItems.sort(
+          (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
+        );
 
         // Reorganize: originals first, followed by their counter trades
         const sortedTrades = [];
@@ -51,6 +57,23 @@ const TradeHistory = () => {
         }
 
         setTrades(sortedTrades || []);
+
+        const ratingMap = {};
+
+        await Promise.all(
+          sortedTrades.map(async (trade) => {
+            try {
+              const response = await apiRequest.get(
+                `/api/rating/trade/${trade._id}`
+              );
+              ratingMap[trade._id] = response.data.ratingReview.rating;
+            } catch (err) {
+              ratingMap[trade._id] = 0; // No rating
+            }
+          })
+        );
+
+        setRatings(ratingMap);
       } catch (error) {
         console.error('Error fetching trades:', error);
       }
@@ -91,8 +114,15 @@ const TradeHistory = () => {
 
                 rendered.push(
                   <div className="trade-group" key={trade._id}>
-                    {group.map((item) => (
+                    {group.map((item, index) => (
                       <div className="item-container" key={item._id}>
+                        {index === 1 && (
+                          <div className="counter-label">
+                            {/* <FaArrowDownLong className="c-i" /> */}
+                            <div className="v-line"></div>
+                          </div>
+                        )}
+
                         <div className="item">
                           <div className="left">
                             <div className="image">
@@ -110,9 +140,29 @@ const TradeHistory = () => {
                                 </h3>
                                 <div className="owner">
                                   <FaUser style={{ fontSize: '13px' }} />
-                                  <Link to={`/user/${item.ItemOffered.owner._id}`}>
+                                  <Link to={`/user/${item.fromUser._id}`}>
                                     {item.fromUser.name}
                                   </Link>
+                                </div>
+                                {/* <div className="rating">
+                                  <IoIosStar style={{ color: 'gold' }} />
+                                  <IoIosStar style={{ color: 'gold' }} />
+                                  <IoIosStar style={{ color: 'gold' }} />
+                                  <IoIosStar style={{ color: 'gold' }} />
+                                  <IoIosStar style={{ color: 'gold' }} />
+                                </div> */}
+                                <div className="rating">
+                                  {[1, 2, 3, 4, 5].map((i) => (
+                                    <IoIosStar
+                                      key={i}
+                                      style={{
+                                        color:
+                                          i <= (ratings[item._id] || 0)
+                                            ? 'gold'
+                                            : '#ccc',
+                                      }}
+                                    />
+                                  ))}
                                 </div>
                               </div>
                               <div className="tail">
@@ -125,9 +175,14 @@ const TradeHistory = () => {
                                   </b>
                                 </h4>
                                 <h4>
-                                  Trade type: <b>{item.isCounterTrade ? 'Counter' : 'Normal'}</b>
+                                  Trade type:{' '}
+                                  <b>
+                                    {item.isCounterTrade ? 'Counter' : 'Normal'}
+                                  </b>
                                 </h4>
-                                <h4>Status: <b>{item.status}</b></h4>
+                                <h4>
+                                  Status: <b>{item.status}</b>
+                                </h4>
                                 <h4>
                                   Price Range:&nbsp;
                                   <b>{`${item.ItemOffered.price.min} Rs - ${item.ItemOffered.price.max} Rs`}</b>
@@ -137,7 +192,9 @@ const TradeHistory = () => {
                           </div>
                           <div className="right">
                             <div className="date">
-                              <p>{new Date(item.createdAt).toLocaleDateString()}</p>
+                              <p>
+                                {new Date(item.createdAt).toLocaleDateString()}
+                              </p>
                             </div>
                             <div className="buttons">
                               <Link to={`/detail-page/${item.ItemOffered._id}`}>

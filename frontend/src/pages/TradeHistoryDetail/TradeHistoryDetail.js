@@ -1,26 +1,35 @@
 import './TradeHistoryDetail.css';
 import { FaLocationDot } from 'react-icons/fa6';
 import { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import apiRequest from '../../config/apiRequest';
-import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import { AiOutlineSwap } from 'react-icons/ai';
 import { MdOutlineNavigateNext } from 'react-icons/md';
 import { GrFormPrevious } from 'react-icons/gr';
+import { IoIosStar } from 'react-icons/io';
 
 const TradeHistoryDetail = () => {
   const { id } = useParams();
   const { currentUser } = useContext(AuthContext);
+
   const [trade, setTrade] = useState(null);
   const [wantedSlide, setWantedSlide] = useState(0);
+
+  const [rating, setRating] = useState(0);
+  const [hoverRating, setHoverRating] = useState(0);
+  const [review, setReview] = useState('');
+  const [submitMsg, setSubmitMsg] = useState('');
+
+  const [existingRating, setExistingRating] = useState(null);
+  const [existingReview, setExistingReview] = useState('');
 
   useEffect(() => {
     if (currentUser && id) {
       const fetchTrade = async () => {
         try {
           const res = await apiRequest.get(`/api/trades/${id}`);
-          const tradeData = res.data.trade ? res.data.trade : res.data;
+          const tradeData = res.data.trade || res.data;
           setTrade(tradeData);
         } catch (error) {
           console.error('Error fetching trade:', error);
@@ -30,11 +39,23 @@ const TradeHistoryDetail = () => {
     }
   }, [currentUser, id]);
 
-  if (!trade) {
-    return <p>Loading trade details...</p>;
-  }
+  useEffect(() => {
+    const fetchRating = async () => {
+      try {
+        const res = await apiRequest.get(`/api/rating/trade/${id}`);
+        if (res.data.ratingReview) {
+          setExistingRating(res.data.ratingReview.rating);
+          setExistingReview(res.data.ratingReview.review);
+        }
+      } catch (error) {
+        console.log('No rating found');
+      }
+    };
 
-  const totalWanted = trade.ItemWanted ? trade.ItemWanted.length : 0;
+    if (id) fetchRating();
+  }, [id]);
+
+  const totalWanted = trade?.ItemWanted?.length || 0;
 
   const nextWantedSlide = () => {
     if (totalWanted > 0) {
@@ -48,11 +69,45 @@ const TradeHistoryDetail = () => {
     }
   };
 
+  const submitRatingReview = async () => {
+    if (!rating || !review) {
+      setSubmitMsg('Please provide both a rating and review.');
+      return;
+    }
+
+    try {
+      const res = await apiRequest.post(`/api/trades/${id}/rate`, {
+        rating,
+        review,
+      });
+
+      setSubmitMsg(res.data.message || 'Rating submitted!');
+      setExistingRating(rating);
+      setExistingReview(review);
+    } catch (err) {
+      setSubmitMsg(
+        err.response?.data?.message || 'Something went wrong while submitting.'
+      );
+    }
+  };
+
+  const canRate =
+    currentUser &&
+    trade &&
+    trade.status !== 'cancelled' &&
+    trade.status !== 'rejected' &&
+    currentUser._id === trade.toUser._id &&
+    !existingRating;
+
+  if (!trade) {
+    return <p>Loading trade details...</p>;
+  }
+
   return (
     <div className="historyDetailPage">
       <span>
         <h4 style={{ fontWeight: '600', marginBottom: '10px' }}>
-          Trade History Details{' '}
+          Trade History Details
         </h4>
         <div className="want-items">
           This trade is requested by:{' '}
@@ -61,7 +116,64 @@ const TradeHistoryDetail = () => {
           </Link>
         </div>
         <div className="want-items">Total Wanted Items: {totalWanted}</div>
+
+        {existingRating && (
+          <div className="existing-rating-review">
+            <div className="display-rating">
+              Rating:{' '}
+              {[1, 2, 3, 4, 5].map((star) => (
+                <IoIosStar
+                  key={star}
+                  style={{
+                    color: existingRating >= star ? 'gold' : '#ccc',
+                    fontSize: '24px',
+                  }}
+                />
+              ))}
+            </div>
+            <div className="display-review">
+              <h4>Review:</h4>
+              <p>{existingReview}</p>
+            </div>
+          </div>
+        )}
+
+        {canRate && (
+          <div className="rate">
+            <div className="give-rate">
+              Add Rating:
+              {[1, 2, 3, 4, 5].map((star) => (
+                <IoIosStar
+                  key={star}
+                  style={{
+                    color: (hoverRating || rating) >= star ? 'gold' : '#ccc',
+                    cursor: 'pointer',
+                    fontSize: '24px',
+                  }}
+                  onMouseEnter={() => setHoverRating(star)}
+                  onMouseLeave={() => setHoverRating(0)}
+                  onClick={() => setRating(star)}
+                />
+              ))}
+            </div>
+            <div className="give-review">
+              <div className="txt">Add Review</div>
+              <textarea
+                className="rev-box"
+                rows="4"
+                placeholder="Write your review here..."
+                value={review}
+                onChange={(e) => setReview(e.target.value)}
+              ></textarea>
+            </div>
+            <button className="submit-rating" onClick={submitRatingReview}>
+              Submit
+            </button>
+            {submitMsg && <p className="submit-msg">{submitMsg}</p>}
+          </div>
+        )}
       </span>
+
       <div className="h-container">
         <div className="h-OfferedItem">
           <div className="other">
@@ -84,8 +196,8 @@ const TradeHistoryDetail = () => {
                 </div>
               </div>
               <div className="right">
-                <Link to={`/user/${trade.ItemOffered?.owner?._id}`}>
-                  <h2>{trade.ItemOffered?.owner?.name}</h2>
+                <Link to={`/user/${trade.fromUser._id}`}>
+                  <h2>{trade.fromUser.name.split(' ')[0]}</h2>
                 </Link>
                 <h3>
                   {new Date(trade.ItemOffered?.createdAt).toLocaleDateString()}
@@ -110,6 +222,7 @@ const TradeHistoryDetail = () => {
             </div>
           </div>
         </div>
+
         <div className="mid">
           <AiOutlineSwap style={{ fontSize: '45px' }} />
         </div>
@@ -131,7 +244,6 @@ const TradeHistoryDetail = () => {
                 />
               )}
             </div>
-
             <div className="img-container">
               {totalWanted > 0 && (
                 <img
@@ -161,10 +273,8 @@ const TradeHistoryDetail = () => {
               </div>
               <div className="right">
                 {totalWanted > 0 && (
-                  <Link
-                    to={`/user/${trade.ItemWanted[wantedSlide]?.owner?._id}`}
-                  >
-                    <h2>{trade.ItemWanted[wantedSlide]?.owner?.name}</h2>
+                  <Link to={`/user/${trade.toUser._id}`}>
+                    <h2>{trade.toUser.name.split(' ')[0]}</h2>
                   </Link>
                 )}
                 {totalWanted > 0 && (
