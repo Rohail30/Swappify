@@ -4,7 +4,6 @@ import apiRequest from '../../config/apiRequest';
 import { AuthContext } from '../../context/AuthContext';
 import { Link } from 'react-router-dom';
 import { FaUser } from 'react-icons/fa6';
-// import { IoIosStar } from 'react-icons/io';
 
 const TradeHistory = () => {
   const [trades, setTrades] = useState([]);
@@ -14,7 +13,6 @@ const TradeHistory = () => {
     const fetchItems = async () => {
       try {
         const res = await apiRequest.get(`/api/trades`);
-
         let filteredItems = res.data.trades;
 
         const currentUserId = currentUser._id;
@@ -27,7 +25,34 @@ const TradeHistory = () => {
               item.status === 'rejected')
         );
 
-        setTrades(filteredItems || []);
+        // Sort by createdAt to maintain chronological order
+        filteredItems.sort(
+          (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
+        );
+
+        // Reorganize: originals first, followed by their counter trades
+        const sortedTrades = [];
+
+        for (let i = 0; i < filteredItems.length; i++) {
+          const trade = filteredItems[i];
+          if (!trade.isCounterTrade) {
+            sortedTrades.push(trade);
+
+            // Add any counter trades referencing this trade
+            for (let j = 0; j < filteredItems.length; j++) {
+              const counter = filteredItems[j];
+              if (
+                counter.isCounterTrade &&
+                counter.counteredFrom &&
+                counter.counteredFrom._id === trade._id
+              ) {
+                sortedTrades.push(counter);
+              }
+            }
+          }
+        }
+
+        setTrades(sortedTrades || []);
       } catch (error) {
         console.error('Error fetching trades:', error);
       }
@@ -41,88 +66,109 @@ const TradeHistory = () => {
       <h1>TradeHistory</h1>
       <div className="container">
         {trades.length === 0 ? (
-          <p className="empty-text">No History</p>
+          <p className="empty-text">No Sent request</p>
         ) : (
-          trades.map((trade) => (
-            <div className="item-container" key={trade._id}>
-              {/* <span>
-                <b>Order ID:</b> {trade._id}
-              </span> */}
-              <div className="item">
-                <div className="left">
-                  <div className="image">
-                    <img
-                      src={`http://localhost:5000${trade.ItemOffered.image}`}
-                      alt="Item"
-                    />
-                  </div>
-                  <div className="details">
-                    <div className="head">
-                      {/* <h2>
-                        Item Offered By: <b>Rohail</b>
-                      </h2> */}
-                      <h3>
-                        {' '}
-                        {trade.ItemOffered.name.length > 16
-                          ? trade.ItemOffered.name.slice(0, 16) + '...'
-                          : trade.ItemOffered.name}
-                      </h3>
-                      <div className="owner">
-                        <FaUser style={{ fontSize: '13px' }} />
-                        <Link to={`/user/${trade.ItemOffered.owner._id}`}>
-                          {trade.fromUser.name}
-                        </Link>
-                      </div>
-                      <div className="rating">
-                        {/* <IoIosStar style={{ color: 'gold' }} />
-                        <IoIosStar style={{ color: 'gold' }} />
-                        <IoIosStar style={{ color: 'gold' }} />
-                        <IoIosStar style={{ color: 'gold' }} />
-                        <IoIosStar style={{ color: 'gold' }} /> */}
-                        {/* Ratings will be displayed here */}
-                      </div>
-                    </div>
-                    <div className="tail">
-                      <h4>
-                        Request Type:{' '}
-                        <b>
-                          {currentUser._id === trade.fromUser._id
-                            ? 'Sent'
-                            : 'Received'}
-                        </b>
-                      </h4>
+          (() => {
+            const rendered = [];
+            const seen = new Set();
 
-                      <h4>
-                        Trade type:{' '}
-                        <b>{trade.isCounterTrade ? 'Counter' : 'Normal'}</b>
-                      </h4>
+            for (let i = 0; i < trades.length; i++) {
+              const trade = trades[i];
+              if (!seen.has(trade._id)) {
+                const group = [trade];
+                seen.add(trade._id);
 
-                      <h4>
-                        Status: <b>{trade.status}</b>
-                      </h4>
-                      <h4>
-                        Price:&nbsp;
-                        <b>{`${trade.ItemOffered.price.min} Rs - ${trade.ItemOffered.price.max} Rs`}</b>
-                      </h4>
-                    </div>
+                // Find counters
+                for (let j = 0; j < trades.length; j++) {
+                  const counter = trades[j];
+                  if (
+                    counter.isCounterTrade &&
+                    counter.counteredFrom &&
+                    counter.counteredFrom._id === trade._id
+                  ) {
+                    group.push(counter);
+                    seen.add(counter._id);
+                  }
+                }
+
+                rendered.push(
+                  <div className="trade-group" key={trade._id}>
+                    {group.map((item) => (
+                      <div className="item-container" key={item._id}>
+                        <div className="item">
+                          <div className="left">
+                            <div className="image">
+                              <img
+                                src={`http://localhost:5000${item.ItemOffered.image}`}
+                                alt="Item"
+                              />
+                            </div>
+                            <div className="details">
+                              <div className="head">
+                                <h3>
+                                  {item.ItemOffered.name.length > 16
+                                    ? item.ItemOffered.name.slice(0, 16) + '...'
+                                    : item.ItemOffered.name}
+                                </h3>
+                                <div className="owner">
+                                  <FaUser style={{ fontSize: '13px' }} />
+                                  <Link
+                                    to={`/user/${item.ItemOffered.owner._id}`}
+                                  >
+                                    {item.fromUser.name}
+                                  </Link>
+                                </div>
+                              </div>
+                              <div className="tail">
+                                <h4>
+                                  Request Type:{' '}
+                                  <b>
+                                    {currentUser._id === item.fromUser._id
+                                      ? 'Sent'
+                                      : 'Received'}
+                                  </b>
+                                </h4>
+                                <h4>
+                                  Trade type:{' '}
+                                  <b>
+                                    {item.isCounterTrade ? 'Counter' : 'Normal'}
+                                  </b>
+                                </h4>
+                                <h4>
+                                  Status: <b>{item.status}</b>
+                                </h4>
+                                <h4>
+                                  Price Range:&nbsp;
+                                  <b>{`${item.ItemOffered.price.min} Rs - ${item.ItemOffered.price.max} Rs`}</b>
+                                </h4>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="right">
+                            <div className="date">
+                              <p>
+                                {new Date(item.createdAt).toLocaleDateString()}
+                              </p>
+                            </div>
+                            <div className="buttons">
+                              <Link to={`/detail-page/${item.ItemOffered._id}`}>
+                                <div className="button1">Item details</div>
+                              </Link>
+                              <Link to={`/history-detail/${item._id}`}>
+                                <div className="button2">Trade details</div>
+                              </Link>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                </div>
-                <div className="right">
-                  <div className="date">
-                    <p>{new Date(trade.createdAt).toLocaleDateString()}</p>
-                  </div>
-                  <div className="buttons">
-                    <Link to={`/detail-page/${trade.ItemOffered._id}`}>
-                      <div className="button1">Item details</div>
-                    </Link>
-                    <Link to={`/history-detail/${trade._id}`}>
-                      <div className="button2">Trade details</div>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))
+                );
+              }
+            }
+
+            return rendered;
+          })()
         )}
       </div>
     </div>
