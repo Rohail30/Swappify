@@ -11,6 +11,7 @@ const userRoutes = require('./routes/user');
 const itemRoutes = require('./routes/item');
 const wishlistRoutes = require('./routes/wishlist');
 const tradeRoutes = require('./routes/trade');
+const ratingRoutes = require('./routes/rating');
 const adminRoutes = require('./routes/admin');
 
 app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
@@ -22,6 +23,7 @@ app.use(userRoutes);
 app.use(itemRoutes);
 app.use(wishlistRoutes);
 app.use(tradeRoutes);
+app.use(ratingRoutes);
 app.use(adminRoutes);
 
 app.listen(PORT, () => {

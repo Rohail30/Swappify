@@ -124,11 +124,10 @@ const deleteItem = async (req, res) => {
       ]
     });
 
-    await
-      await Wishlist.updateMany(
-        { 'items.itemId': id },
-        { $pull: { items: { itemId: id } } }
-      );
+    await Wishlist.updateMany(
+      { 'items.itemId': id },
+      { $pull: { items: { itemId: id } } }
+    );
 
     fs.unlinkSync(path.join(__dirname, `../public${item.image}`));
 
