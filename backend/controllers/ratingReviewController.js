@@ -56,7 +56,9 @@ const getTradeRating = async (req, res) => {
     }
 
     try {
-        const ratingReview = await RatingReview.findOne({ tradeId });
+        const ratingReview = await RatingReview.findOne({ tradeId })
+            .populate("user", "name")
+            .populate("ratedUser", "name");
 
         if (!ratingReview) {
             return res.status(404).json({ error: true, message: "Rating & Review not found" });
