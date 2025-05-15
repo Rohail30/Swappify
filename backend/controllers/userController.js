@@ -23,13 +23,14 @@ const getUser = async (req, res) => {
         }
 
         const UserRating = await RatingReview.find({ ratedUser: userId });
+        console.log(UserRating);
 
         if (UserRating) {
-            const averageRating = UserRating.reduce((sum, r) => sum + r.rating, 0) / UserRating.length;
-            user.averageRating = averageRating;
+            var averageRating = UserRating.reduce((sum, r) => sum + r.rating, 0) / UserRating.length;
+            averageRating = averageRating.toFixed(2);
         }
 
-        return res.status(200).json({ error: false, user });
+        return res.status(200).json({ error: false, user, averageRating });
     }
     catch (error) {
         return res.status(500).json({ error: true, message: error.message });
