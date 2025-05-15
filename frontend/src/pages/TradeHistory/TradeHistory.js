@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { FaUser } from 'react-icons/fa6';
 import { IoIosStar } from 'react-icons/io';
 
-// import { FaArrowDownLong } from 'react-icons/fa6';
+import { FaArrowDownLong } from 'react-icons/fa6';
 
 const TradeHistory = () => {
   const [trades, setTrades] = useState([]);
@@ -29,7 +29,6 @@ const TradeHistory = () => {
               item.status === 'rejected')
         );
 
-        // Sort by createdAt to maintain chronological order
         filteredItems.sort(
           (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
         );
@@ -37,7 +36,6 @@ const TradeHistory = () => {
           (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
         );
 
-        // Reorganize: originals first, followed by their counter trades
         const sortedTrades = [];
 
         for (let i = 0; i < filteredItems.length; i++) {
@@ -45,7 +43,6 @@ const TradeHistory = () => {
           if (!trade.isCounterTrade) {
             sortedTrades.push(trade);
 
-            // Add any counter trades referencing this trade
             for (let j = 0; j < filteredItems.length; j++) {
               const counter = filteredItems[j];
               if (
@@ -71,7 +68,7 @@ const TradeHistory = () => {
               );
               ratingMap[trade._id] = response.data.ratingReview.rating;
             } catch (err) {
-              ratingMap[trade._id] = 0; // No rating
+              ratingMap[trade._id] = 0;
             }
           })
         );
@@ -121,8 +118,8 @@ const TradeHistory = () => {
                       <div className="item-container" key={item._id}>
                         {index === 1 && (
                           <div className="counter-label">
-                            {/* <FaArrowDownLong className="c-i" /> */}
-                            <div className="v-line"></div>
+                            <FaArrowDownLong className="c-i" />
+                            {/* <div className="v-line"></div> */}
                           </div>
                         )}
 
@@ -147,13 +144,6 @@ const TradeHistory = () => {
                                     {item.fromUser.name}
                                   </Link>
                                 </div>
-                                {/* <div className="rating">
-                                  <IoIosStar style={{ color: 'gold' }} />
-                                  <IoIosStar style={{ color: 'gold' }} />
-                                  <IoIosStar style={{ color: 'gold' }} />
-                                  <IoIosStar style={{ color: 'gold' }} />
-                                  <IoIosStar style={{ color: 'gold' }} />
-                                </div> */}
                                 <div className="rating">
                                   {[1, 2, 3, 4, 5].map((i) => (
                                     <IoIosStar
@@ -183,13 +173,7 @@ const TradeHistory = () => {
                                     {item.isCounterTrade ? 'Counter' : 'Normal'}
                                   </b>
                                 </h4>
-                                <h4>
-                                  Status: <b>{item.status}</b>
-                                  Trade type:{' '}
-                                  <b>
-                                    {item.isCounterTrade ? 'Counter' : 'Normal'}
-                                  </b>
-                                </h4>
+
                                 <h4>
                                   Status: <b>{item.status}</b>
                                 </h4>

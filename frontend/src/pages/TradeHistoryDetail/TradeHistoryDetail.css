@@ -36,8 +36,39 @@
   font-size: 35px;
 }
 
-.historyDetailPage .rate {
+.historyDetailPage .rating {
   margin-top: 20px;
+  /* background-color: aqua; */
+}
+
+.historyDetailPage .rating .existing-rating-review {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 5px;
+  padding: 10px;
+  border: 2px solid #9c9c9c;
+}
+
+.historyDetailPage .rating .existing-rating-review .display-review {
+  min-width: 100px;
+  max-width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.historyDetailPage .rating .rate {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.historyDetailPage .rating .rate .give-rate h4 {
+  font-size: 20px;
 }
 
 .historyDetailPage .give-rate {
@@ -75,7 +106,7 @@
   width: 100%;
   min-height: 50vh;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: flex-start;
   flex-direction: row;
   gap: 20px;
@@ -92,7 +123,7 @@
 
 .historyDetailPage .h-OfferedItem {
   background-color: white;
-  width: 450px;
+  width: 400px;
   padding: 20px;
   border-radius: 10px;
   border: solid 1px black;
@@ -110,17 +141,17 @@
 }
 
 .historyDetailPage .img-container {
-  background-color: yellow;
   width: 100%;
+  height: 200px;
   display: flex;
   flex-direction: row;
   justify-content: center;
-
-  border-radius: 10px;
+  align-items: center;
+  /* border-radius: 10px; */
 }
 
 .historyDetailPage .img-container img {
-  width: 100%;
+  width: 200px;
   height: 100%;
 }
 

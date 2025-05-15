@@ -194,6 +194,24 @@
   background-color: #d50000;
 }
 
+.CounterSent .tradepage-container .mid-sec .ext {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 12px;
+  border-radius: 30px;
+  width: 100px;
+  height: 30px;
+  transition: 0.3s;
+  background-color: #18a661;
+}
+
+.CounterSent .tradepage-container .mid-sec .ext:hover {
+  background-color: #006a4e;
+}
+
 .CounterSent .tradepage-container .offered-item {
   display: flex;
   justify-content: flex-start;

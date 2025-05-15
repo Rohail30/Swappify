@@ -186,12 +186,15 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 5px;
+  margin-bottom: 5px;
   /* margin-bottom: 5px; */
 }
 
 .counter-label .v-line {
   height: 20px;
   width: 3px;
+
   background-color: #9c9c9c;
 }
 

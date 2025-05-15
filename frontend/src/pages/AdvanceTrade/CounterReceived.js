@@ -122,6 +122,13 @@ const CounterReceived = () => {
 
                 <div className="mid-sec">
                   <div className="actions">
+                    <Link
+                      to={`/history-detail/${item.counteredFrom._id}`}
+                      className="offer-button"
+                    >
+                      <h4>Initial Trade</h4>
+                    </Link>
+                    <AiOutlineSwap />
                     <div
                       className="offer-button"
                       onClick={() => handleAccept(tradeId)}

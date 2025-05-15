@@ -15,26 +15,24 @@ const TradeHistoryDetail = () => {
 
   const [trade, setTrade] = useState(null);
   const [wantedSlide, setWantedSlide] = useState(0);
-
   const [rating, setRating] = useState(0);
   const [hoverRating, setHoverRating] = useState(0);
   const [review, setReview] = useState('');
   const [submitMsg, setSubmitMsg] = useState('');
-
-  const [existingRating, setExistingRating] = useState(null);
-  const [existingReview, setExistingReview] = useState('');
+  const [rate, setRate] = useState(null);
 
   useEffect(() => {
+    const fetchTrade = async () => {
+      try {
+        const res = await apiRequest.get(`/api/trades/${id}`);
+        const tradeData = res.data.trade || res.data;
+        setTrade(tradeData);
+      } catch (error) {
+        console.error('Error fetching trade:', error);
+      }
+    };
+
     if (currentUser && id) {
-      const fetchTrade = async () => {
-        try {
-          const res = await apiRequest.get(`/api/trades/${id}`);
-          const tradeData = res.data.trade || res.data;
-          setTrade(tradeData);
-        } catch (error) {
-          console.error('Error fetching trade:', error);
-        }
-      };
       fetchTrade();
     }
   }, [currentUser, id]);
@@ -43,10 +41,7 @@ const TradeHistoryDetail = () => {
     const fetchRating = async () => {
       try {
         const res = await apiRequest.get(`/api/rating/trade/${id}`);
-        if (res.data.ratingReview) {
-          setExistingRating(res.data.ratingReview.rating);
-          setExistingReview(res.data.ratingReview.review);
-        }
+        setRate(res.data.ratingReview);
       } catch (error) {
         console.log('No rating found');
       }
@@ -82,8 +77,12 @@ const TradeHistoryDetail = () => {
       });
 
       setSubmitMsg(res.data.message || 'Rating submitted!');
-      setExistingRating(rating);
-      setExistingReview(review);
+      setRate({
+        rating,
+        review,
+        user: currentUser,
+        createdAt: new Date().toISOString(),
+      });
     } catch (err) {
       setSubmitMsg(
         err.response?.data?.message || 'Something went wrong while submitting.'
@@ -97,11 +96,9 @@ const TradeHistoryDetail = () => {
     trade.status !== 'cancelled' &&
     trade.status !== 'rejected' &&
     currentUser._id === trade.toUser._id &&
-    !existingRating;
+    !rate?.rating;
 
-  if (!trade) {
-    return <p>Loading trade details...</p>;
-  }
+  if (!trade) return <p>Loading trade details...</p>;
 
   return (
     <div className="historyDetailPage">
@@ -117,61 +114,71 @@ const TradeHistoryDetail = () => {
         </div>
         <div className="want-items">Total Wanted Items: {totalWanted}</div>
 
-        {existingRating && (
-          <div className="existing-rating-review">
-            <div className="display-rating">
-              Rating:{' '}
-              {[1, 2, 3, 4, 5].map((star) => (
-                <IoIosStar
-                  key={star}
-                  style={{
-                    color: existingRating >= star ? 'gold' : '#ccc',
-                    fontSize: '24px',
-                  }}
-                />
-              ))}
+        <div className="rating">
+          {rate?.rating && (
+            <div className="existing-rating-review">
+              {rate?.user?.name && (
+                <div className="usr">
+                  <p>
+                    <b>{rate.user.name}</b>
+                  </p>
+                </div>
+              )}
+              {rate?.createdAt && (
+                <div className="usr">
+                  <p>{new Date(rate.createdAt).toLocaleDateString()}</p>
+                </div>
+              )}
+              <div className="display-rating">
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <IoIosStar
+                    key={star}
+                    style={{
+                      color: rate.rating >= star ? 'gold' : '#ccc',
+                      fontSize: '24px',
+                    }}
+                  />
+                ))}
+              </div>
+              <div className="display-review">
+                <p>{rate.review}</p>
+              </div>
             </div>
-            <div className="display-review">
-              <h4>Review:</h4>
-              <p>{existingReview}</p>
-            </div>
-          </div>
-        )}
+          )}
 
-        {canRate && (
-          <div className="rate">
-            <div className="give-rate">
-              Add Rating:
-              {[1, 2, 3, 4, 5].map((star) => (
-                <IoIosStar
-                  key={star}
-                  style={{
-                    color: (hoverRating || rating) >= star ? 'gold' : '#ccc',
-                    cursor: 'pointer',
-                    fontSize: '24px',
-                  }}
-                  onMouseEnter={() => setHoverRating(star)}
-                  onMouseLeave={() => setHoverRating(0)}
-                  onClick={() => setRating(star)}
-                />
-              ))}
+          {canRate && (
+            <div className="rate">
+              <div className="give-rate">
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <IoIosStar
+                    key={star}
+                    style={{
+                      color: (hoverRating || rating) >= star ? 'gold' : '#ccc',
+                      cursor: 'pointer',
+                      fontSize: '24px',
+                    }}
+                    onMouseEnter={() => setHoverRating(star)}
+                    onMouseLeave={() => setHoverRating(0)}
+                    onClick={() => setRating(star)}
+                  />
+                ))}
+              </div>
+              <div className="give-review">
+                <textarea
+                  className="rev-box"
+                  rows="4"
+                  placeholder="Write your review here..."
+                  value={review}
+                  onChange={(e) => setReview(e.target.value)}
+                ></textarea>
+              </div>
+              <button className="submit-rating" onClick={submitRatingReview}>
+                Submit
+              </button>
+              {submitMsg && <p className="submit-msg">{submitMsg}</p>}
             </div>
-            <div className="give-review">
-              <div className="txt">Add Review</div>
-              <textarea
-                className="rev-box"
-                rows="4"
-                placeholder="Write your review here..."
-                value={review}
-                onChange={(e) => setReview(e.target.value)}
-              ></textarea>
-            </div>
-            <button className="submit-rating" onClick={submitRatingReview}>
-              Submit
-            </button>
-            {submitMsg && <p className="submit-msg">{submitMsg}</p>}
-          </div>
-        )}
+          )}
+        </div>
       </span>
 
       <div className="h-container">

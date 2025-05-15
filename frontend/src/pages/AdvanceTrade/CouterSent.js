@@ -6,6 +6,7 @@ import { GiCancel } from 'react-icons/gi';
 import { Link } from 'react-router-dom';
 import { MdOutlineNavigateNext } from 'react-icons/md';
 import { GrFormPrevious } from 'react-icons/gr';
+import { AiOutlineSwap } from 'react-icons/ai';
 
 const CounterSent = () => {
   const [items, setItems] = useState([]);
@@ -132,6 +133,13 @@ const CounterSent = () => {
                         >
                           <GiCancel />
                         </div>
+                        <AiOutlineSwap />
+                        <Link
+                          to={`/history-detail/${item.counteredFrom._id}`}
+                          className="ext"
+                        >
+                          <h4>Initial Trade</h4>
+                        </Link>
                       </>
                     )}
                   </div>

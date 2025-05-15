@@ -40,6 +40,7 @@ const Navbar = () => {
             </div>
           ) : (
             <>
+              <Link to="/admin">Admin</Link>
               <Link to="/login">Login</Link>
               <Link to="/register" className="register">
                 Register
