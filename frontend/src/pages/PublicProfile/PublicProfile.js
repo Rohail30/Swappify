@@ -3,18 +3,20 @@ import '../MyList/MyList.css';
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import apiRequest from '../../config/apiRequest';
-import { IoIosStar } from 'react-icons/io';
+import { IoIosStar, IoIosStarHalf, IoIosStarOutline } from 'react-icons/io';
 
 const PublicProfile = () => {
   const { id } = useParams();
   const [user, setUser] = useState({});
   const [items, setItems] = useState([]);
   const [ratings, setRatings] = useState([]);
+  const [averageRating, setAverageRating] = useState(null); // <- new state
 
   const getUserDetails = async () => {
     try {
       const res = await apiRequest.get(`/api/users/${id}`);
       setUser(res.data.user);
+      setAverageRating(res.data.averageRating); // <- set average rating
     } catch (error) {
       console.log('Error fetching user details:', error);
     }
@@ -63,6 +65,45 @@ const PublicProfile = () => {
             <span>
               Mobile: <b>{user.mobile}</b>
             </span>
+            {averageRating && (
+              <span>
+                {isNaN(averageRating) ? (
+                  <b>No ratings yet!</b>
+                ) : (
+                  <>
+                    User Rating:{' '}
+                    <b>
+                      {Array.from({ length: 5 }, (_, i) => {
+                        const ratingValue = i + 1;
+                        if (averageRating >= ratingValue) {
+                          return (
+                            <IoIosStar
+                              key={i}
+                              style={{ color: 'gold', verticalAlign: 'middle' }}
+                            />
+                          );
+                        } else if (averageRating >= ratingValue - 0.5) {
+                          return (
+                            <IoIosStarHalf
+                              key={i}
+                              style={{ color: 'gold', verticalAlign: 'middle' }}
+                            />
+                          );
+                        } else {
+                          return (
+                            <IoIosStarOutline
+                              key={i}
+                              style={{ color: 'gold', verticalAlign: 'middle' }}
+                            />
+                          );
+                        }
+                      })}
+                      &nbsp;({Number(averageRating).toFixed(1)})
+                    </b>
+                  </>
+                )}
+              </span>
+            )}
           </div>
         </div>
       </div>
