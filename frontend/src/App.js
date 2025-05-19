@@ -30,6 +30,7 @@ import CounterOffer from './pages/CounterOffer/CounterOffer';
 import AdvanceTrade from './pages/AdvanceTrade/AdvanceTrade';
 import TradeHistory from './pages/TradeHistory/TradeHistory';
 import TradeHistoryDetail from './pages/TradeHistoryDetail/TradeHistoryDetail';
+import ChatPage from './pages/Chat/ChatPage';
 
 function App() {
   const location = useLocation();
@@ -81,6 +82,7 @@ function App() {
             <Route exact path="/trade-manage/sent" element={<SentRequests />} />
             <Route exact path="/sidebar" element={<Sidebar />} />
             <Route exact path="/userprof" element={<UserProfile />} />
+            <Route exact path="/chat/:receiver" element={<ChatPage />} />
           </Routes>
           <Footer />
         </>
