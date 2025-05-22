@@ -3,6 +3,7 @@ import { useState, useContext } from 'react';
 import './navbar.css';
 import { AuthContext } from '../../context/AuthContext';
 import apiRequest from '../../config/apiRequest';
+import { IoChatboxEllipsesOutline } from 'react-icons/io5';
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -33,6 +34,10 @@ const Navbar = () => {
         <div className="right-menu">
           {currentUser ? (
             <div className="user">
+              <Link to="/chat/" className="profile">
+                <IoChatboxEllipsesOutline className="cus-i" />
+              </Link>
+
               <Link to="/profile" className="profile">
                 <button>{currentUser.name.split(' ')[0]}</button>
               </Link>

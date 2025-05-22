@@ -147,7 +147,7 @@
 }
 
 .detailPage .other .buttons .offer {
-  width: 85%;
+  width: 75%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -173,7 +173,7 @@
 }
 
 .detailPage .other .buttons .offer:hover {
-  background-color: #c5e9af;
+  background-color: #006a4e;
 }
 
 .detailPage .other .buttons .det-wishlist {
@@ -193,6 +193,25 @@
 
 .detailPage .other .buttons .det-wishlist:hover {
   background-color: pink;
+}
+
+.detailPage .other .buttons .msg-user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  font-size: 16px;
+  color: white;
+  background-color: #18a661;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.detailPage .other .buttons .msg-user:hover {
+  background-color: #006a4e;
 }
 
 @media (max-width: 738px) {

@@ -6,6 +6,7 @@ import { AuthContext } from '../../context/AuthContext';
 import { Link } from 'react-router-dom';
 import { MdOutlineNavigateNext } from 'react-icons/md';
 import { GrFormPrevious } from 'react-icons/gr';
+import { IoChatboxEllipsesOutline } from 'react-icons/io5';
 
 const CounterReceived = () => {
   const [items, setItems] = useState([]);
@@ -122,6 +123,16 @@ const CounterReceived = () => {
 
                 <div className="mid-sec">
                   <div className="actions">
+                    <Link
+                      to={`/chat/${item.toUser._id}`}
+                      state={{
+                        prefillText: `Hi! I received your offer for "${item.ItemOffered.name}". Let's discuss!`,
+                      }}
+                    >
+                      <h2>
+                        <IoChatboxEllipsesOutline className="cus-i" />
+                      </h2>
+                    </Link>
                     <Link
                       to={`/history-detail/${item.counteredFrom._id}`}
                       className="offer-button"

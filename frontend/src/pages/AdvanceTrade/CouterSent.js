@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { MdOutlineNavigateNext } from 'react-icons/md';
 import { GrFormPrevious } from 'react-icons/gr';
 import { AiOutlineSwap } from 'react-icons/ai';
+import { IoChatboxEllipsesOutline } from 'react-icons/io5';
 
 const CounterSent = () => {
   const [items, setItems] = useState([]);
@@ -119,6 +120,16 @@ const CounterSent = () => {
                 <div className="mid-sec">
                   <div className="status">
                     <h1>{item.status}</h1>
+                    <Link
+                      to={`/chat/${item.toUser._id}`}
+                      state={{
+                        prefillText: `Hey! I just sent you a trade offer with my "${item.ItemOffered.name}". Let me know what you think!`,
+                      }}
+                    >
+                      <h2>
+                        <IoChatboxEllipsesOutline className="cus-i" />
+                      </h2>
+                    </Link>
                     {item.status === 'pending' && (
                       <>
                         <div

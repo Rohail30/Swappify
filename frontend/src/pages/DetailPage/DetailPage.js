@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 import apiRequest from '../../config/apiRequest';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
+import { IoChatboxEllipsesOutline } from 'react-icons/io5';
 
 const DetailPage = () => {
   const { currentUser } = useContext(AuthContext);
@@ -86,6 +87,17 @@ const DetailPage = () => {
                 <div className="offer">
                   <Link to={`/trade-offer/${item._id}`}>Offer a Trade</Link>
                 </div>
+                <Link
+                  className="msg-user"
+                  to={`/chat/${item.owner._id}`}
+                  state={{
+                    prefillText: `Hey! I just sent you a trade offer with my. Let me know what you think!`,
+                  }}
+                >
+                  <h2>
+                    <IoChatboxEllipsesOutline className="cus-i" />
+                  </h2>
+                </Link>
                 <div
                   className="det-wishlist"
                   onClick={() => addToWishlist(item._id)}

@@ -82,7 +82,7 @@ function App() {
             <Route exact path="/trade-manage/sent" element={<SentRequests />} />
             <Route exact path="/sidebar" element={<Sidebar />} />
             <Route exact path="/userprof" element={<UserProfile />} />
-            <Route exact path="/chat/:receiver" element={<ChatPage />} />
+            <Route path="/chat/*" element={<ChatPage />} />
           </Routes>
           <Footer />
         </>

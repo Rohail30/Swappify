@@ -4,6 +4,7 @@ import apiRequest from '../../config/apiRequest';
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import { Link } from 'react-router-dom';
+import { IoChatboxEllipsesOutline } from 'react-icons/io5';
 
 const ReceivedRequests = () => {
   const [items, setItems] = useState([]);
@@ -103,6 +104,17 @@ const ReceivedRequests = () => {
                       <div>
                         <div className="mid-sec">
                           <div className="actions">
+                            <Link
+                              to={`/chat/${item.toUser._id}`}
+                              state={{
+                                prefillText: `Hi! I received your offer for "${item.ItemOffered.name}". Let's discuss!`,
+                              }}
+                            >
+                              <h2>
+                                <IoChatboxEllipsesOutline className="cus-i" />
+                              </h2>
+                            </Link>
+
                             <div
                               className="offer-button"
                               onClick={() => handleAccept(item._id)}

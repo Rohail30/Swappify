@@ -1,0 +1,56 @@
+.chat-sidebar-container {
+  min-width: 300px;
+  height: 450px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  background-color: #fafafa;
+}
+
+.sidebar-title {
+  color: white;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 40px;
+  background-color: #007bff;
+  margin-bottom: 20px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.user-list {
+  padding: 10px;
+  list-style: none;
+}
+
+.user-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: 0.2s;
+}
+
+.user-item:hover {
+  background-color: #f0f0f0;
+}
+
+.user-item.selected {
+  background-color: #e6f0ff;
+  border-left: 4px solid #007bff;
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.user-email {
+  font-size: 0.85em;
+  color: #666;
+}
