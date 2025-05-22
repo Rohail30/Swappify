@@ -1,63 +1,92 @@
-const Chat = require("../models/ChatModel");
-const User = require("../models/UserModel");
-
+const Chat = require('../models/ChatModel');
+const User = require('../models/UserModel');
 
 // @desc   Get chat between two users
 // @route  GET /api/chat/:reciever
 // @access Private
 const getChat = async (req, res) => {
-    const userId = req.userId;
-    const reciever = req.params.reciever;
+  const userId = req.userId;
+  const reciever = req.params.reciever;
 
-    if (!userId || !reciever) {
-        return res.status(400).json({ error: true, message: 'Sender and Reciever are required' });
+  if (!userId || !reciever) {
+    return res
+      .status(400)
+      .json({ error: true, message: 'Sender and Reciever are required' });
+  }
+
+  try {
+    let chat = await Chat.findOne({
+      participants: { $all: [userId, reciever] },
+    }).populate('messages.from', 'name');
+
+    if (!chat) {
+      chat = new Chat({
+        participants: [userId, reciever],
+        messages: [],
+      });
+      await chat.save();
     }
 
-    try {
-        let chat = await Chat.findOne({
-            participants: { $all: [userId, reciever] }
-        }).populate('messages.from', 'name');
-
-        if (!chat) {
-            chat = new Chat({
-                participants: [userId, reciever],
-                messages: []
-            });
-            await chat.save();
-        }
-
-        return res.status(200).json(chat ? chat.messages : []);
-    }
-    catch (error) {
-        return res.status(500).json({ error: true, message: error.message });
-    }
-}
-
+    return res.status(200).json(chat ? chat.messages : []);
+  } catch (error) {
+    return res.status(500).json({ error: true, message: error.message });
+  }
+};
 
 // @desc Handle sending a message
 const handleSocketMessage = async (io, socket, { sender, receiver, text }) => {
-    const roomId = [sender, receiver].sort().join('_');
+  const roomId = [sender, receiver].sort().join('_');
 
-    let chat = await Chat.findOne({
-        participants: { $all: [sender, receiver] }
+  let chat = await Chat.findOne({
+    participants: { $all: [sender, receiver] },
+  });
+
+  if (!chat) {
+    chat = new Chat({
+      participants: [sender, receiver],
+      messages: [],
     });
+  }
 
-    if (!chat) {
-        chat = new Chat({
-            participants: [sender, receiver],
-            messages: []
-        });
-    }
+  const message = { from: sender, text };
+  chat.messages.push(message);
+  await chat.save();
 
-    const message = { from: sender, text };
-    chat.messages.push(message);
-    await chat.save();
+  await chat.populate({ path: 'messages.from', select: 'name' });
+  const populatedMessage = chat.messages[chat.messages.length - 1];
 
-    await chat.populate({ path: 'messages.from', select: 'name' });
-    const populatedMessage = chat.messages[chat.messages.length - 1];
-
-    io.to(roomId).emit('receiveMessage', populatedMessage);
+  io.to(roomId).emit('receiveMessage', populatedMessage);
 };
 
+// @desc   Get all chats
+// @route  GET /chat/users
+const getChatUsers = async (req, res) => {
+  try {
+    const userId = req.userId;
 
-module.exports = { getChat, handleSocketMessage };
+    const chats = await Chat.find({ participants: userId });
+
+    const userIds = [];
+    chats.forEach((chat) => {
+      chat.participants.forEach((participant) => {
+        const participantId = participant.toString();
+        if (
+          participantId !== userId.toString() &&
+          !userIds.includes(participantId)
+        ) {
+          userIds.push(participantId);
+        }
+      });
+    });
+
+    const users = await User.find({ _id: { $in: userIds } }).select(
+      'name email'
+    );
+
+    res.status(200).json(users);
+  } catch (error) {
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
+module.exports = { getChat, handleSocketMessage, getChatUsers };
