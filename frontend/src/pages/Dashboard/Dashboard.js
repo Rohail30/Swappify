@@ -87,10 +87,9 @@ const Dashboard = () => {
                       )
                       .slice(0, 3)
                       .map((user) => (
-                        <tr>
+                        <tr key={user._id}>
                           <td>{user.name}</td>
                           <td>{itemCount[user._id] ?? 'Loading...'}</td>
-                          {/* <td>{user.rate}</td> */}
                         </tr>
                       ))}
                   </tbody>
@@ -116,7 +115,7 @@ const Dashboard = () => {
                       )
                       .slice(0, 3)
                       .map((item) => (
-                        <tr>
+                        <tr key={item._id}>
                           <td>{item.name}</td>
                           <td>{item.owner.name}</td>
                           <td>{item.status}</td>

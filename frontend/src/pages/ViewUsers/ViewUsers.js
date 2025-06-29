@@ -78,7 +78,7 @@ const ViewUsers = () => {
               </thead>
               <tbody>
                 {users.map((user) => (
-                  <tr>
+                  <tr key={user._id}>
                     <td>
                       <Link to={`/user/${user._id}`}>{user.name}</Link>
                     </td>

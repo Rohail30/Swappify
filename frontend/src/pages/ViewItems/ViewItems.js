@@ -47,7 +47,6 @@ const ViewItems = () => {
               <thead>
                 <tr>
                   <th>Name</th>
-                  <th>Owner</th>
                   <th>Condition</th>
                   <th>Category</th>
                   <th>Location</th>
@@ -59,11 +58,10 @@ const ViewItems = () => {
               </thead>
               <tbody>
                 {items.map((item) => (
-                  <tr>
+                  <tr key={item._id}>
                     <td>
                       <Link to={`/detail-page/${item._id}`}>{item.name}</Link>
                     </td>
-                    <td>{item.owner.name}</td>
                     <td>{item.condition}</td>
                     <td>{item.category}</td>
                     <td>{item.location}</td>
