@@ -2,6 +2,7 @@ const User = require('../models/UserModel');
 const Item = require('../models/ItemModel');
 const Wishlist = require('../models/WishllistModel');
 const Trade = require("../models/tradeModel");
+const RatingReview = require('../models/RatingReviewModel');
 const validator = require('validator');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -72,12 +73,23 @@ const getAllUsers = async (req, res) => {
     try {
         const users = await User.find({ isAdmin: false });
 
+        for (const user of users) {
+            const ratings = await RatingReview.find({ ratedUser: user._id });
+
+            if (ratings.length > 0) {
+                const sum = ratings.reduce((acc, r) => acc + r.rating, 0);
+                user._doc.averageRating = (sum / ratings.length).toFixed(2);
+            } else {
+                user._doc.averageRating = '0.00';
+            }
+        }
+
         return res.status(200).json({ error: false, users });
-    }
-    catch (error) {
+    } catch (error) {
         return res.status(500).json({ error: true, message: error.message });
     }
 }
+
 
 //@desc     Get all items
 //@route    GET /api/admin/items

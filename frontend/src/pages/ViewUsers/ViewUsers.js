@@ -16,7 +16,6 @@ const ViewUsers = () => {
       try {
         const res = await apiRequest.get('/api/admin/users');
         const filteredUsers = res.data.users.filter((user) => !user.isBan);
-
         setUsers(filteredUsers);
       } catch (error) {
         console.log(error);
@@ -72,6 +71,7 @@ const ViewUsers = () => {
                   <th>Name</th>
                   <th>Phone</th>
                   <th>Email</th>
+                  <th>Rating</th>
                   <th>Total Items</th>
                   <th>Action</th>
                 </tr>
@@ -84,6 +84,7 @@ const ViewUsers = () => {
                     </td>
                     <td>{user.mobile}</td>
                     <td>{user.email}</td>
+                    <td>{user.averageRating}</td>
                     <td>{itemCount[user._id] ?? 'Loading...'}</td>
                     <td>
                       <div className="ban" onClick={() => handleBan(user._id)}>
