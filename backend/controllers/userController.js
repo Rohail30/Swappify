@@ -23,7 +23,6 @@ const getUser = async (req, res) => {
         }
 
         const UserRating = await RatingReview.find({ ratedUser: userId });
-        console.log(UserRating);
 
         if (UserRating) {
             var averageRating = UserRating.reduce((sum, r) => sum + r.rating, 0) / UserRating.length;

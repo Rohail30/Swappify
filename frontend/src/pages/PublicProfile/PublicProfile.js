@@ -10,14 +10,13 @@ const PublicProfile = () => {
   const [user, setUser] = useState({});
   const [items, setItems] = useState([]);
   const [ratings, setRatings] = useState([]);
-  const [averageRating, setAverageRating] = useState(null); // <- new state
+  const [averageRating, setAverageRating] = useState(null);
 
   const getUserDetails = async () => {
     try {
       const res = await apiRequest.get(`/api/users/${id}`);
       setUser(res.data.user);
-      console.log(res.data.averageRating);
-      setAverageRating(res.data.averageRating); // <- set average rating
+      setAverageRating(res.data.averageRating);
     } catch (error) {
       console.log('Error fetching user details:', error);
     }
