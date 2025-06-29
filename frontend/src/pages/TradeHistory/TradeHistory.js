@@ -134,8 +134,8 @@ const TradeHistory = () => {
                             <div className="details">
                               <div className="head">
                                 <h3>
-                                  {item.ItemOffered.name.length > 16
-                                    ? item.ItemOffered.name.slice(0, 16) + '...'
+                                  {item.ItemOffered.name.length > 20
+                                    ? item.ItemOffered.name.slice(0, 20) + '...'
                                     : item.ItemOffered.name}
                                 </h3>
                                 <div className="owner">
@@ -186,9 +186,6 @@ const TradeHistory = () => {
                           </div>
                           <div className="right">
                             <div className="date">
-                              <p>
-                                {new Date(item.createdAt).toLocaleDateString()}
-                              </p>
                               <p>
                                 {new Date(item.createdAt).toLocaleDateString()}
                               </p>

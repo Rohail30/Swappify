@@ -16,6 +16,7 @@ const PublicProfile = () => {
     try {
       const res = await apiRequest.get(`/api/users/${id}`);
       setUser(res.data.user);
+      console.log(res.data.averageRating);
       setAverageRating(res.data.averageRating); // <- set average rating
     } catch (error) {
       console.log('Error fetching user details:', error);

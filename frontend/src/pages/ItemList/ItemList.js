@@ -255,7 +255,7 @@ const ItemList = () => {
                   </div>
 
                   <div className="price">
-                    <h2>{`Est. Value in Pkr: ${item.price.min} - ${item.price.max}`}</h2>
+                    <h2>{`Est. Value (RS.): ${item.price.min} - ${item.price.max}`}</h2>
                   </div>
                   <div className="location">
                     <FaLocationDot size={14} />

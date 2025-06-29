@@ -91,7 +91,7 @@ const DetailPage = () => {
                   className="msg-user"
                   to={`/chat/${item.owner._id}`}
                   state={{
-                    prefillText: `Hey! I just sent you a trade offer with my. Let me know what you think!`,
+                    prefillText: `Hey! I’m interested in your item "${item.name}". Can you tell me a bit more about it?`,
                   }}
                 >
                   <h2>

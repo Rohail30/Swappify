@@ -157,6 +157,11 @@
   flex-direction: column;
 }
 
+.itemlist .card-container .empty-text {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
 .itemlist h1 {
   font-size: 24px;
   color: black;

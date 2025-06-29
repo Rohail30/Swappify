@@ -43,23 +43,23 @@ const Home = () => {
         {/* <div className="cat-text">categories</div> */}
         <div className="cat-items">
           <div className="cat">
-            <Link to={`/item-listing`}>
+            <Link>
               <IoCarSportSharp className="icon" />
             </Link>
           </div>
           <div className="cat">
-            <Link to={`/item-listing?category=sports & outdoors`}>
+            <Link>
               <MdSportsTennis className="icon" />
             </Link>
           </div>
 
           <div className="cat">
-            <Link to={`/item-listing`}>
+            <Link>
               <GiPorcelainVase className="icon" />
             </Link>
           </div>
           <div className="cat">
-            <Link to={`/item-listing`}>
+            <Link>
               <MdChair className="icon" />
             </Link>
           </div>

@@ -78,7 +78,6 @@ const Dashboard = () => {
                     <tr>
                       <th>User</th>
                       <th>Total Items</th>
-                      <th>Rating</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -91,7 +90,7 @@ const Dashboard = () => {
                         <tr>
                           <td>{user.name}</td>
                           <td>{itemCount[user._id] ?? 'Loading...'}</td>
-                          <td>n/a</td>
+                          {/* <td>{user.rate}</td> */}
                         </tr>
                       ))}
                   </tbody>
