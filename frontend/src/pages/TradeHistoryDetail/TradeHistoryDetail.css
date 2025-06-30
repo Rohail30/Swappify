@@ -38,7 +38,6 @@
 
 .historyDetailPage .rating {
   margin-top: 20px;
-  /* background-color: aqua; */
 }
 
 .historyDetailPage .rating .existing-rating-review {
@@ -147,7 +146,6 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  /* border-radius: 10px; */
 }
 
 .historyDetailPage .img-container img {
@@ -176,8 +174,6 @@
 .historyDetailPage .other .titles .left {
   display: flex;
   flex-direction: column;
-  /* align-items: flex-start;
-  justify-content: space-between; */
   width: 100%;
   height: 100%;
 }
@@ -257,7 +253,6 @@
 
 .historyDetailPage .other .description {
   padding: 10px;
-  /* height: 250px; */
   width: 100%;
   border: 1px solid black;
   overflow: auto;
@@ -338,9 +333,11 @@
     flex-direction: column;
     justify-content: center;
   }
+
   .historyDetailPage .img-container {
     width: 100%;
   }
+
   .historyDetailPage .info {
     width: 100%;
   }

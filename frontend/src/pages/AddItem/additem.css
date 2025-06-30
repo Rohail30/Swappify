@@ -35,7 +35,6 @@
 .newItemPage .formContainer form input,
 .newItemPage .formContainer form textarea,
 .newItemPage .formContainer form select {
-  /* padding: 15px; */
   padding: 5px 15px;
   border: 1px solid #ccc;
   border-radius: 5px;

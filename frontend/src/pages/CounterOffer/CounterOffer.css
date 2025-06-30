@@ -9,15 +9,6 @@
   min-height: 100vh;
 }
 
-/*  
-  
-  
-  ---------------------------Item-Requested CSS--------------------------- 
-  
-  
-  
-  */
-
 .counter-offer-page .offerpage-container {
   width: 100%;
   min-height: 400px;
@@ -100,15 +91,6 @@
   border-radius: 10px;
 }
 
-/*  
-  
-  
-  ---------------------------offer-button CSS--------------------------- 
-  
-  
-  
-  */
-
 .counter-offer-page .offerpage-container .mid {
   width: 200px;
   display: flex;
@@ -138,15 +120,6 @@
 .counter-offer-page .offerpage-container .trade-msg {
   text-align: center;
 }
-
-/*  
-  
-  
-  ---------------------------Item offering CSS--------------------------- 
-  
-  
-  
-  */
 
 .counter-offer-page .offerpage-container .item {
   display: flex;
@@ -286,14 +259,6 @@
   background-color: #006a4e;
 }
 
-/*  
-  
-  
-  ---------------------------List Cards CSS--------------------------- 
-  
-  
-  
-  */
 
 .your-list {
   margin-top: 20px;
@@ -405,7 +370,6 @@
   justify-content: center;
   align-items: center;
   flex-direction: row;
-  /* margin: 20px; */
   font-size: small;
   font-weight: bold;
   margin-top: 20px;
@@ -460,6 +424,7 @@
   .counter-offer-page {
     width: 100%;
   }
+
   .counter-offer-page .offerpage-container {
     flex-direction: column;
     justify-content: center;

@@ -35,7 +35,6 @@
 .editItemPage .formContainer form input,
 .editItemPage .formContainer form textarea,
 .editItemPage .formContainer form select {
-  /* padding: 15px; */
   padding: 5px 15px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -97,6 +96,7 @@
   .editItemPage .imagePreview img {
     display: none;
   }
+
   .editItemPage .imgContainer {
     display: none;
   }

@@ -16,8 +16,7 @@
 }
 
 .chat-container {
-  min-width: 600px;
-  /* margin: 40px auto; */
+  width: 850px;
   font-family: Arial, sans-serif;
   display: flex;
   flex-direction: column;
@@ -47,6 +46,7 @@
   border-radius: 10px;
   background-color: white;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow-wrap: break-word;
 }
 
 .chat-name {
@@ -94,10 +94,10 @@
 
 .chat-message.sent {
   align-self: flex-end;
-  background-color: #cce5ff; /* Light green like WhatsApp */
+  background-color: #cce5ff;
 }
 
 .chat-message.received {
   align-self: flex-start;
-  background-color: #ffffff; /* White or any preferred color */
+  background-color: #ffffff;
 }
