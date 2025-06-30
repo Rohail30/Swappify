@@ -80,9 +80,6 @@ const CounterSent = () => {
 
           return (
             <div className="main" key={tradeId}>
-              {/* <span>
-                <b>Order ID:</b> {tradeId}
-              </span> */}
               <div className="tradepage-container">
                 <div className="offered-item">
                   <div className="header">
@@ -181,7 +178,7 @@ const CounterSent = () => {
                         <h4>
                           {item.ItemWanted[currentSlide].name.length > 16
                             ? item.ItemWanted[currentSlide].name.slice(0, 16) +
-                              '...'
+                            '...'
                             : item.ItemWanted[currentSlide].name}
                         </h4>
                       </div>

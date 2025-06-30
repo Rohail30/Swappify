@@ -40,7 +40,6 @@ const Home = () => {
         </div>
       </div>
       <div className="category">
-        {/* <div className="cat-text">categories</div> */}
         <div className="cat-items">
           <div className="cat">
             <Link>
