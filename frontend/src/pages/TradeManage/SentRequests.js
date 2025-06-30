@@ -52,44 +52,41 @@ const SentRequests = () => {
       ) : (
         items.map((item) => (
           <div className="main">
-            {/* <span>
-              <b>Order ID:</b> {item._id}
-            </span> */}
             <div className="tradepage-container" key={item._id}>
               <div className="item-cards">
                 {Array.isArray(item.ItemWanted)
                   ? item.ItemWanted.map((wantedItem) => (
-                      <div className="requested-item" key={wantedItem._id}>
-                        <div className="header">
-                          <h1>Item Wanted</h1>
-                        </div>
-                        <div className="image">
-                          <img
-                            src={`http://localhost:5000${wantedItem.image}`}
-                            alt="Item"
-                          />
-                        </div>
-                        <div className="line-container">
-                          <div className="line"></div>
-                        </div>
-                        <div className="title">
-                          <h4>
-                            {wantedItem.name.length > 16
-                              ? wantedItem.name.slice(0, 16) + '...'
-                              : wantedItem.name}
-                          </h4>
-                        </div>
-                        <div className="pricerange">
-                          <h3>{`${wantedItem.price.min} Rs - ${wantedItem.price.max} Rs`}</h3>
-                        </div>
-                        <Link
-                          to={`/detail-page/${wantedItem._id}`}
-                          className="view"
-                        >
-                          <div className="button">View Details</div>
-                        </Link>
+                    <div className="requested-item" key={wantedItem._id}>
+                      <div className="header">
+                        <h1>Item Wanted</h1>
                       </div>
-                    ))
+                      <div className="image">
+                        <img
+                          src={`http://localhost:5000${wantedItem.image}`}
+                          alt="Item"
+                        />
+                      </div>
+                      <div className="line-container">
+                        <div className="line"></div>
+                      </div>
+                      <div className="title">
+                        <h4>
+                          {wantedItem.name.length > 16
+                            ? wantedItem.name.slice(0, 16) + '...'
+                            : wantedItem.name}
+                        </h4>
+                      </div>
+                      <div className="pricerange">
+                        <h3>{`${wantedItem.price.min} Rs - ${wantedItem.price.max} Rs`}</h3>
+                      </div>
+                      <Link
+                        to={`/detail-page/${wantedItem._id}`}
+                        className="view"
+                      >
+                        <div className="button">View Details</div>
+                      </Link>
+                    </div>
+                  ))
                   : null}
 
                 <div>

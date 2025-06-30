@@ -98,7 +98,6 @@ const MyList = () => {
                             <MdEdit className="cust-i" />
                           </div>
                         </Link>
-                        {/* <div className="delete"><MdDelete /></div> */}
                         <div
                           className="delete"
                           onClick={() => handleDelete(item._id)}

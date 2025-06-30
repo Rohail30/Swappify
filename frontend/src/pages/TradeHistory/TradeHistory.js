@@ -119,7 +119,6 @@ const TradeHistory = () => {
                         {index === 1 && (
                           <div className="counter-label">
                             <FaArrowDownLong className="c-i" />
-                            {/* <div className="v-line"></div> */}
                           </div>
                         )}
 

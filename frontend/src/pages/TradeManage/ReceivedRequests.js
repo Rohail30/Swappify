@@ -64,81 +64,78 @@ const ReceivedRequests = () => {
       ) : (
         items.map((item, index) => (
           <div className="main">
-            {/* <span>
-              <b>Order ID:</b> {item._id}
-            </span> */}
             <div className="tradepage-container">
               {Array.isArray(item.ItemWanted)
                 ? item.ItemWanted.map((wantedItem) => (
-                    <>
-                      <div className="requested-item" key={wantedItem._id}>
-                        <div className="header">
-                          <h1>Item Wanted</h1>
-                        </div>
-                        <div className="image">
-                          <img
-                            src={`http://localhost:5000${wantedItem.image}`}
-                            alt="Item"
-                          />
-                        </div>
-                        <div className="line-container">
-                          <div className="line"></div>
-                        </div>
-                        <div className="title">
-                          <h4>
-                            {wantedItem.name.length > 16
-                              ? wantedItem.name.slice(0, 16) + '...'
-                              : wantedItem.name}
-                          </h4>
-                        </div>
-                        <div className="pricerange">
-                          <h3>{`${wantedItem.price.min} Rs - ${wantedItem.price.max} Rs`}</h3>
-                        </div>
-                        <div className="button">
-                          <Link to={`/detail-page/${wantedItem._id}`}>
-                            <div className="view">View Details</div>
-                          </Link>
-                        </div>
+                  <>
+                    <div className="requested-item" key={wantedItem._id}>
+                      <div className="header">
+                        <h1>Item Wanted</h1>
                       </div>
+                      <div className="image">
+                        <img
+                          src={`http://localhost:5000${wantedItem.image}`}
+                          alt="Item"
+                        />
+                      </div>
+                      <div className="line-container">
+                        <div className="line"></div>
+                      </div>
+                      <div className="title">
+                        <h4>
+                          {wantedItem.name.length > 16
+                            ? wantedItem.name.slice(0, 16) + '...'
+                            : wantedItem.name}
+                        </h4>
+                      </div>
+                      <div className="pricerange">
+                        <h3>{`${wantedItem.price.min} Rs - ${wantedItem.price.max} Rs`}</h3>
+                      </div>
+                      <div className="button">
+                        <Link to={`/detail-page/${wantedItem._id}`}>
+                          <div className="view">View Details</div>
+                        </Link>
+                      </div>
+                    </div>
 
-                      <div>
-                        <div className="mid-sec">
-                          <div className="actions">
-                            <Link
-                              to={`/chat/${item.toUser._id}`}
-                              state={{
-                                prefillText: `Hi! I received your offer for "${item.ItemOffered.name}". Let's discuss!`,
-                              }}
-                            >
-                              <h2>
-                                <IoChatboxEllipsesOutline className="cus-i" />
-                              </h2>
+                    <div>
+                      <div className="mid-sec">
+                        <div className="actions">
+                          <Link
+                            to={`/chat/${item.toUser._id}`}
+                            state={{
+                              prefillText: `Hi! I received your offer for "${item.ItemOffered.name}". Let's discuss!`,
+                            }}
+                          >
+                            <h2>
+                              <IoChatboxEllipsesOutline className="cus-i" />
+                            </h2>
+                          </Link>
+
+                          <div
+                            className="offer-button"
+                            onClick={() => handleAccept(item._id)}
+                          >
+                            <h4>Accept</h4>
+                          </div>
+                          <AiOutlineSwap />
+                          <div
+                            className="offer-button"
+                            onClick={() => handleReject(item._id)}
+                          >
+                            <h4>Reject</h4>
+                          </div>
+                          <AiOutlineSwap />
+                          <div className="offer-button">
+                            <Link to={`/counter-offer/${item._id}`}>
+                              <h4>Counter Offer</h4>
                             </Link>
-
-                            <div
-                              className="offer-button"
-                              onClick={() => handleAccept(item._id)}
-                            >
-                              <h4>Accept</h4>
-                            </div>
-                            <AiOutlineSwap />
-                            <div
-                              className="offer-button"
-                              onClick={() => handleReject(item._id)}
-                            >
-                              <h4>Reject</h4>
-                            </div>
-                            <AiOutlineSwap />
-                            <div className="offer-button">
-                              <Link to={`/counter-offer/${item._id}`}>
-                                <h4>Counter Offer</h4>
-                              </Link>
-                            </div>
                           </div>
                         </div>
                       </div>
-                    </>
-                  ))
+                    </div>
+                  </>
+                ))
                 : null}
               <div className="offered-item">
                 <div className="header">
