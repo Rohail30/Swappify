@@ -16,7 +16,7 @@ const ChatPage = () => {
           <Route
             index
             element={
-              <div className="chat-placeholder">
+              <div className="chat-placeholder" style={{ textAlign: 'center', width: '850px' }}>
                 <h2>Select a user to start chatting</h2>
               </div>
             }
