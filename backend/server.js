@@ -20,10 +20,7 @@ const { handleSocketMessage } = require('./controllers/chatController')
 const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
-  cors: {
-    origin: process.env.CLIENT_URL || '*',
-    credentials: true
-  },
+  cors: { origin: process.env.CLIENT_URL, credentials: true },
   pingInterval: 30000,
   pingTimeout: 600000
 });

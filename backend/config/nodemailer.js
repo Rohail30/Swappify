@@ -12,7 +12,6 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-// const sendMail = (email, subject, data) => {
 const sendMail = (type, data) => {
 
     let subject = '';

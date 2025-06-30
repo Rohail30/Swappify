@@ -1,9 +1,11 @@
 const Chat = require('../models/ChatModel');
 const User = require('../models/UserModel');
 
+
 // @desc   Get chat between two users
 // @route  GET /api/chat/:reciever
 // @access Private
+
 const getChat = async (req, res) => {
   const userId = req.userId;
   const reciever = req.params.reciever;
@@ -33,7 +35,9 @@ const getChat = async (req, res) => {
   }
 };
 
+
 // @desc Handle sending a message
+
 const handleSocketMessage = async (io, socket, { sender, receiver, text }) => {
   const roomId = [sender, receiver].sort().join('_');
 
@@ -58,8 +62,10 @@ const handleSocketMessage = async (io, socket, { sender, receiver, text }) => {
   io.to(roomId).emit('receiveMessage', populatedMessage);
 };
 
+
 // @desc   Get all chats
 // @route  GET /chat/users
+
 const getChatUsers = async (req, res) => {
   try {
     const userId = req.userId;
