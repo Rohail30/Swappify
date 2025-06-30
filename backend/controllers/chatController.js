@@ -11,21 +11,15 @@ const getChat = async (req, res) => {
   const reciever = req.params.reciever;
 
   if (!userId || !reciever) {
-    return res
-      .status(400)
-      .json({ error: true, message: 'Sender and Reciever are required' });
+    return res.status(400).json({ error: true, message: 'Sender and Reciever are required' });
   }
 
   try {
-    let chat = await Chat.findOne({
-      participants: { $all: [userId, reciever] },
-    }).populate('messages.from', 'name');
+    let chat = await Chat.findOne({ participants: { $all: [userId, reciever] }, })
+      .populate('messages.from', 'name');
 
     if (!chat) {
-      chat = new Chat({
-        participants: [userId, reciever],
-        messages: [],
-      });
+      chat = new Chat({ participants: [userId, reciever], messages: [], });
       await chat.save();
     }
 
@@ -41,22 +35,17 @@ const getChat = async (req, res) => {
 const handleSocketMessage = async (io, socket, { sender, receiver, text }) => {
   const roomId = [sender, receiver].sort().join('_');
 
-  let chat = await Chat.findOne({
-    participants: { $all: [sender, receiver] },
-  });
+  let chat = await Chat.findOne({ participants: { $all: [sender, receiver] }, });
 
   if (!chat) {
-    chat = new Chat({
-      participants: [sender, receiver],
-      messages: [],
-    });
+    chat = new Chat({ participants: [sender, receiver], messages: [], });
   }
 
   const message = { from: sender, text };
   chat.messages.push(message);
   await chat.save();
 
-  await chat.populate({ path: 'messages.from', select: 'name' });
+  await chat.populate('messages.from', 'name');
   const populatedMessage = chat.messages[chat.messages.length - 1];
 
   io.to(roomId).emit('receiveMessage', populatedMessage);
@@ -76,18 +65,14 @@ const getChatUsers = async (req, res) => {
     chats.forEach((chat) => {
       chat.participants.forEach((participant) => {
         const participantId = participant.toString();
-        if (
-          participantId !== userId.toString() &&
-          !userIds.includes(participantId)
-        ) {
+        if (participantId !== userId.toString() && !userIds.includes(participantId)) {
           userIds.push(participantId);
         }
       });
     });
 
-    const users = await User.find({ _id: { $in: userIds } }).select(
-      'name email'
-    );
+    const users = await User.find({ _id: { $in: userIds } })
+      .populate('name email')
 
     res.status(200).json(users);
   } catch (error) {
