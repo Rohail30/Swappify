@@ -69,16 +69,8 @@ function App() {
             <Route exact path="/trade-manage" element={<TradeManage />} />
             <Route exact path="/advance-trade" element={<AdvanceTrade />} />
             <Route exact path="/trade-history" element={<TradeHistory />} />
-            <Route
-              exact
-              path="/history-detail/:id"
-              element={<TradeHistoryDetail />}
-            />
-            <Route
-              exact
-              path="/trade-manage/rec"
-              element={<ReceivedRequests />}
-            />
+            <Route exact path="/history-detail/:id" element={<TradeHistoryDetail />} />
+            <Route exact path="/trade-manage/rec" element={<ReceivedRequests />} />
             <Route exact path="/trade-manage/sent" element={<SentRequests />} />
             <Route exact path="/sidebar" element={<Sidebar />} />
             <Route exact path="/userprof" element={<UserProfile />} />
